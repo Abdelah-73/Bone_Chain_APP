@@ -1,7 +1,7 @@
 CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: \
- /home/abdellah/Programming/Projects/BoneChain/GUI/mainwindow.cpp \
+ /home/abdellah/Desktop/BoneChain/GUI/mainwindow.cpp \
  /usr/include/stdc-predef.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/mainwindow.h \
+ /home/abdellah/Desktop/BoneChain/GUI/mainwindow.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -389,16 +389,11 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcombobox.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTabWidget \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/userdialog.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QCheckBox \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcheckbox.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFormLayout \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qformlayout.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLayout \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsUser.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QProgressBar \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qprogressbar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsUser.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/basic_ios.h \
  /usr/include/c++/13/bits/locale_facets.h /usr/include/c++/13/cwctype \
@@ -413,30 +408,48 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsPerson.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/../Lib/clsString.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/supplierdialog.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsSupplier.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/productdialog.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsProduct.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsPerson.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/../Lib/clsString.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsSupplier.h \
+ /home/abdellah/Desktop/BoneChain/GUI/userdialog.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QCheckBox \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcheckbox.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFormLayout \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qformlayout.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLayout \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsCustomer.h \
+ /home/abdellah/Desktop/BoneChain/GUI/supplierdialog.h \
+ /home/abdellah/Desktop/BoneChain/GUI/productdialog.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsProduct.h \
+ /home/abdellah/Desktop/BoneChain/GUI/articledialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTextEdit \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtextedit.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsArticle.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/articlereaderdialog.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsArticle.h \
+ /home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTextBrowser \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtextbrowser.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtextedit.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsCustomer.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsOrder.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/deliverydialog.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsDelivery.h \
+ /home/abdellah/Desktop/BoneChain/GUI/customerdialog.h \
+ /home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsOrder.h \
+ /home/abdellah/Desktop/BoneChain/GUI/deliverydialog.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSpinBox \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qspinbox.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsDelivery.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QInputDialog \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qinputdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlineedit.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QStringList \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsInventory.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsReport.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QDateTime \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGroupBox \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgroupbox.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsInventory.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsReport.h

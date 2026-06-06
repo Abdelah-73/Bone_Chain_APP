@@ -1,7 +1,7 @@
 CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o: \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp \
  /usr/include/stdc-predef.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_articledialog.cpp \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_articledialog.cpp \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/memoryfwd.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -116,7 +116,7 @@ CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.
  /usr/include/c++/13/backward/auto_ptr.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/articledialog.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/articledialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -389,7 +389,7 @@ CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsArticle.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsArticle.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/basic_ios.h \
  /usr/include/c++/13/bits/locale_facets.h /usr/include/c++/13/cwctype \
@@ -404,21 +404,24 @@ CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/../Lib/clsString.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_articlereaderdialog.cpp \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/articlereaderdialog.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/../Lib/clsString.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_articlereaderdialog.cpp \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/articlereaderdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTextBrowser \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtextbrowser.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtextedit.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_customerdialog.cpp \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/customerdialog.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsCustomer.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsPerson.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_deliverydialog.cpp \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/deliverydialog.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsDelivery.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_mainwindow.cpp \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/mainwindow.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_customerdialog.cpp \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/customerdialog.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsCustomer.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsPerson.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_deliverydialog.cpp \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/deliverydialog.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSpinBox \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qspinbox.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsDelivery.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsSupplier.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_mainwindow.cpp \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/mainwindow.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedWidget \
@@ -432,17 +435,20 @@ CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qheaderview.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTabWidget \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_orderstatusdialog.cpp \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/orderstatusdialog.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsOrder.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_productdialog.cpp \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/productdialog.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsProduct.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_supplierdialog.cpp \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/supplierdialog.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsSupplier.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_userdialog.cpp \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/userdialog.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QProgressBar \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qprogressbar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsUser.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_orderstatusdialog.cpp \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/orderstatusdialog.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsOrder.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_productdialog.cpp \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/productdialog.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsProduct.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_supplierdialog.cpp \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/supplierdialog.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_userdialog.cpp \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/userdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QCheckBox \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcheckbox.h \
- /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsUser.h
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcheckbox.h

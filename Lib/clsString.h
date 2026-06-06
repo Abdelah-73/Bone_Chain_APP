@@ -98,20 +98,17 @@ public:
 	static vector<string> Split(string S1, string Delim)
 	{
 		vector<string> vecStrings;
-		string word = "";
+		string word;
 		int pos = 0;
 
 		while ((pos = S1.find(Delim)) != std::string::npos)
 		{
 			word = S1.substr(0, pos);
-			if (!word.empty())
-				vecStrings.push_back(word);
+			vecStrings.push_back(word);
 
 			S1.erase(0, pos + Delim.length());
 		}
-
-		if (!S1.empty())
-			vecStrings.push_back(S1);
+		vecStrings.push_back(S1);
 
 		return vecStrings;
 	}

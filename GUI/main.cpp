@@ -1,9 +1,12 @@
 #include <QApplication>
 #include "mainwindow.h"
 #include <QString>
+#include <QDateTime>
+#include <cstdlib>
 
 int main(int argc, char *argv[])
 {
+    srand(QDateTime::currentDateTime().toSecsSinceEpoch());
     QApplication app(argc, argv);
 
     // 1. Define the Global Qt Style Sheet (QSS)

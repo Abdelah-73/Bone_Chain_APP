@@ -33,7 +33,7 @@ private:
         return GetEmptyProductObject();
     }
 
-    static string _ConvertProductObjectToLine(clsProduct Product, string Separator = "#//#")
+    static string _ConvertProductObjectToLine(const clsProduct& Product, string Separator = "#//#")
     {
         string Record = "";
         Record += Product.ProductID() + Separator;
@@ -65,13 +65,13 @@ private:
         return vProducts;
     }
 
-    static void _SaveProductsDataToFile(vector<clsProduct>& vProducts, string FileName = "../Data/Products.txt")
+    static void _SaveProductsDataToFile(const vector<clsProduct>& vProducts, string FileName = "../Data/Products.txt")
     {
         fstream MyFile;
         MyFile.open(FileName, ios::out);
         if (MyFile.is_open())
         {
-            for (clsProduct& P : vProducts)
+            for (const clsProduct& P : vProducts)
             {
                 MyFile << _ConvertProductObjectToLine(P) << endl;
             }
@@ -123,33 +123,33 @@ public:
         _ExpiryDate = ExpiryDate;
     }
 
-    bool IsEmpty() { return _Mode == enMode::EmptyMode; }
+    bool IsEmpty() const { return _Mode == enMode::EmptyMode; }
 
     static clsProduct GetEmptyProductObject()
     {
         return clsProduct(enMode::EmptyMode, "", "", enCategory::RawBoneFertilizer, 0.0, 0, 0, "", "");
     }
 
-    string ProductID() { return _ProductID; }
+    string ProductID() const { return _ProductID; }
     void SetName(string Name) { _Name = Name; }
-    string Name() { return _Name; }
+    string Name() const { return _Name; }
     void SetCategory(enCategory Category) { _Category = Category; }
-    enCategory Category() { return _Category; }
+    enCategory Category() const { return _Category; }
     void SetPrice(double Price) { _Price = Price; }
-    double Price() { return _Price; }
+    double Price() const { return _Price; }
     void SetStockQuantity(int StockQuantity) { _StockQuantity = StockQuantity; }
-    int StockQuantity() { return _StockQuantity; }
+    int StockQuantity() const { return _StockQuantity; }
     void SetMinimumStock(int MinimumStock) { _MinimumStock = MinimumStock; }
-    int MinimumStock() { return _MinimumStock; }
+    int MinimumStock() const { return _MinimumStock; }
     void SetProductionDate(string ProductionDate) { _ProductionDate = ProductionDate; }
-    string ProductionDate() { return _ProductionDate; }
+    string ProductionDate() const { return _ProductionDate; }
     void SetExpiryDate(string ExpiryDate) { _ExpiryDate = ExpiryDate; }
-    string ExpiryDate() { return _ExpiryDate; }
+    string ExpiryDate() const { return _ExpiryDate; }
 
     static clsProduct Find(string ProductID)
     {
         vector<clsProduct> vProducts = _LoadProductsDataFromFile();
-        for (clsProduct& P : vProducts)
+        for (const clsProduct& P : vProducts)
         {
             if (P.ProductID() == ProductID) return P;
         }

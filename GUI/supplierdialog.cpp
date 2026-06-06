@@ -90,21 +90,42 @@ void SupplierDialog::handleSave()
 
     if (_currentSupplierID.empty()) {
         // Add Mode
-        string newID = "SUP-" + to_string(clsSupplier::GetSuppliersList().size() + 1);
+        vector<clsSupplier> existing = clsSupplier::GetSuppliersList();
+        int maxNum = 0;
+        for (clsSupplier& s : existing) {
+            string sid = s.SupplierID();
+            if (sid.size() > 4 && sid.substr(0, 4) == "SUP-") {
+                int num = stoi(sid.substr(4));
+                if (num > maxNum) maxNum = num;
+            }
+        }
+        string newID = "SUP-" + to_string(maxNum + 1);
         supplierToSave = clsSupplier::GetAddNewSupplierObject(newID);
     } else {
         // Update Mode
         supplierToSave = clsSupplier::Find(_currentSupplierID);
     }
 
-    // Apply data
+    bool ok;
+    double weeklyQty = txtWeeklyQuantity->text().toDouble(&ok);
+    if (!ok || weeklyQty < 0) {
+        QMessageBox::warning(this, "Validation Error", "Weekly Quantity must be a valid positive number.");
+        return;
+    }
+
+    int points = txtPoints->text().toInt(&ok);
+    if (!ok || points < 0) {
+        QMessageBox::warning(this, "Validation Error", "Points must be a valid non-negative integer.");
+        return;
+    }
+
     supplierToSave.SetFirstName(txtName->text().toStdString());
     supplierToSave.SetPhone(txtPhone->text().toStdString());
     supplierToSave.SetAddress(txtAddress->text().toStdString());
     supplierToSave.SetSupplierType((clsSupplier::enSupplierType)cmbType->currentData().toInt());
     supplierToSave.SetBoneType(txtBoneType->text().toStdString());
-    supplierToSave.SetWeeklyQuantity(txtWeeklyQuantity->text().toDouble());
-    supplierToSave.SetPoints(txtPoints->text().toInt());
+    supplierToSave.SetWeeklyQuantity(weeklyQty);
+    supplierToSave.SetPoints(points);
 
     supplierToSave.Save();
 

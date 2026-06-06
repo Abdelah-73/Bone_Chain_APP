@@ -1,7 +1,7 @@
-/home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_productdialog.cpp: /home/abdellah/Programming/Projects/BoneChain/GUI/productdialog.h \
-  /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/moc_predefs.h \
-  /home/abdellah/Programming/Projects/BoneChain/Core/clsProduct.h \
-  /home/abdellah/Programming/Projects/BoneChain/Lib/clsString.h \
+/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_productdialog.cpp: /home/abdellah/Desktop/BoneChain/GUI/productdialog.h \
+  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/moc_predefs.h \
+  /home/abdellah/Desktop/BoneChain/Core/clsProduct.h \
+  /home/abdellah/Desktop/BoneChain/Lib/clsString.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \

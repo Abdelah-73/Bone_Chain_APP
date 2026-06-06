@@ -1,4 +1,5 @@
 #include "userdialog.h"
+#include <QDateTime>
 
 UserDialog::UserDialog(QWidget *parent) : QDialog(parent)
 {
@@ -9,7 +10,6 @@ UserDialog::UserDialog(QWidget *parent) : QDialog(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     QFormLayout *formLayout = new QFormLayout();
 
-    // Initialize Fields
     txtFirstName = new QLineEdit(this);
     txtLastName = new QLineEdit(this);
     txtEmail = new QLineEdit(this);
@@ -18,18 +18,15 @@ UserDialog::UserDialog(QWidget *parent) : QDialog(parent)
     txtPassword = new QLineEdit(this);
     txtPassword->setEchoMode(QLineEdit::Password);
 
-    // Initialize Roles (Admin, Supplier, Customer)
     cmbRole = new QComboBox(this);
     cmbRole->addItem("Admin", clsUser::enRole::Admin);
     cmbRole->addItem("Supplier", clsUser::enRole::Supplier);
     cmbRole->addItem("Customer", clsUser::enRole::Customer);
     cmbRole->setStyleSheet("padding: 5px; border: 1px solid #bdc3c7; border-radius: 4px;");
 
-    // Initialize Status
     chkIsActive = new QCheckBox("Account is Active", this);
-    chkIsActive->setChecked(true); // Default to active
+    chkIsActive->setChecked(true);
 
-    // Add fields to form
     formLayout->addRow("First Name:", txtFirstName);
     formLayout->addRow("Last Name:", txtLastName);
     formLayout->addRow("Email:", txtEmail);
@@ -39,7 +36,6 @@ UserDialog::UserDialog(QWidget *parent) : QDialog(parent)
     formLayout->addRow("Role:", cmbRole);
     formLayout->addRow("", chkIsActive);
 
-    // Setup Buttons
     QHBoxLayout *buttonLayout = new QHBoxLayout();
     btnSave = new QPushButton("Save User", this);
     btnCancel = new QPushButton("Cancel", this);
@@ -60,15 +56,14 @@ UserDialog::UserDialog(QWidget *parent) : QDialog(parent)
 
 void UserDialog::loadUserForEdit(const string& userID)
 {
-    _currentUserID = userID; // Save the ID so the system knows we are in Update Mode
+    _currentUserID = userID;
 
     clsUser user = clsUser::Find(userID);
     if (!user.IsEmpty())
     {
-        setWindowTitle("User Management - Edit User"); // Change the window title
-        btnSave->setText("Update User"); // Change button text
+        setWindowTitle("User Management - Edit User");
+        btnSave->setText("Update User");
 
-        // Pre-fill the text boxes
         txtFirstName->setText(QString::fromStdString(user.FirstName()));
         txtLastName->setText(QString::fromStdString(user.LastName()));
         txtEmail->setText(QString::fromStdString(user.Email()));
@@ -76,7 +71,6 @@ void UserDialog::loadUserForEdit(const string& userID)
         txtUsername->setText(QString::fromStdString(user.Username()));
         txtPassword->setText(QString::fromStdString(user.Password()));
 
-        // Set the dropdown to the correct role
         int index = cmbRole->findData(user.Role());
         if (index != -1) cmbRole->setCurrentIndex(index);
 
@@ -91,22 +85,37 @@ void UserDialog::handleSave()
         return;
     }
 
-    // Prepare a blank user object
     clsUser userToSave = clsUser::GetEmptyUserObject();
 
     if (_currentUserID.empty())
     {
-        // ADD NEW MODE
-        string newID = "USR-" + to_string(clsUser::GetUsersList().size() + 1);
+        vector<clsUser> existingUsers = clsUser::GetUsersList();
+        int maxNum = 0;
+        for (clsUser& u : existingUsers) {
+            string uid = u.UserID();
+            if (uid.size() > 4 && uid.substr(0, 4) == "USR-") {
+                int num = stoi(uid.substr(4));
+                maxNum = max(maxNum, num);
+            }
+        }
+        string newID = "USR-" + to_string(maxNum + 1);
         userToSave = clsUser::GetAddNewUserObject(newID);
     }
     else
     {
-        // UPDATE MODE
         userToSave = clsUser::Find(_currentUserID);
     }
 
-    // Apply the data from the form to the object
+    if (_currentUserID.empty()) {
+        vector<clsUser> existingUsers = clsUser::GetUsersList();
+        for (clsUser& u : existingUsers) {
+            if (u.Username() == txtUsername->text().toStdString()) {
+                QMessageBox::warning(this, "Validation Error", "Username already exists. Please choose another.");
+                return;
+            }
+        }
+    }
+
     userToSave.SetFirstName(txtFirstName->text().toStdString());
     userToSave.SetLastName(txtLastName->text().toStdString());
     userToSave.SetEmail(txtEmail->text().toStdString());
@@ -116,9 +125,41 @@ void UserDialog::handleSave()
     userToSave.SetRole(cmbRole->currentData().toInt());
     userToSave.SetIsActive(chkIsActive->isChecked());
 
-    // Execute the backend save (it automatically knows whether to Add or Update based on its internal mode!)
+    if (userToSave.Role() == clsUser::enRole::Supplier) {
+        vector<clsSupplier> existingSuppliers = clsSupplier::GetSuppliersList();
+        int maxNum = 0;
+        for (clsSupplier& s : existingSuppliers) {
+            string sid = s.SupplierID();
+            if (sid.size() > 4 && sid.substr(0, 4) == "SUP-") {
+                int num = stoi(sid.substr(4));
+                maxNum = max(maxNum, num);
+            }
+        }
+        string newSupID = "SUP-" + to_string(maxNum + 1);
+        clsSupplier::CreateNewSupplier(newSupID,
+            txtFirstName->text().toStdString(),
+            txtPhone->text().toStdString());
+        userToSave.SetSupplierID(newSupID);
+    }
+
+    if (userToSave.Role() == clsUser::enRole::Customer) {
+        vector<clsCustomer> existingCustomers = clsCustomer::GetCustomersList();
+        int maxNum = 0;
+        for (clsCustomer& c : existingCustomers) {
+            string cid = c.CustomerID();
+            if (cid.size() > 5 && cid.substr(0, 5) == "CUST-") {
+                int num = stoi(cid.substr(5));
+                maxNum = max(maxNum, num);
+            }
+        }
+        string newCustID = "CUST-" + to_string(maxNum + 1);
+        clsCustomer::CreateNewCustomer(newCustID,
+            txtFirstName->text().toStdString(),
+            txtPhone->text().toStdString());
+    }
+
     userToSave.Save();
 
     _saved = true;
-    accept(); // Close the dialog
+    accept();
 }

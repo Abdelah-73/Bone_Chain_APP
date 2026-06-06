@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include <ctime>
 #include "clsString.h"
 
 using namespace std;
@@ -242,19 +243,19 @@ public:
 
 	static clsDate DateAfterAddDays(clsDate date, int AddDays)
 	{
-		short MonthDay = 0;
 		date._Day += AddDays;
+		short MonthDay = DaysInMonth(date._Year, date._Month);
 
 		while (date._Day > MonthDay)
 		{
-			date._Month++;
-			MonthDay = DaysInMonth(date._Year, date._Month);
 			date._Day -= MonthDay;
-			if (date._Month == 12)
+			date._Month++;
+			if (date._Month > 12)
 			{
-				date._Month = 0;
+				date._Month = 1;
 				date._Year++;
 			}
+			MonthDay = DaysInMonth(date._Year, date._Month);
 		}
 
 		return date;
@@ -272,7 +273,7 @@ public:
 		if (date._Year < 1 || date._Day < 1 || date._Month < 1 || date._Month > 12)
 			return 0;
 
-		return date._Day == DaysInMonth(date._Year, date._Month);
+		return date._Day <= DaysInMonth(date._Year, date._Month);
 	}
 
 	bool IsValidDate()

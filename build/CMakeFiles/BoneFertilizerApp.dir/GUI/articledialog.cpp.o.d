@@ -1,7 +1,7 @@
 CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o: \
- /home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.cpp \
+ /home/abdellah/Desktop/BoneChain/GUI/articledialog.cpp \
  /usr/include/stdc-predef.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.h \
+ /home/abdellah/Desktop/BoneChain/GUI/articledialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -384,7 +384,7 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsArticle.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsArticle.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/basic_ios.h \
  /usr/include/c++/13/bits/locale_facets.h /usr/include/c++/13/cwctype \
@@ -399,4 +399,4 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/../Lib/clsString.h
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/../Lib/clsString.h

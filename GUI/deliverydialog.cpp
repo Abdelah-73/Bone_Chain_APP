@@ -1,30 +1,46 @@
 #include "deliverydialog.h"
+#include <QDateTime>
+#include <QLabel>
 
 DeliveryDialog::DeliveryDialog(QWidget *parent) : QDialog(parent)
 {
     setWindowTitle("Log New Delivery");
-    setFixedSize(400, 300);
+    setFixedSize(420, 320);
     setStyleSheet("background-color: #ffffff; color: #2c3e50; font-size: 14px;");
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     QFormLayout *formLayout = new QFormLayout();
 
-    txtSupplierID = new QLineEdit(this);
-    txtSupplierID->setPlaceholderText("e.g., SUP-001");
+    // Supplier combobox - load from real data
+    cmbSupplier = new QComboBox(this);
+    vector<clsSupplier> suppliers = clsSupplier::GetSuppliersList();
+    for (clsSupplier &s : suppliers) {
+        QString display = QString::fromStdString(s.FirstName() + " (" + s.SupplierID() + ")");
+        cmbSupplier->addItem(display, QString::fromStdString(s.SupplierID()));
+    }
+    if (cmbSupplier->count() == 0)
+        cmbSupplier->addItem("-- No Suppliers Available --", "");
 
-    txtProductID = new QLineEdit(this);
-    txtProductID->setPlaceholderText("e.g., PROD-001 (Raw Bone)");
+    // Bone Type combobox
+    cmbBoneType = new QComboBox(this);
+    cmbBoneType->addItem("Cow Bones", clsDelivery::enBoneType::CowBones);
+    cmbBoneType->addItem("Sheep Bones", clsDelivery::enBoneType::SheepBones);
+    cmbBoneType->addItem("Chicken Bones", clsDelivery::enBoneType::ChickenBones);
+    cmbBoneType->addItem("Mixed", clsDelivery::enBoneType::Mixed);
 
     txtDate = new QLineEdit(this);
+    txtDate->setText(QDateTime::currentDateTime().toString("yyyy-MM-dd"));
     txtDate->setPlaceholderText("YYYY-MM-DD");
 
-    txtQuantity = new QLineEdit(this);
-    txtQuantity->setPlaceholderText("Quantity in KG");
+    spinQuantity = new QSpinBox(this);
+    spinQuantity->setRange(1, 100000);
+    spinQuantity->setValue(100);
+    spinQuantity->setSuffix(" kg");
 
-    formLayout->addRow("Supplier ID:", txtSupplierID);
-    formLayout->addRow("Product ID:", txtProductID);
+    formLayout->addRow("Supplier:", cmbSupplier);
+    formLayout->addRow("Bone Type:", cmbBoneType);
     formLayout->addRow("Delivery Date:", txtDate);
-    formLayout->addRow("Quantity (kg):", txtQuantity);
+    formLayout->addRow("Quantity:", spinQuantity);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout();
     btnSave = new QPushButton("Submit Delivery", this);
@@ -46,24 +62,29 @@ DeliveryDialog::DeliveryDialog(QWidget *parent) : QDialog(parent)
 
 void DeliveryDialog::handleSave()
 {
-    if (txtSupplierID->text().isEmpty() || txtQuantity->text().isEmpty()) {
-        QMessageBox::warning(this, "Validation Error", "Supplier ID and Quantity are required.");
+    QString supplierID = cmbSupplier->currentData().toString();
+    if (supplierID.isEmpty()) {
+        QMessageBox::warning(this, "Validation Error", "Please select a valid supplier.");
         return;
     }
 
-    // إنشاء ID جديد
-    string newID = "DEL-" + to_string(clsDelivery::GetDeliveriesList().size() + 1);
+    double qty = spinQuantity->value();
+    if (qty <= 0) {
+        QMessageBox::warning(this, "Validation Error", "Quantity must be positive.");
+        return;
+    }
 
-    // إنشاء التوصيلة الجديدة (الحالة الافتراضية Pending)
+    string newID = "DEL-" + to_string(QDateTime::currentMSecsSinceEpoch());
+
     clsDelivery newDelivery = clsDelivery::GetAddNewDeliveryObject(newID);
-
-    /* ملاحظة: لكي تعمل هذه الأكواد، يجب إضافة دوال Setters في clsDelivery
-    newDelivery.SetSupplierID(txtSupplierID->text().toStdString());
-    newDelivery.SetProductID(txtProductID->text().toStdString());
-    newDelivery.SetDate(txtDate->text().toStdString());
-    newDelivery.SetQuantity(txtQuantity->text().toDouble());
+    newDelivery.SetSupplierID(supplierID.toStdString());
+    newDelivery.SetProductID(cmbBoneType->currentText().toStdString());
+    newDelivery.SetQuantity(qty);
+    newDelivery.SetDate(txtDate->text().toStdString().empty()
+        ? QDateTime::currentDateTime().toString("yyyy-MM-dd").toStdString()
+        : txtDate->text().toStdString());
+    newDelivery.SetStatus(clsDelivery::enStatus::Pending);
     newDelivery.Save();
-    */
 
     _saved = true;
     accept();

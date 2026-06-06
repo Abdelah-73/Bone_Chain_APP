@@ -29,7 +29,7 @@ private:
         return GetEmptyCustomerObject();
     }
 
-    static string _ConvertCustomerObjectToLine(clsCustomer Customer, string Separator = "#//#")
+    static string _ConvertCustomerObjectToLine(const clsCustomer& Customer, string Separator = "#//#")
     {
         string Record = "";
         Record += Customer.CustomerID() + Separator;
@@ -58,13 +58,13 @@ private:
         return vCustomers;
     }
 
-    static void _SaveCustomersDataToFile(vector<clsCustomer>& vCustomers, string FileName = "../Data/Customers.txt")
+    static void _SaveCustomersDataToFile(const vector<clsCustomer>& vCustomers, string FileName = "../Data/Customers.txt")
     {
         fstream MyFile;
         MyFile.open(FileName, ios::out);
         if (MyFile.is_open())
         {
-            for (clsCustomer& C : vCustomers)
+            for (const clsCustomer& C : vCustomers)
             {
                 MyFile << _ConvertCustomerObjectToLine(C) << endl;
             }
@@ -112,18 +112,18 @@ public:
         _CustomerType = CustomerType;
     }
 
-    bool IsEmpty() { return _Mode == enMode::EmptyMode; }
+    bool IsEmpty() const { return _Mode == enMode::EmptyMode; }
 
     static clsCustomer GetEmptyCustomerObject()
     {
         return clsCustomer(enMode::EmptyMode, "", "", "", "", enCustomerType::Farmer);
     }
 
-    string CustomerID() { return _CustomerID; }
+    string CustomerID() const { return _CustomerID; }
     void SetAddress(string Address) { _Address = Address; }
-    string Address() { return _Address; }
+    string Address() const { return _Address; }
     void SetCustomerType(enCustomerType Type) { _CustomerType = Type; }
-    enCustomerType CustomerType() { return _CustomerType; }
+    enCustomerType CustomerType() const { return _CustomerType; }
 
     static clsCustomer Find(string CustomerID)
     {
@@ -143,6 +143,13 @@ public:
     static clsCustomer GetAddNewCustomerObject(string CustomerID)
     {
         return clsCustomer(enMode::AddNewMode, CustomerID, "", "", "", enCustomerType::Farmer);
+    }
+
+    static clsCustomer CreateNewCustomer(const string& customerID, const string& name, const string& phone)
+    {
+        clsCustomer c(enMode::AddNewMode, customerID, name, phone, "", enCustomerType::Farmer);
+        c.Save();
+        return c;
     }
 
     bool Delete()

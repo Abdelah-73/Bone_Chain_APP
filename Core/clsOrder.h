@@ -32,7 +32,7 @@ private:
         return GetEmptyOrderObject();
     }
 
-    static string _ConvertOrderObjectToLine(clsOrder Order, string Separator = "#//#")
+    static string _ConvertOrderObjectToLine(const clsOrder& Order, string Separator = "#//#")
     {
         string Record = "";
         Record += Order.OrderID() + Separator;
@@ -63,13 +63,13 @@ private:
         return vOrders;
     }
 
-    static void _SaveOrdersDataToFile(vector<clsOrder>& vOrders, string FileName = "../Data/Orders.txt")
+    static void _SaveOrdersDataToFile(const vector<clsOrder>& vOrders, string FileName = "../Data/Orders.txt")
     {
         fstream MyFile;
         MyFile.open(FileName, ios::out);
         if (MyFile.is_open())
         {
-            for (clsOrder& O : vOrders)
+            for (const clsOrder& O : vOrders)
             {
                 MyFile << _ConvertOrderObjectToLine(O) << endl;
             }
@@ -120,31 +120,31 @@ public:
         _Status = Status;
     }
 
-    bool IsEmpty() { return _Mode == enMode::EmptyMode; }
+    bool IsEmpty() const { return _Mode == enMode::EmptyMode; }
 
     static clsOrder GetEmptyOrderObject()
     {
         return clsOrder(enMode::EmptyMode, "", "", "", 0, 0.0, "", enStatus::Pending);
     }
 
-    string OrderID() { return _OrderID; }
+    string OrderID() const { return _OrderID; }
     void SetCustomerID(string CustomerID) { _CustomerID = CustomerID; }
-    string CustomerID() { return _CustomerID; }
+    string CustomerID() const { return _CustomerID; }
     void SetProductID(string ProductID) { _ProductID = ProductID; }
-    string ProductID() { return _ProductID; }
+    string ProductID() const { return _ProductID; }
     void SetQuantity(int Quantity) { _Quantity = Quantity; }
-    int Quantity() { return _Quantity; }
+    int Quantity() const { return _Quantity; }
     void SetTotalPrice(double TotalPrice) { _TotalPrice = TotalPrice; }
-    double TotalPrice() { return _TotalPrice; }
+    double TotalPrice() const { return _TotalPrice; }
     void SetOrderDate(string OrderDate) { _OrderDate = OrderDate; }
-    string OrderDate() { return _OrderDate; }
+    string OrderDate() const { return _OrderDate; }
     void SetStatus(enStatus Status) { _Status = Status; }
-    enStatus Status() { return _Status; }
+    enStatus Status() const { return _Status; }
 
     static clsOrder Find(string OrderID)
     {
         vector<clsOrder> vOrders = _LoadOrdersDataFromFile();
-        for (clsOrder& O : vOrders)
+        for (const clsOrder& O : vOrders)
         {
             if (O.OrderID() == OrderID) return O;
         }

@@ -2,6 +2,7 @@
 #include <QDialog>
 #include <QLineEdit>
 #include <QComboBox>
+#include <QSpinBox>
 #include <QPushButton>
 #include <QFormLayout>
 #include <QVBoxLayout>
@@ -9,6 +10,7 @@
 #include <QMessageBox>
 #include <string>
 #include "../Core/clsDelivery.h"
+#include "../Core/clsSupplier.h"
 
 using namespace std;
 
@@ -24,10 +26,10 @@ private slots:
     void handleSave();
 
 private:
-    QLineEdit *txtSupplierID;
-    QLineEdit *txtProductID; // نوع العظم
+    QComboBox *cmbSupplier;
+    QComboBox *cmbBoneType;
     QLineEdit *txtDate;
-    QLineEdit *txtQuantity;
+    QSpinBox *spinQuantity;
 
     QPushButton *btnSave;
     QPushButton *btnCancel;

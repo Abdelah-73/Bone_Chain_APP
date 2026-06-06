@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/abdellah/Programming/Projects/BoneChain
+CMAKE_SOURCE_DIR = /home/abdellah/Desktop/BoneChain
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/abdellah/Programming/Projects/BoneChain/build
+CMAKE_BINARY_DIR = /home/abdellah/Desktop/BoneChain/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/BoneFertilizerApp.dir/depend.make
@@ -72,163 +72,163 @@ include CMakeFiles/BoneFertilizerApp.dir/flags.make
 BoneFertilizerApp_autogen/timestamp: /usr/lib/qt6/libexec/moc
 BoneFertilizerApp_autogen/timestamp: /usr/lib/qt6/libexec/uic
 BoneFertilizerApp_autogen/timestamp: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target BoneFertilizerApp"
-	/usr/bin/cmake -E cmake_autogen /home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/AutogenInfo.json ""
-	/usr/bin/cmake -E touch /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target BoneFertilizerApp"
+	/usr/bin/cmake -E cmake_autogen /home/abdellah/Desktop/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/AutogenInfo.json Debug
+	/usr/bin/cmake -E touch /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/timestamp
 
 CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
 CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o: BoneFertilizerApp_autogen/mocs_compilation.cpp
 CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o -c /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp > CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp > CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp -o CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp -o CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
-CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o: /home/abdellah/Programming/Projects/BoneChain/GUI/main.cpp
+CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o: /home/abdellah/Desktop/BoneChain/GUI/main.cpp
 CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/GUI/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o -c /home/abdellah/Desktop/BoneChain/GUI/main.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/GUI/main.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/GUI/main.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/GUI/main.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/GUI/main.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.s
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
-CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: /home/abdellah/Programming/Projects/BoneChain/GUI/mainwindow.cpp
+CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: /home/abdellah/Desktop/BoneChain/GUI/mainwindow.cpp
 CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/GUI/mainwindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o -c /home/abdellah/Desktop/BoneChain/GUI/mainwindow.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/GUI/mainwindow.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/GUI/mainwindow.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/GUI/mainwindow.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/GUI/mainwindow.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.s
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
-CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o: /home/abdellah/Programming/Projects/BoneChain/GUI/userdialog.cpp
+CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o: /home/abdellah/Desktop/BoneChain/GUI/userdialog.cpp
 CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/GUI/userdialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.o -c /home/abdellah/Desktop/BoneChain/GUI/userdialog.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/GUI/userdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/GUI/userdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/GUI/userdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/GUI/userdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.s
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
-CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o: /home/abdellah/Programming/Projects/BoneChain/GUI/supplierdialog.cpp
+CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o: /home/abdellah/Desktop/BoneChain/GUI/supplierdialog.cpp
 CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/GUI/supplierdialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.o -c /home/abdellah/Desktop/BoneChain/GUI/supplierdialog.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/GUI/supplierdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/GUI/supplierdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/GUI/supplierdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/GUI/supplierdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/supplierdialog.cpp.s
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
-CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o: /home/abdellah/Programming/Projects/BoneChain/GUI/productdialog.cpp
+CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o: /home/abdellah/Desktop/BoneChain/GUI/productdialog.cpp
 CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/GUI/productdialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.o -c /home/abdellah/Desktop/BoneChain/GUI/productdialog.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/GUI/productdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/GUI/productdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/GUI/productdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/GUI/productdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/productdialog.cpp.s
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
-CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o: /home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.cpp
+CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o: /home/abdellah/Desktop/BoneChain/GUI/articledialog.cpp
 CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o -c /home/abdellah/Desktop/BoneChain/GUI/articledialog.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/GUI/articledialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/GUI/articledialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.s
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
-CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o: /home/abdellah/Programming/Projects/BoneChain/GUI/articlereaderdialog.cpp
+CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o: /home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.cpp
 CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/GUI/articlereaderdialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o -c /home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/GUI/articlereaderdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/GUI/articlereaderdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.s
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
-CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o: /home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.cpp
+CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o: /home/abdellah/Desktop/BoneChain/GUI/customerdialog.cpp
 CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o -c /home/abdellah/Desktop/BoneChain/GUI/customerdialog.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/GUI/customerdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/GUI/customerdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.s
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
-CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o: /home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.cpp
+CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o: /home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.cpp
 CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o -c /home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.s
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/flags.make
-CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o: /home/abdellah/Programming/Projects/BoneChain/GUI/deliverydialog.cpp
+CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o: /home/abdellah/Desktop/BoneChain/GUI/deliverydialog.cpp
 CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o: CMakeFiles/BoneFertilizerApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o -c /home/abdellah/Programming/Projects/BoneChain/GUI/deliverydialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o -MF CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o.d -o CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o -c /home/abdellah/Desktop/BoneChain/GUI/deliverydialog.cpp
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Programming/Projects/BoneChain/GUI/deliverydialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abdellah/Desktop/BoneChain/GUI/deliverydialog.cpp > CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.i
 
 CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Programming/Projects/BoneChain/GUI/deliverydialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abdellah/Desktop/BoneChain/GUI/deliverydialog.cpp -o CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.s
 
 # Object files for target BoneFertilizerApp
 BoneFertilizerApp_OBJECTS = \
@@ -265,7 +265,7 @@ BoneFertilizerApp: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
 BoneFertilizerApp: /usr/lib/x86_64-linux-gnu/libGLX.so
 BoneFertilizerApp: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 BoneFertilizerApp: CMakeFiles/BoneFertilizerApp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable BoneFertilizerApp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable BoneFertilizerApp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BoneFertilizerApp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -277,6 +277,6 @@ CMakeFiles/BoneFertilizerApp.dir/clean:
 .PHONY : CMakeFiles/BoneFertilizerApp.dir/clean
 
 CMakeFiles/BoneFertilizerApp.dir/depend: BoneFertilizerApp_autogen/timestamp
-	cd /home/abdellah/Programming/Projects/BoneChain/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/abdellah/Programming/Projects/BoneChain /home/abdellah/Programming/Projects/BoneChain /home/abdellah/Programming/Projects/BoneChain/build /home/abdellah/Programming/Projects/BoneChain/build /home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/BoneFertilizerApp.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/abdellah/Desktop/BoneChain/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/abdellah/Desktop/BoneChain /home/abdellah/Desktop/BoneChain /home/abdellah/Desktop/BoneChain/build /home/abdellah/Desktop/BoneChain/build /home/abdellah/Desktop/BoneChain/build/CMakeFiles/BoneFertilizerApp.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/BoneFertilizerApp.dir/depend
 

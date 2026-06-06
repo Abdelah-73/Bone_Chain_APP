@@ -11,6 +11,13 @@
 #include <QMessageBox>
 #include <QComboBox>
 #include <QTabWidget>
+#include <QProgressBar>
+#include <QFont>
+#include <string>
+#include "../Core/clsUser.h"
+#include "../Core/clsSupplier.h"
+
+using namespace std;
 
 class MainWindow : public QMainWindow
 {
@@ -42,6 +49,7 @@ private slots:
     void loadInventoryData();
     void loadArticlesData();
     void deleteSelectedArticle();
+    void refreshMyRewardsScreen();
 
 private:
     // --- Core Layout Components ---
@@ -52,16 +60,23 @@ private:
     QVBoxLayout *sidebarLayout;
     QStackedWidget *stackedScreens;
 
-
     // --- Sidebar Buttons ---
     QPushButton *btnDashboard, *btnUsers, *btnSuppliers, *btnCustomers;
     QPushButton *btnProducts, *btnOrders, *btnInventory, *btnReports;
     QPushButton *btnArticles, *btnLogout;
     QPushButton *btnDeliveries;
+    // --- Supplier Navigation Buttons ---
+    QPushButton *btnSupDashboard;
+    QPushButton *btnMyDeliveries;
+    QPushButton *btnMyRewards;
+    QPushButton *btnMyProfile;
+
 
     enum ScreenIndex {
         Login = 0, Dashboard, Users, Suppliers, Customers,
-        Products, Orders, Inventory, Reports, Articles,Deliveries
+        Products, Orders, Inventory, Reports, Articles,Deliveries,
+        // --- NEW SUPPLIER SCREENS ---
+        SupDashboard, MyDeliveries, MyRewards, MyProfile
     };
 
     // --- Core Setup Functions ---
@@ -84,9 +99,39 @@ private:
     void setupDeliveriesScreen();
     void loadDeliveriesData();
     void approveSelectedDelivery();
+    void rejectSelectedDelivery();
     // --- UI Elements ---
     QLineEdit *txtUsername, *txtPassword;
     QLabel *lblRevenue, *lblBones, *lblTotalUsers, *lblTotalOrders,*lblTotalDeliveries;
+
+    // --- Supplier Portal ---
+    void setupSupplierDashboardScreen();
+    void setupMyDeliveriesScreen();
+    void setupMyRewardsScreen();
+    void setupMyProfileScreen();
+    void refreshSupplierDashboard(); // To calculate their specific stats
+    void openNewDeliveryForm();
+    void refreshMyDeliveriesTable();
+    void refreshMyProfileScreen(); // The function that fetches the real data
+
+    // Supplier Dashboard Metrics
+    QLabel *lblSupDashTotalDeliveries;
+    QLabel *lblSupDashTotalBones;
+    QLabel *lblSupDashPoints;
+    QLabel *lblSupDashRank;
+
+    QLabel *lblRewardPoints;
+    QLabel *lblRewardRank;
+    QProgressBar *barNextRank; // This needs #include <QProgressBar> at the top of your file!
+    QFrame *certFrames[3];
+
+    // --- Profile UI Variables ---
+    QLabel *lblProfileName;
+    QLabel *lblProfileUsername;
+    QLabel *lblProfilePhone;
+    QLabel *lblProfileEmail;
+    QLabel *lblProfileRole;
+
 
     QTableWidget *tableUsers;
     QTableWidget *tableSuppliers;
@@ -103,6 +148,11 @@ private:
     QPushButton *btnQuickAddSupplier, *btnQuickAddProduct;
     QPushButton *btnQuickAddArticle, *btnQuickReports;
 
+    // Article Control Buttons
+    QPushButton *btnAdd;
+    QPushButton *btnEdit;
+    QPushButton *btnDel;
+
     QTableWidget *tableDashLowStock;
 
     // --- Add this near your other table pointers ---
@@ -116,4 +166,12 @@ private:
     QTableWidget *tableRepSuppliers;
     QTableWidget *tableRepCustomers;
     QTableWidget *tableRepDeliveries;
+
+    // 3. Data Tables(SUPPLIER)
+    QTableWidget *tableSupRecentDeliveries;
+    QTableWidget *tableSupMyDeliveries;
+
+    clsUser _currentUser = clsUser::GetEmptyUserObject();
+    string _currentSupplierID;
+    int _currentRole = 0;
 };

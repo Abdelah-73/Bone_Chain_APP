@@ -17,18 +17,23 @@ private:
     string _Password;
     int _Role;
     bool _IsActive;
+    string _SupplierID;
 
     static clsUser _ConvertLineToUserObject(string Line, string Separator = "#//#")
     {
         vector<string> vUserData = clsString::Split(Line, Separator);
+        if (vUserData.size() == 10)
+        {
+            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]), vUserData[9]);
+        }
         if (vUserData.size() == 9)
         {
-            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]));
+            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]), "");
         }
         return GetEmptyUserObject();
     }
 
-    static string _ConvertUserObjectToLine(clsUser User, string Separator = "#//#")
+    static string _ConvertUserObjectToLine(const clsUser& User, string Separator = "#//#")
     {
         string UserRecord = "";
         UserRecord += User.UserID() + Separator;
@@ -39,7 +44,8 @@ private:
         UserRecord += User.Username() + Separator;
         UserRecord += User.Password() + Separator;
         UserRecord += to_string(User.Role()) + Separator;
-        UserRecord += to_string(User.IsActive());
+        UserRecord += to_string(User.IsActive()) + Separator;
+        UserRecord += User.SupplierID();
         return UserRecord;
     }
 
@@ -61,13 +67,13 @@ private:
         return vUsers;
     }
 
-    static void _SaveUsersDataToFile(vector<clsUser>& vUsers, string FileName = "../Data/Users.txt")
+    static void _SaveUsersDataToFile(const vector<clsUser>& vUsers, string FileName = "../Data/Users.txt")
     {
         fstream MyFile;
         MyFile.open(FileName, ios::out);
         if (MyFile.is_open())
         {
-            for (clsUser& U : vUsers)
+            for (const clsUser& U : vUsers)
             {
                 MyFile << _ConvertUserObjectToLine(U) << endl;
             }
@@ -108,7 +114,7 @@ private:
 public:
     enum enRole { Admin = 1, Supplier = 2, Customer = 3 };
 
-    clsUser(enMode Mode, string UserID, string FirstName, string LastName, string Email, string Phone, string Username, string Password, int Role, bool IsActive)
+    clsUser(enMode Mode, string UserID, string FirstName, string LastName, string Email, string Phone, string Username, string Password, int Role, bool IsActive, string SupplierID = "")
         : clsPerson(FirstName, LastName, Email, Phone)
     {
         _Mode = Mode;
@@ -117,29 +123,32 @@ public:
         _Password = Password;
         _Role = Role;
         _IsActive = IsActive;
+        _SupplierID = SupplierID;
     }
 
-    bool IsEmpty() { return _Mode == enMode::EmptyMode; }
+    bool IsEmpty() const { return _Mode == enMode::EmptyMode; }
+    string SupplierID() const { return _SupplierID; }
+    void SetSupplierID(string SupplierID) { _SupplierID = SupplierID; }
 
     static clsUser GetEmptyUserObject()
     {
-        return clsUser(enMode::EmptyMode, "", "", "", "", "", "", "", 0, false);
+        return clsUser(enMode::EmptyMode, "", "", "", "", "", "", "", 0, false, "");
     }
 
-    string UserID() { return _UserID; }
+    string UserID() const { return _UserID; }
     void SetUsername(string Username) { _Username = Username; }
-    string Username() { return _Username; }
+    string Username() const { return _Username; }
     void SetPassword(string Password) { _Password = Password; }
-    string Password() { return _Password; }
+    string Password() const { return _Password; }
     void SetRole(int Role) { _Role = Role; }
-    int Role() { return _Role; }
+    int Role() const { return _Role; }
     void SetIsActive(bool IsActive) { _IsActive = IsActive; }
-    bool IsActive() { return _IsActive; }
+    bool IsActive() const { return _IsActive; }
 
     static clsUser Find(string UserID)
     {
         vector<clsUser> vUsers = _LoadUsersDataFromFile();
-        for (clsUser& U : vUsers)
+        for (const clsUser& U : vUsers)
         {
             if (U.UserID() == UserID) return U;
         }
@@ -149,7 +158,7 @@ public:
     static clsUser FindByUsernameAndPassword(string Username, string Password)
     {
         vector<clsUser> vUsers = _LoadUsersDataFromFile();
-        for (clsUser& U : vUsers)
+        for (const clsUser& U : vUsers)
         {
             if (U.Username() == Username && U.Password() == Password) return U;
         }
@@ -163,7 +172,7 @@ public:
 
     static clsUser GetAddNewUserObject(string UserID)
     {
-        return clsUser(enMode::AddNewMode, UserID, "", "", "", "", "", "", 0, true);
+        return clsUser(enMode::AddNewMode, UserID, "", "", "", "", "", "", 0, true, "");
     }
 
     bool Delete()

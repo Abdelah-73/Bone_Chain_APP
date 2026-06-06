@@ -27,7 +27,7 @@ private:
         return GetEmptyArticleObject();
     }
 
-    static string _ConvertArticleObjectToLine(clsArticle Article, string Separator = "#//#")
+    static string _ConvertArticleObjectToLine(const clsArticle& Article, string Separator = "#//#")
     {
         string Record = "";
         Record += Article.ArticleID() + Separator;
@@ -56,13 +56,13 @@ private:
         return vArticles;
     }
 
-    static void _SaveArticlesDataToFile(vector<clsArticle>& vArticles, string FileName = "../Data/Articles.txt")
+    static void _SaveArticlesDataToFile(const vector<clsArticle>& vArticles, string FileName = "../Data/Articles.txt")
     {
         fstream MyFile;
         MyFile.open(FileName, ios::out);
         if (MyFile.is_open())
         {
-            for (clsArticle& A : vArticles)
+            for (const clsArticle& A : vArticles)
             {
                 MyFile << _ConvertArticleObjectToLine(A) << endl;
             }
@@ -111,27 +111,27 @@ public:
         _PublishDate = PublishDate;
     }
 
-    bool IsEmpty() { return _Mode == enMode::EmptyMode; }
+    bool IsEmpty() const { return _Mode == enMode::EmptyMode; }
 
     static clsArticle GetEmptyArticleObject()
     {
         return clsArticle(enMode::EmptyMode, "", "", "", "", "");
     }
 
-    string ArticleID() { return _ArticleID; }
+    string ArticleID() const { return _ArticleID; }
     void SetTitle(string Title) { _Title = Title; }
-    string Title() { return _Title; }
+    string Title() const { return _Title; }
     void SetCategory(string Category) { _Category = Category; }
-    string Category() { return _Category; }
+    string Category() const { return _Category; }
     void SetContent(string Content) { _Content = Content; }
-    string Content() { return _Content; }
+    string Content() const { return _Content; }
     void SetPublishDate(string PublishDate) { _PublishDate = PublishDate; }
-    string PublishDate() { return _PublishDate; }
+    string PublishDate() const { return _PublishDate; }
 
     static clsArticle Find(string ArticleID)
     {
         vector<clsArticle> vArticles = _LoadArticlesDataFromFile();
-        for (clsArticle& A : vArticles)
+        for (const clsArticle& A : vArticles)
         {
             if (A.ArticleID() == ArticleID) return A;
         }

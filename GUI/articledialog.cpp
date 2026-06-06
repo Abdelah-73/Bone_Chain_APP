@@ -82,7 +82,15 @@ void ArticleDialog::handleSave()
     clsArticle articleToSave = clsArticle::GetEmptyArticleObject();
 
     if (_currentArticleID.empty()) {
-        string newID = "ART-" + to_string(clsArticle::GetArticlesList().size() + 1);
+        int maxNum = 0;
+        for (const auto& a : clsArticle::GetArticlesList()) {
+            string id = a.ArticleID();
+            if (id.rfind("ART-", 0) == 0) {
+                try { int n = stoi(id.substr(4)); if (n > maxNum) maxNum = n; }
+                catch (...) { }
+            }
+        }
+        string newID = "ART-" + to_string(maxNum + 1);
         articleToSave = clsArticle::GetAddNewArticleObject(newID);
     } else {
         articleToSave = clsArticle::Find(_currentArticleID);

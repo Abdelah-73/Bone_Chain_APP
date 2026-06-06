@@ -1,7 +1,7 @@
 CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o: \
- /home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.cpp \
+ /home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.cpp \
  /usr/include/stdc-predef.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.h \
+ /home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -367,7 +367,7 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextdocument.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qurl.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsOrder.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsOrder.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/basic_ios.h \
  /usr/include/c++/13/bits/locale_facets.h /usr/include/c++/13/cwctype \
@@ -382,4 +382,4 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/../Lib/clsString.h
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/../Lib/clsString.h

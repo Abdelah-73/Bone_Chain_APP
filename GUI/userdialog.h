@@ -7,9 +7,12 @@
 #include <QFormLayout>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QLabel>
 #include <QMessageBox>
 #include <string>
 #include "../Core/clsUser.h"
+#include "../Core/clsSupplier.h"
+#include "../Core/clsCustomer.h"
 
 class UserDialog : public QDialog
 {

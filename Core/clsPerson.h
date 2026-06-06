@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<string>
 using namespace std;
 
 
@@ -21,27 +22,27 @@ class clsPerson
 		_Gmail=gmail;
 	}
 
-	string FirstName()
+	string FirstName() const
 	{
 		return _FirstName;
 	}
 
-	string LastName()
+	string LastName() const
 	{
 		return _LastName;
 	}
 
-    string FullName()
+    string FullName() const
 	{
 		return _FirstName+" "+_LastName;
 	}
 
-    string Email()
+    string Email() const
 	{
 		return _Gmail;
 	}
 
-	string PhoneNumber()
+	string PhoneNumber() const
 	{
 		return _Phone;
 	}

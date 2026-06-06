@@ -32,11 +32,11 @@ private:
         return GetEmptySupplierObject();
     }
 
-    static string _ConvertSupplierObjectToLine(clsSupplier Supplier, string Separator = "#//#")
+    static string _ConvertSupplierObjectToLine(const clsSupplier& Supplier, string Separator = "#//#")
     {
         string Record = "";
         Record += Supplier.SupplierID() + Separator;
-        Record += Supplier.FirstName() + Separator; // Using FirstName as Name
+        Record += Supplier.FirstName() + Separator;
         Record += Supplier.PhoneNumber() + Separator;
         Record += Supplier.Address() + Separator;
         Record += to_string(Supplier.SupplierType()) + Separator;
@@ -64,13 +64,13 @@ private:
         return vSuppliers;
     }
 
-    static void _SaveSuppliersDataToFile(vector<clsSupplier>& vSuppliers, string FileName = "../Data/Suppliers.txt")
+    static void _SaveSuppliersDataToFile(const vector<clsSupplier>& vSuppliers, string FileName = "../Data/Suppliers.txt")
     {
         fstream MyFile;
         MyFile.open(FileName, ios::out);
         if (MyFile.is_open())
         {
-            for (clsSupplier& S : vSuppliers)
+            for (const clsSupplier& S : vSuppliers)
             {
                 MyFile << _ConvertSupplierObjectToLine(S) << endl;
             }
@@ -121,24 +121,24 @@ public:
         _Points = Points;
     }
 
-    bool IsEmpty() { return _Mode == enMode::EmptyMode; }
+    bool IsEmpty() const { return _Mode == enMode::EmptyMode; }
 
     static clsSupplier GetEmptySupplierObject()
     {
         return clsSupplier(enMode::EmptyMode, "", "", "", "", enSupplierType::Individual, "", 0.0, 0);
     }
 
-    string SupplierID() { return _SupplierID; }
+    string SupplierID() const { return _SupplierID; }
     void SetAddress(string Address) { _Address = Address; }
-    string Address() { return _Address; }
+    string Address() const { return _Address; }
     void SetSupplierType(enSupplierType Type) { _SupplierType = Type; }
-    enSupplierType SupplierType() { return _SupplierType; }
+    enSupplierType SupplierType() const { return _SupplierType; }
     void SetBoneType(string BoneType) { _BoneType = BoneType; }
-    string BoneType() { return _BoneType; }
+    string BoneType() const { return _BoneType; }
     void SetWeeklyQuantity(double WeeklyQuantity) { _WeeklyQuantity = WeeklyQuantity; }
-    double WeeklyQuantity() { return _WeeklyQuantity; }
+    double WeeklyQuantity() const { return _WeeklyQuantity; }
     void SetPoints(int Points) { _Points = Points; }
-    int Points() { return _Points; }
+    int Points() const { return _Points; }
 
     static clsSupplier Find(string SupplierID)
     {
@@ -158,6 +158,13 @@ public:
     static clsSupplier GetAddNewSupplierObject(string SupplierID)
     {
         return clsSupplier(enMode::AddNewMode, SupplierID, "", "", "", enSupplierType::Individual, "", 0.0, 0);
+    }
+
+    static clsSupplier CreateNewSupplier(const string& supplierID, const string& name, const string& phone)
+    {
+        clsSupplier s(enMode::AddNewMode, supplierID, name, phone, "", enSupplierType::Individual, "", 0.0, 0);
+        s.Save();
+        return s;
     }
 
     bool Delete()

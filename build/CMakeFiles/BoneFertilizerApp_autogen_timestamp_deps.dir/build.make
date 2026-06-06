@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/abdellah/Programming/Projects/BoneChain
+CMAKE_SOURCE_DIR = /home/abdellah/Desktop/BoneChain
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/abdellah/Programming/Projects/BoneChain/build
+CMAKE_BINARY_DIR = /home/abdellah/Desktop/BoneChain/build
 
 # Utility rule file for BoneFertilizerApp_autogen_timestamp_deps.
 
@@ -66,11 +66,11 @@ include CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/compiler_depend.
 # Include the progress variables for this target.
 include CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/progress.make
 
-CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
-CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
-CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
+CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
+CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
+CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
 
 BoneFertilizerApp_autogen_timestamp_deps: CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps
 BoneFertilizerApp_autogen_timestamp_deps: CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/build.make
@@ -85,6 +85,6 @@ CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/clean:
 .PHONY : CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/clean
 
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/depend:
-	cd /home/abdellah/Programming/Projects/BoneChain/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/abdellah/Programming/Projects/BoneChain /home/abdellah/Programming/Projects/BoneChain /home/abdellah/Programming/Projects/BoneChain/build /home/abdellah/Programming/Projects/BoneChain/build /home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/abdellah/Desktop/BoneChain/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/abdellah/Desktop/BoneChain /home/abdellah/Desktop/BoneChain /home/abdellah/Desktop/BoneChain/build /home/abdellah/Desktop/BoneChain/build /home/abdellah/Desktop/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/depend
 

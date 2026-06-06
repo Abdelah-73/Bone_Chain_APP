@@ -1,7 +1,7 @@
 CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o: \
- /home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.cpp \
+ /home/abdellah/Desktop/BoneChain/GUI/customerdialog.cpp \
  /usr/include/stdc-predef.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.h \
+ /home/abdellah/Desktop/BoneChain/GUI/customerdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -377,7 +377,7 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMessageBox \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmessagebox.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsCustomer.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsCustomer.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/basic_ios.h \
  /usr/include/c++/13/bits/locale_facets.h /usr/include/c++/13/cwctype \
@@ -392,5 +392,5 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/clsPerson.h \
- /home/abdellah/Programming/Projects/BoneChain/GUI/../Core/../Lib/clsString.h
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsPerson.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/../Lib/clsString.h

@@ -1,3 +1,4 @@
 {
-	"cmake.sourceDirectory": "/home/abdellah/Programming/Projects/BoneChain/UI"
+	"cmake.sourceDirectory": "/home/abdellah/Desktop/BoneChain",
+	"cmake.buildDirectory": "${workspaceFolder}/build"
 }

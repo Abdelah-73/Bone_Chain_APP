@@ -1,36 +1,36 @@
 BoneFertilizerApp_autogen/timestamp: \
-	/home/abdellah/Programming/Projects/BoneChain/CMakeLists.txt \
-	/home/abdellah/Programming/Projects/BoneChain/Core/clsArticle.h \
-	/home/abdellah/Programming/Projects/BoneChain/Core/clsCustomer.h \
-	/home/abdellah/Programming/Projects/BoneChain/Core/clsDelivery.h \
-	/home/abdellah/Programming/Projects/BoneChain/Core/clsOrder.h \
-	/home/abdellah/Programming/Projects/BoneChain/Core/clsPerson.h \
-	/home/abdellah/Programming/Projects/BoneChain/Core/clsProduct.h \
-	/home/abdellah/Programming/Projects/BoneChain/Core/clsSupplier.h \
-	/home/abdellah/Programming/Projects/BoneChain/Core/clsUser.h \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.cpp \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.h \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/articlereaderdialog.cpp \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/articlereaderdialog.h \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.cpp \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.h \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/deliverydialog.cpp \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/deliverydialog.h \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/main.cpp \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/mainwindow.cpp \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/mainwindow.h \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.cpp \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.h \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/productdialog.cpp \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/productdialog.h \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/supplierdialog.cpp \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/supplierdialog.h \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/userdialog.cpp \
-	/home/abdellah/Programming/Projects/BoneChain/GUI/userdialog.h \
-	/home/abdellah/Programming/Projects/BoneChain/Lib/clsString.h \
-	/home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/moc_predefs.h \
-	/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/3.28.3/CMakeCXXCompiler.cmake \
-	/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/3.28.3/CMakeSystem.cmake \
+	/home/abdellah/Desktop/BoneChain/CMakeLists.txt \
+	/home/abdellah/Desktop/BoneChain/Core/clsArticle.h \
+	/home/abdellah/Desktop/BoneChain/Core/clsCustomer.h \
+	/home/abdellah/Desktop/BoneChain/Core/clsDelivery.h \
+	/home/abdellah/Desktop/BoneChain/Core/clsOrder.h \
+	/home/abdellah/Desktop/BoneChain/Core/clsPerson.h \
+	/home/abdellah/Desktop/BoneChain/Core/clsProduct.h \
+	/home/abdellah/Desktop/BoneChain/Core/clsSupplier.h \
+	/home/abdellah/Desktop/BoneChain/Core/clsUser.h \
+	/home/abdellah/Desktop/BoneChain/GUI/articledialog.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/articledialog.h \
+	/home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.h \
+	/home/abdellah/Desktop/BoneChain/GUI/customerdialog.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/customerdialog.h \
+	/home/abdellah/Desktop/BoneChain/GUI/deliverydialog.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/deliverydialog.h \
+	/home/abdellah/Desktop/BoneChain/GUI/main.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/mainwindow.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/mainwindow.h \
+	/home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.h \
+	/home/abdellah/Desktop/BoneChain/GUI/productdialog.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/productdialog.h \
+	/home/abdellah/Desktop/BoneChain/GUI/supplierdialog.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/supplierdialog.h \
+	/home/abdellah/Desktop/BoneChain/GUI/userdialog.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/userdialog.h \
+	/home/abdellah/Desktop/BoneChain/Lib/clsString.h \
+	/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/moc_predefs.h \
+	/home/abdellah/Desktop/BoneChain/build/CMakeFiles/3.28.3/CMakeCXXCompiler.cmake \
+	/home/abdellah/Desktop/BoneChain/build/CMakeFiles/3.28.3/CMakeSystem.cmake \
 	/usr/include/alloca.h \
 	/usr/include/asm-generic/errno-base.h \
 	/usr/include/asm-generic/errno.h \
@@ -412,6 +412,7 @@ BoneFertilizerApp_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qaction.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h \
@@ -454,7 +455,9 @@ BoneFertilizerApp_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLineEdit \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMessageBox \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QProgressBar \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSpinBox \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedWidget \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTabWidget \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTableWidget \
@@ -481,10 +484,12 @@ BoneFertilizerApp_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlineedit.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmessagebox.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qprogressbar.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qrubberband.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qslider.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qspinbox.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedwidget.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyle.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyleoption.h \

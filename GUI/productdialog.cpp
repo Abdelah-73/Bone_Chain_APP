@@ -105,12 +105,30 @@ void ProductDialog::handleSave()
         productToSave = clsProduct::Find(_currentProductID);
     }
 
-    // Apply data
+    bool ok;
+    double price = txtPrice->text().toDouble(&ok);
+    if (!ok || price < 0) {
+        QMessageBox::warning(this, "Validation Error", "Price must be a valid positive number.");
+        return;
+    }
+
+    int stock = txtStockQuantity->text().toInt(&ok);
+    if (!ok || stock < 0) {
+        QMessageBox::warning(this, "Validation Error", "Stock must be a valid non-negative integer.");
+        return;
+    }
+
+    int minStock = txtMinimumStock->text().toInt(&ok);
+    if (!ok || minStock < 0) {
+        QMessageBox::warning(this, "Validation Error", "Minimum Stock must be a valid non-negative integer.");
+        return;
+    }
+
     productToSave.SetName(txtName->text().toStdString());
     productToSave.SetCategory((clsProduct::enCategory)cmbCategory->currentData().toInt());
-    productToSave.SetPrice(txtPrice->text().toDouble());
-    productToSave.SetStockQuantity(txtStockQuantity->text().toInt());
-    productToSave.SetMinimumStock(txtMinimumStock->text().toInt());
+    productToSave.SetPrice(price);
+    productToSave.SetStockQuantity(stock);
+    productToSave.SetMinimumStock(minStock);
     productToSave.SetProductionDate(txtProductionDate->text().toStdString());
     productToSave.SetExpiryDate(txtExpiryDate->text().toStdString());
 

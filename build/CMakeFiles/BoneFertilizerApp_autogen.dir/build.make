@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/abdellah/Programming/Projects/BoneChain
+CMAKE_SOURCE_DIR = /home/abdellah/Desktop/BoneChain
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/abdellah/Programming/Projects/BoneChain/build
+CMAKE_BINARY_DIR = /home/abdellah/Desktop/BoneChain/build
 
 # Utility rule file for BoneFertilizerApp_autogen.
 
@@ -71,9 +71,9 @@ CMakeFiles/BoneFertilizerApp_autogen: BoneFertilizerApp_autogen/timestamp
 BoneFertilizerApp_autogen/timestamp: /usr/lib/qt6/libexec/moc
 BoneFertilizerApp_autogen/timestamp: /usr/lib/qt6/libexec/uic
 BoneFertilizerApp_autogen/timestamp: CMakeFiles/BoneFertilizerApp_autogen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target BoneFertilizerApp"
-	/usr/bin/cmake -E cmake_autogen /home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/AutogenInfo.json ""
-	/usr/bin/cmake -E touch /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target BoneFertilizerApp"
+	/usr/bin/cmake -E cmake_autogen /home/abdellah/Desktop/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/AutogenInfo.json Debug
+	/usr/bin/cmake -E touch /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/timestamp
 
 BoneFertilizerApp_autogen: BoneFertilizerApp_autogen/timestamp
 BoneFertilizerApp_autogen: CMakeFiles/BoneFertilizerApp_autogen
@@ -89,6 +89,6 @@ CMakeFiles/BoneFertilizerApp_autogen.dir/clean:
 .PHONY : CMakeFiles/BoneFertilizerApp_autogen.dir/clean
 
 CMakeFiles/BoneFertilizerApp_autogen.dir/depend:
-	cd /home/abdellah/Programming/Projects/BoneChain/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/abdellah/Programming/Projects/BoneChain /home/abdellah/Programming/Projects/BoneChain /home/abdellah/Programming/Projects/BoneChain/build /home/abdellah/Programming/Projects/BoneChain/build /home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/abdellah/Desktop/BoneChain/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/abdellah/Desktop/BoneChain /home/abdellah/Desktop/BoneChain /home/abdellah/Desktop/BoneChain/build /home/abdellah/Desktop/BoneChain/build /home/abdellah/Desktop/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/BoneFertilizerApp_autogen.dir/depend
 

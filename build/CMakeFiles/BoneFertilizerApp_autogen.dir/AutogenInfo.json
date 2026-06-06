@@ -1,16 +1,16 @@
 {
-	"BUILD_DIR" : "/home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen",
-	"CMAKE_BINARY_DIR" : "/home/abdellah/Programming/Projects/BoneChain/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/abdellah/Programming/Projects/BoneChain/build",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/abdellah/Programming/Projects/BoneChain",
+	"BUILD_DIR" : "/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen",
+	"CMAKE_BINARY_DIR" : "/home/abdellah/Desktop/BoneChain/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/abdellah/Desktop/BoneChain/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/abdellah/Desktop/BoneChain",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
 	"CMAKE_LIST_FILES" : 
 	[
-		"/home/abdellah/Programming/Projects/BoneChain/CMakeLists.txt",
-		"/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/3.28.3/CMakeSystem.cmake",
+		"/home/abdellah/Desktop/BoneChain/CMakeLists.txt",
+		"/home/abdellah/Desktop/BoneChain/build/CMakeFiles/3.28.3/CMakeSystem.cmake",
 		"/usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake",
 		"/usr/share/cmake-3.28/Modules/Platform/Linux-Initialize.cmake",
-		"/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/3.28.3/CMakeCXXCompiler.cmake",
+		"/home/abdellah/Desktop/BoneChain/build/CMakeFiles/3.28.3/CMakeCXXCompiler.cmake",
 		"/usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake",
 		"/usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake",
 		"/usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake",
@@ -160,70 +160,70 @@
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsVersionlessTargets.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake"
 	],
-	"CMAKE_SOURCE_DIR" : "/home/abdellah/Programming/Projects/BoneChain",
-	"DEP_FILE" : "/home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/deps",
+	"CMAKE_SOURCE_DIR" : "/home/abdellah/Desktop/BoneChain",
+	"DEP_FILE" : "/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "BoneFertilizerApp_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.h",
+			"/home/abdellah/Desktop/BoneChain/GUI/articledialog.h",
 			"MU",
 			"2LCCYRVYXB/moc_articledialog.cpp",
 			null
 		],
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/articlereaderdialog.h",
+			"/home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.h",
 			"MU",
 			"2LCCYRVYXB/moc_articlereaderdialog.cpp",
 			null
 		],
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.h",
+			"/home/abdellah/Desktop/BoneChain/GUI/customerdialog.h",
 			"MU",
 			"2LCCYRVYXB/moc_customerdialog.cpp",
 			null
 		],
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/deliverydialog.h",
+			"/home/abdellah/Desktop/BoneChain/GUI/deliverydialog.h",
 			"MU",
 			"2LCCYRVYXB/moc_deliverydialog.cpp",
 			null
 		],
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/mainwindow.h",
+			"/home/abdellah/Desktop/BoneChain/GUI/mainwindow.h",
 			"MU",
 			"2LCCYRVYXB/moc_mainwindow.cpp",
 			null
 		],
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.h",
+			"/home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.h",
 			"MU",
 			"2LCCYRVYXB/moc_orderstatusdialog.cpp",
 			null
 		],
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/productdialog.h",
+			"/home/abdellah/Desktop/BoneChain/GUI/productdialog.h",
 			"MU",
 			"2LCCYRVYXB/moc_productdialog.cpp",
 			null
 		],
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/supplierdialog.h",
+			"/home/abdellah/Desktop/BoneChain/GUI/supplierdialog.h",
 			"MU",
 			"2LCCYRVYXB/moc_supplierdialog.cpp",
 			null
 		],
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/userdialog.h",
+			"/home/abdellah/Desktop/BoneChain/GUI/userdialog.h",
 			"MU",
 			"2LCCYRVYXB/moc_userdialog.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp",
-	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_NO_DEBUG", "QT_WIDGETS_LIB" ],
+	"INCLUDE_DIR" : "/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
 		[
@@ -233,7 +233,7 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/abdellah/Programming/Projects/BoneChain/Core",
+		"/home/abdellah/Desktop/BoneChain/Core",
 		"/usr/include/x86_64-linux-gnu/qt6/QtCore",
 		"/usr/include/x86_64-linux-gnu/qt6",
 		"/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++",
@@ -266,69 +266,37 @@
 		"-c",
 		"/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 6,
-	"PARSE_CACHE_FILE" : "/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/abdellah/Desktop/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/libexec/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/libexec/uic",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 4,
-	"SETTINGS_FILE" : "/home/abdellah/Programming/Projects/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/abdellah/Desktop/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/abdellah/Desktop/BoneChain/GUI/articledialog.cpp", "MU", null ],
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/articledialog.cpp",
+			"/home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.cpp",
 			"MU",
 			null
 		],
+		[ "/home/abdellah/Desktop/BoneChain/GUI/customerdialog.cpp", "MU", null ],
+		[ "/home/abdellah/Desktop/BoneChain/GUI/deliverydialog.cpp", "MU", null ],
+		[ "/home/abdellah/Desktop/BoneChain/GUI/main.cpp", "MU", null ],
+		[ "/home/abdellah/Desktop/BoneChain/GUI/mainwindow.cpp", "MU", null ],
 		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/articlereaderdialog.cpp",
+			"/home/abdellah/Desktop/BoneChain/GUI/orderstatusdialog.cpp",
 			"MU",
 			null
 		],
-		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/customerdialog.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/deliverydialog.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/main.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/mainwindow.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/orderstatusdialog.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/productdialog.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/supplierdialog.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/abdellah/Programming/Projects/BoneChain/GUI/userdialog.cpp",
-			"MU",
-			null
-		]
+		[ "/home/abdellah/Desktop/BoneChain/GUI/productdialog.cpp", "MU", null ],
+		[ "/home/abdellah/Desktop/BoneChain/GUI/supplierdialog.cpp", "MU", null ],
+		[ "/home/abdellah/Desktop/BoneChain/GUI/userdialog.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

@@ -1,8 +1,8 @@
-/home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_supplierdialog.cpp: /home/abdellah/Programming/Projects/BoneChain/GUI/supplierdialog.h \
-  /home/abdellah/Programming/Projects/BoneChain/build/BoneFertilizerApp_autogen/moc_predefs.h \
-  /home/abdellah/Programming/Projects/BoneChain/Core/clsPerson.h \
-  /home/abdellah/Programming/Projects/BoneChain/Core/clsSupplier.h \
-  /home/abdellah/Programming/Projects/BoneChain/Lib/clsString.h \
+/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_supplierdialog.cpp: /home/abdellah/Desktop/BoneChain/GUI/supplierdialog.h \
+  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/moc_predefs.h \
+  /home/abdellah/Desktop/BoneChain/Core/clsPerson.h \
+  /home/abdellah/Desktop/BoneChain/Core/clsSupplier.h \
+  /home/abdellah/Desktop/BoneChain/Lib/clsString.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
