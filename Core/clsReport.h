@@ -47,7 +47,7 @@ public:
         vector<clsOrder> vOrders = clsOrder::GetOrdersList();
         for(clsOrder& O : vOrders)
         {
-            if (O.Status() == clsOrder::enStatus::Delivered || O.Status() == clsOrder::enStatus::Confirmed)
+            if (O.Status() == clsOrder::enStatus::Delivered)
             {
                 Total += O.TotalPrice();
             }

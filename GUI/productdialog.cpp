@@ -98,7 +98,15 @@ void ProductDialog::handleSave()
 
     if (_currentProductID.empty()) {
         // Add Mode
-        string newID = "PROD-" + to_string(clsProduct::GetProductsList().size() + 1);
+        int maxNum = 0;
+        for (const auto& p : clsProduct::GetProductsList()) {
+            string pid = p.ProductID();
+            if (pid.size() > 5 && pid.substr(0, 5) == "PROD-") {
+                try { int n = stoi(pid.substr(5)); if (n > maxNum) maxNum = n; }
+                catch (...) {}
+            }
+        }
+        string newID = "PROD-" + to_string(maxNum + 1);
         productToSave = clsProduct::GetAddNewProductObject(newID);
     } else {
         // Update Mode

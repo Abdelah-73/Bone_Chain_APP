@@ -19,10 +19,14 @@ CustomerDialog::CustomerDialog(QWidget *parent) : QDialog(parent)
     cmbType->addItem("Company", clsCustomer::enCustomerType::Company);
     cmbType->setStyleSheet("padding: 5px; border: 1px solid #bdc3c7; border-radius: 4px;");
 
+    txtPoints = new QLineEdit(this);
+    txtPoints->setText("0");
+
     formLayout->addRow("Name:", txtName);
     formLayout->addRow("Phone:", txtPhone);
     formLayout->addRow("Address:", txtAddress);
     formLayout->addRow("Customer Type:", cmbType);
+    formLayout->addRow("Points:", txtPoints);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout();
     btnSave = new QPushButton("Save Customer", this);
@@ -55,6 +59,7 @@ void CustomerDialog::loadCustomerForEdit(const string& customerID)
         txtName->setText(QString::fromStdString(customer.FirstName()));
         txtPhone->setText(QString::fromStdString(customer.PhoneNumber()));
         txtAddress->setText(QString::fromStdString(customer.Address()));
+        txtPoints->setText(QString::number(customer.Points()));
 
         int index = cmbType->findData(customer.CustomerType());
         if (index != -1) cmbType->setCurrentIndex(index);
@@ -89,6 +94,10 @@ void CustomerDialog::handleSave()
     customerToSave.SetPhone(txtPhone->text().toStdString());
     customerToSave.SetAddress(txtAddress->text().toStdString());
     customerToSave.SetCustomerType((clsCustomer::enCustomerType)cmbType->currentData().toInt());
+
+    bool ok;
+    int pts = txtPoints->text().toInt(&ok);
+    if (ok && pts >= 0) customerToSave.SetPoints(pts);
 
     customerToSave.Save();
 

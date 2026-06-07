@@ -28,6 +28,7 @@ private:
     QLineEdit *txtName;
     QLineEdit *txtPhone;
     QLineEdit *txtAddress;
+    QLineEdit *txtPoints;
     QComboBox *cmbType;
 
     QPushButton *btnSave;

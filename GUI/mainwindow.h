@@ -203,4 +203,5 @@ private:
     QTableWidget *tableCustOrders;
     QLabel *lblCustPointsDisplay, *lblCustRewardLevel;
     QLabel *lblCustProfName, *lblCustProfPhone, *lblCustProfEmail, *lblCustProfAddr, *lblCustProfType;
+    int _custOrderFilter = -1; // -1 = All, 1 = Pending, 3 = Processing, 4 = Delivered, 5 = Cancelled
 };

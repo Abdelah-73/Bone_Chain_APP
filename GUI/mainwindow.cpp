@@ -376,8 +376,7 @@ void MainWindow::handleLogin()
         txtPassword->clear();
 
         _currentUser = CurrentUser;
-    _currentSupplierID.clear();
-    _currentCustomerID.clear();
+        _currentSupplierID.clear();
         _currentCustomerID.clear();
 
         if (CurrentUser.Role() == clsUser::enRole::Supplier) {
@@ -400,6 +399,8 @@ void MainWindow::logout()
     sidebarWidget->hide();
     txtPassword->clear();
     _currentSupplierID.clear();
+    _currentCustomerID.clear();
+    _currentRole = 0;
     stackedScreens->setCurrentIndex(ScreenIndex::Login);
 }
 
@@ -946,14 +947,48 @@ connect(btnUpdateStatus, &QPushButton::clicked, [this]() {
         OrderStatusDialog dialog(order.Status(), this);
 
         if (dialog.exec() == QDialog::Accepted) {
-            // Get the status integer from our dropdown
             int newStatus = dialog.getSelectedStatus();
+            int oldStatus = order.Status();
+
+            // Validate state transitions
+            bool valid = true;
+            if (oldStatus == clsOrder::enStatus::Pending)
+                valid = (newStatus == clsOrder::enStatus::Confirmed ||
+                         newStatus == clsOrder::enStatus::Processing ||
+                         newStatus == clsOrder::enStatus::Cancelled);
+            else if (oldStatus == clsOrder::enStatus::Confirmed)
+                valid = (newStatus == clsOrder::enStatus::Processing ||
+                         newStatus == clsOrder::enStatus::Cancelled);
+            else if (oldStatus == clsOrder::enStatus::Processing)
+                valid = (newStatus == clsOrder::enStatus::Delivered);
+            else if (oldStatus == clsOrder::enStatus::Cancelled)
+                valid = false;
+            else if (oldStatus == clsOrder::enStatus::Delivered)
+                valid = (newStatus == clsOrder::enStatus::Delivered && !order.PointsAwarded());
+
+            if (!valid) {
+                QMessageBox::warning(this, "Invalid Transition",
+                    "The selected status change is not allowed.\n"
+                    "Valid flow: Pending \xe2\x86\x92 Confirmed \xe2\x86\x92 Processing \xe2\x86\x92 Delivered");
+                return;
+            }
 
             order.SetStatus((clsOrder::enStatus)newStatus);
+
+            // Credit 100 customer points when order is Delivered (once only)
+            if (newStatus == clsOrder::enStatus::Delivered && !order.PointsAwarded()) {
+                clsCustomer cust = clsCustomer::Find(order.CustomerID());
+                if (!cust.IsEmpty()) {
+                    cust.SetPoints(cust.Points() + 100);
+                    cust.Save();
+                    order.SetPointsAwarded(true);
+                }
+            }
+
             order.Save();
 
-            loadOrdersData();   // Refresh the table (which will apply the colors we set up earlier!)
-            refreshDashboard(); // Update metrics
+            loadOrdersData();
+            refreshDashboard();
         }
     }
 });
@@ -1012,73 +1047,39 @@ void MainWindow::cancelSelectedOrder()
         return;
     }
 
-    // 1. Safety Checks
-    QString currentStatus = tableOrders->item(row, 4)->text();
+    string orderID = tableOrders->item(row, 0)->text().toStdString();
+    string productID = tableOrders->item(row, 2)->text().toStdString();
 
-    if (currentStatus == "Cancelled") {
-        QMessageBox::information(this, "Already Cancelled", "This order has already been cancelled.");
+    clsOrder order = clsOrder::Find(orderID);
+    if (order.IsEmpty()) return;
+
+    // Use clsOrder::Cancel() which validates current status
+    if (!order.Cancel()) {
+        QMessageBox::warning(this, "Cannot Cancel",
+            "Only Pending or Confirmed orders may be cancelled.");
         return;
     }
-    if (currentStatus == "Delivered") {
-        QMessageBox::warning(this, "Cannot Cancel", "You cannot cancel an order that is already Delivered. Please process a Return instead.");
-        return;
-    }
 
-    // 2. Ask for Admin Confirmation
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Confirm Cancellation",
                                   "Are you sure you want to cancel this order? The items will be returned to inventory.",
                                   QMessageBox::Yes | QMessageBox::No);
     if (reply == QMessageBox::No) {
+        order.SetStatus(clsOrder::enStatus::Pending);
+        order.Save();
+        loadOrdersData();
         return;
     }
 
-    // Read necessary IDs from the table
-    string orderID = tableOrders->item(row, 0)->text().toStdString();
-    string productID = tableOrders->item(row, 2)->text().toStdString();
-
-    // Load the order object
-    clsOrder order = clsOrder::Find(orderID);
-    if (order.IsEmpty()) return;
-
-    // ==========================================
-    // Core Logic 1: Restore Inventory
-    // ==========================================
+    // Restore Inventory
     clsProduct product = clsProduct::Find(productID);
     if (!product.IsEmpty()) {
-        // Assuming your clsOrder has a Quantity() getter.
-        // We add the order's quantity back to the current stock.
         product.SetStockQuantity(product.StockQuantity() + order.Quantity());
         product.Save();
     }
 
-    // ==========================================
-    // Core Logic 2: Refund Customer (If applicable)
-    // ==========================================
-    /* clsCustomer customer = clsCustomer::Find(order.CustomerID());
-    if (!customer.IsEmpty()) {
-        // Example: If they paid with points, give them back
-        // customer.SetPoints(customer.Points() + order.PointsSpent());
-        // customer.Save();
-    }
-    */
-
-    // ==========================================
-    // Core Logic 3: Change Status to Cancelled
-    // ==========================================
-    order.SetStatus(clsOrder::enStatus::Cancelled);
-    order.Save();
-
-    // ==========================================
-    // Update the UI
-    // ==========================================
-    QTableWidgetItem *statusItem = tableOrders->item(row, 4);
-    statusItem->setText("Cancelled");
-    statusItem->setForeground(QBrush(QColor("#e74c3c"))); // Turn the text Red
-
     QMessageBox::information(this, "Order Cancelled", "The order has been cancelled and the items have been returned to inventory.");
-
-    // Refresh dashboard to show the recovered inventory numbers and updated revenue!
+    loadOrdersData();
     refreshDashboard();
 }
 
@@ -2396,6 +2397,13 @@ void MainWindow::setupCustProductsScreen()
             clsProduct prod = clsProduct::Find(pid);
             if (prod.IsEmpty()) return;
 
+            int qty = spinQty->value();
+            if (qty > prod.StockQuantity()) {
+                QMessageBox::warning(&dlg, "Insufficient Stock",
+                    QString("Only %1 units available. Requested: %2.").arg(prod.StockQuantity()).arg(qty));
+                return;
+            }
+
             // Generate new order ID
             int maxNum = 0;
             for (auto& o : clsOrder::GetOrdersList()) {
@@ -2408,14 +2416,14 @@ void MainWindow::setupCustProductsScreen()
             clsOrder order = clsOrder::GetAddNewOrderObject("ORD-" + to_string(maxNum + 1));
             order.SetCustomerID(_currentCustomerID);
             order.SetProductID(pid);
-            order.SetQuantity(spinQty->value());
-            order.SetTotalPrice(prod.Price() * spinQty->value());
+            order.SetQuantity(qty);
+            order.SetTotalPrice(prod.Price() * qty);
             order.SetOrderDate(QDateTime::currentDateTime().toString("yyyy-MM-dd").toStdString());
             order.SetStatus(clsOrder::enStatus::Pending);
             order.Save();
 
             // Decrease stock
-            prod.SetStockQuantity(prod.StockQuantity() - spinQty->value());
+            prod.SetStockQuantity(prod.StockQuantity() - qty);
             prod.Save();
 
             QMessageBox::information(&dlg, "Success", "Order placed successfully!");
@@ -2471,17 +2479,8 @@ void MainWindow::setupCustOrdersScreen()
         for (auto b : {btnAll, btnPending, btnProcessing, btnDelivered, btnCancelled})
             b->setStyleSheet(inactiveBtn);
         active->setStyleSheet(activeBtn);
+        _custOrderFilter = statusFilter;
         loadCustOrdersData();
-        // Store filter value for loadCustOrdersData to use
-        for (int r = 0; r < tableCustOrders->rowCount(); r++) {
-            bool show = (statusFilter == -1);
-            if (!show) {
-                QString s = tableCustOrders->item(r, 5)->text();
-                int st = (s == "Pending" ? 1 : s == "Confirmed" ? 2 : s == "Processing" ? 3 : s == "Delivered" ? 4 : 5);
-                show = (st == statusFilter);
-            }
-            tableCustOrders->setRowHidden(r, !show);
-        }
     };
 
     connect(btnAll, &QPushButton::clicked, [=]() { setFilter(btnAll, -1); });
@@ -2500,26 +2499,7 @@ void MainWindow::setupCustOrdersScreen()
     QPushButton *btnRefreshOrders = new QPushButton("\xE2\x9F\xB3  Refresh", this);
     btnRefreshOrders->setStyleSheet("background-color: #3498db; color: white; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 12px;");
     connect(btnRefreshOrders, &QPushButton::clicked, [=]() {
-        // Reload and keep current filter active
         loadCustOrdersData();
-        // Re-apply hidden rows based on button styles
-        for (int r = 0; r < tableCustOrders->rowCount(); r++) {
-            bool show = true;
-            if (btnPending->styleSheet() == activeBtn) {
-                QString s = tableCustOrders->item(r, 5)->text();
-                show = (s == "Pending");
-            } else if (btnProcessing->styleSheet() == activeBtn) {
-                QString s = tableCustOrders->item(r, 5)->text();
-                show = (s == "Processing" || s == "Confirmed");
-            } else if (btnDelivered->styleSheet() == activeBtn) {
-                QString s = tableCustOrders->item(r, 5)->text();
-                show = (s == "Delivered");
-            } else if (btnCancelled->styleSheet() == activeBtn) {
-                QString s = tableCustOrders->item(r, 5)->text();
-                show = (s == "Cancelled");
-            }
-            tableCustOrders->setRowHidden(r, !show);
-        }
     });
     filters->addWidget(btnRefreshOrders);
 
@@ -2688,6 +2668,7 @@ void MainWindow::loadCustOrdersData()
 
     for (const auto& o : clsOrder::GetOrdersList()) {
         if (o.CustomerID() != _currentCustomerID) continue;
+        if (_custOrderFilter != -1 && o.Status() != _custOrderFilter) continue;
         int r = tableCustOrders->rowCount();
         tableCustOrders->insertRow(r);
         tableCustOrders->setItem(r, 0, new QTableWidgetItem(QString::fromStdString(o.OrderID())));
@@ -2713,10 +2694,9 @@ void MainWindow::openNewDeliveryForm()
     QDialog dialog(this);
     dialog.setWindowTitle("Log New Delivery");
     dialog.setMinimumWidth(300);
-   // ---> UPDATED STYLE BLOCK <---
     dialog.setStyleSheet(
-        "QLabel { color: #c5cfd8; font-weight: bold; margin-top: 5px; }"
-        "QComboBox, QSpinBox { color: #c5cfd8; }"
+        "QLabel { color: #2c3e50; font-weight: bold; margin-top: 5px; }"
+        "QComboBox, QSpinBox { color: #2c3e50; }"
     );
     // ----------------------------------------------------
     QVBoxLayout layout(&dialog);
@@ -2730,7 +2710,7 @@ void MainWindow::openNewDeliveryForm()
     spinQuantity->setSuffix(" kg");
 
     QPushButton *btnSubmit = new QPushButton("Submit Delivery", &dialog);
-    btnSubmit->setStyleSheet("background-color: #27ae60; #c5cfd8; font-weight: bold; padding: 8px;");
+    btnSubmit->setStyleSheet("background-color: #27ae60; color: white; font-weight: bold; padding: 8px;");
 
     layout.addWidget(new QLabel("Bone Type:"));
     layout.addWidget(cmbBoneType);

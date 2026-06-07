@@ -125,7 +125,7 @@ void UserDialog::handleSave()
     userToSave.SetRole(cmbRole->currentData().toInt());
     userToSave.SetIsActive(chkIsActive->isChecked());
 
-    if (userToSave.Role() == clsUser::enRole::Supplier) {
+    if (userToSave.Role() == clsUser::enRole::Supplier && userToSave.SupplierID().empty()) {
         vector<clsSupplier> existingSuppliers = clsSupplier::GetSuppliersList();
         int maxNum = 0;
         for (clsSupplier& s : existingSuppliers) {
@@ -142,7 +142,7 @@ void UserDialog::handleSave()
         userToSave.SetSupplierID(newSupID);
     }
 
-    if (userToSave.Role() == clsUser::enRole::Customer) {
+    if (userToSave.Role() == clsUser::enRole::Customer && userToSave.CustomerID().empty()) {
         vector<clsCustomer> existingCustomers = clsCustomer::GetCustomersList();
         int maxNum = 0;
         for (clsCustomer& c : existingCustomers) {

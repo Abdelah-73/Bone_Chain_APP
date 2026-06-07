@@ -21,13 +21,18 @@ private:
     double _TotalPrice;
     string _OrderDate;
     enStatus _Status;
+    bool _PointsAwarded;
 
     static clsOrder _ConvertLineToOrderObject(string Line, string Separator = "#//#")
     {
         vector<string> vData = clsString::Split(Line, Separator);
+        if (vData.size() == 8)
+        {
+            return clsOrder(enMode::UpdateMode, vData[0], vData[1], vData[2], stoi(vData[3]), stod(vData[4]), vData[5], (enStatus)stoi(vData[6]), stoi(vData[7]) == 1);
+        }
         if (vData.size() == 7)
         {
-            return clsOrder(enMode::UpdateMode, vData[0], vData[1], vData[2], stoi(vData[3]), stod(vData[4]), vData[5], (enStatus)stoi(vData[6]));
+            return clsOrder(enMode::UpdateMode, vData[0], vData[1], vData[2], stoi(vData[3]), stod(vData[4]), vData[5], (enStatus)stoi(vData[6]), false);
         }
         return GetEmptyOrderObject();
     }
@@ -41,7 +46,8 @@ private:
         Record += to_string(Order.Quantity()) + Separator;
         Record += to_string(Order.TotalPrice()) + Separator;
         Record += Order.OrderDate() + Separator;
-        Record += to_string(Order.Status());
+        Record += to_string(Order.Status()) + Separator;
+        Record += to_string(Order.PointsAwarded() ? 1 : 0);
         return Record;
     }
 
@@ -108,7 +114,7 @@ private:
     }
 
 public:
-    clsOrder(enMode Mode, string OrderID, string CustomerID, string ProductID, int Quantity, double TotalPrice, string OrderDate, enStatus Status)
+    clsOrder(enMode Mode, string OrderID, string CustomerID, string ProductID, int Quantity, double TotalPrice, string OrderDate, enStatus Status, bool PointsAwarded = false)
     {
         _Mode = Mode;
         _OrderID = OrderID;
@@ -118,13 +124,14 @@ public:
         _TotalPrice = TotalPrice;
         _OrderDate = OrderDate;
         _Status = Status;
+        _PointsAwarded = PointsAwarded;
     }
 
     bool IsEmpty() const { return _Mode == enMode::EmptyMode; }
 
     static clsOrder GetEmptyOrderObject()
     {
-        return clsOrder(enMode::EmptyMode, "", "", "", 0, 0.0, "", enStatus::Pending);
+        return clsOrder(enMode::EmptyMode, "", "", "", 0, 0.0, "", enStatus::Pending, false);
     }
 
     string OrderID() const { return _OrderID; }
@@ -140,6 +147,8 @@ public:
     string OrderDate() const { return _OrderDate; }
     void SetStatus(enStatus Status) { _Status = Status; }
     enStatus Status() const { return _Status; }
+    void SetPointsAwarded(bool Awarded) { _PointsAwarded = Awarded; }
+    bool PointsAwarded() const { return _PointsAwarded; }
 
     static clsOrder Find(string OrderID)
     {
@@ -158,7 +167,7 @@ public:
 
     static clsOrder GetAddNewOrderObject(string OrderID)
     {
-        return clsOrder(enMode::AddNewMode, OrderID, "", "", 0, 0.0, "", enStatus::Pending);
+        return clsOrder(enMode::AddNewMode, OrderID, "", "", 0, 0.0, "", enStatus::Pending, false);
     }
 
     bool Cancel()
