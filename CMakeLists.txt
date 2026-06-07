@@ -9,11 +9,20 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-# Find Qt6 (Change to Qt5 if necessary)
+# Find Qt6
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 
 # Include directories so your GUI can find your Core headers
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Core)
+
+# Optionally find LinguistTools for translations
+find_package(Qt6LinguistTools QUIET)
+
+# Translation files
+set(TS_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/i18n/bonechain_en.ts
+    ${CMAKE_CURRENT_SOURCE_DIR}/i18n/bonechain_ar.ts
+)
 
 # Define your source files
 set(PROJECT_SOURCES
@@ -36,8 +45,6 @@ set(PROJECT_SOURCES
     GUI/orderstatusdialog.h
     GUI/deliverydialog.cpp
     GUI/deliverydialog.h
-    # Note: Because your core logic is entirely in header files (.h),
-    # you don't need to add them to PROJECT_SOURCES for compilation.
 )
 
 # Create the executable
@@ -45,3 +52,10 @@ add_executable(${PROJECT_NAME} WIN32 ${PROJECT_SOURCES})
 
 # Link Qt libraries to the executable
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+
+# Process translation files if LinguistTools is available
+if(Qt6LinguistTools_FOUND)
+    qt_add_translations(${PROJECT_NAME} TS_FILES ${TS_FILES})
+else()
+    message(STATUS "Qt6 LinguistTools not found — skipping .qm generation. Run lupdate/lrelease manually.")
+endif()

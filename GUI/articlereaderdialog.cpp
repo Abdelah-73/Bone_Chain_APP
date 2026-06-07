@@ -6,8 +6,8 @@ ArticleReaderDialog::ArticleReaderDialog(const string& articleID, QWidget *paren
     clsArticle article = clsArticle::Find(articleID);
 
     // 2. Setup the Window
-    setWindowTitle("Reader - " + QString::fromStdString(article.Title()));
-    setFixedSize(650, 750); // Tall and wide enough for comfortable reading
+    setWindowTitle(tr("Reader - %1").arg(QString::fromStdString(article.Title())));
+    setFixedSize(650, 750);
     setStyleSheet("background-color: #f4f6f9; color: #2c3e50;");
 
     QVBoxLayout *layout = new QVBoxLayout(this);
@@ -17,9 +17,11 @@ ArticleReaderDialog::ArticleReaderDialog(const string& articleID, QWidget *paren
     // 3. Create Typography Elements
     QLabel *lblTitle = new QLabel(QString::fromStdString(article.Title()), this);
     lblTitle->setStyleSheet("font-size: 26px; font-weight: bold; color: #2980b9;");
-    lblTitle->setWordWrap(true); // Allow long titles to wrap to the next line
+    lblTitle->setWordWrap(true);
 
-    QLabel *lblMeta = new QLabel(QString::fromStdString(article.Category() + "  |  Published: " + article.PublishDate()), this);
+    QLabel *lblMeta = new QLabel(tr("%1  |  Published: %2").arg(
+        QString::fromStdString(article.Category()),
+        QString::fromStdString(article.PublishDate())), this);
     lblMeta->setStyleSheet("font-size: 13px; color: #7f8c8d; font-style: italic;");
 
     // 4. The Main Reading Area
@@ -40,7 +42,7 @@ ArticleReaderDialog::ArticleReaderDialog(const string& articleID, QWidget *paren
     )");
 
     // 5. Close Button
-    QPushButton *btnClose = new QPushButton("Close Article", this);
+    QPushButton *btnClose = new QPushButton(tr("Close Article"), this);
     btnClose->setFixedSize(150, 40);
     btnClose->setStyleSheet("background-color: #34495e; color: white; border-radius: 6px; font-weight: bold;");
     connect(btnClose, &QPushButton::clicked, this, &QDialog::accept);
@@ -48,6 +50,6 @@ ArticleReaderDialog::ArticleReaderDialog(const string& articleID, QWidget *paren
     // 6. Assemble the Layout
     layout->addWidget(lblTitle);
     layout->addWidget(lblMeta);
-    layout->addWidget(txtContent, 1); // The '1' makes the text box stretch to fill space
+    layout->addWidget(txtContent, 1);
     layout->addWidget(btnClose, 0, Qt::AlignCenter);
 }

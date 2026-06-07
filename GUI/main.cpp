@@ -2,6 +2,10 @@
 #include "mainwindow.h"
 #include <QString>
 #include <QDateTime>
+#include <QTranslator>
+#include <QSettings>
+#include <QDir>
+#include <QStringList>
 #include <cstdlib>
 
 int main(int argc, char *argv[])
@@ -9,7 +13,34 @@ int main(int argc, char *argv[])
     srand(QDateTime::currentDateTime().toSecsSinceEpoch());
     QApplication app(argc, argv);
 
-    // 1. Define the Global Qt Style Sheet (QSS)
+    app.setOrganizationName("BoneChain");
+    app.setApplicationName("BoneFertilizerApp");
+
+    // Load language preference and install translator
+    QSettings settings;
+    QString lang = settings.value("language", "en").toString();
+    QTranslator translator;
+    QStringList i18nPaths = {
+        QApplication::applicationDirPath() + "/../i18n",
+        QApplication::applicationDirPath() + "/i18n",
+        QDir::currentPath() + "/i18n"
+    };
+    QString qmFile = (lang == "ar") ? "bonechain_ar" : "bonechain_en";
+    bool loaded = false;
+    for (const QString& path : i18nPaths) {
+        if (translator.load(qmFile, path)) {
+            loaded = true;
+            break;
+        }
+    }
+    if (!loaded)
+        (void)translator.load(qmFile);
+    app.installTranslator(&translator);
+
+    // Set layout direction based on language
+    app.setLayoutDirection(lang == "ar" ? Qt::RightToLeft : Qt::LeftToRight);
+
+    // Define the Global Qt Style Sheet (QSS)
     QString modernTheme = R"(
         /* --- Global Application Background & Typography --- */
         QMainWindow {
@@ -51,17 +82,11 @@ int main(int argc, char *argv[])
             background-color: #1f618d;
         }
 
-        /* --- Danger Buttons (Delete / Logout) --- */
-        QPushButton[text="Delete Selected"],
-        QPushButton[text="Delete User"],
-        QPushButton[text="Delete Supplier"],
-        QPushButton[text="Delete Customer"],
-        QPushButton[text="Delete Product"],
-        QPushButton[text="Cancel Order"],
-        QPushButton[text="Delete Article"] {
+        /* --- Danger Buttons (Delete / Cancel Order) --- */
+        QPushButton[role="danger"] {
             background-color: #e74c3c;
         }
-        QPushButton[text*="Delete"]:hover, QPushButton[text*="Cancel"]:hover {
+        QPushButton[role="danger"]:hover {
             background-color: #c0392b;
         }
 
@@ -96,7 +121,7 @@ int main(int argc, char *argv[])
 
     // 3. Launch the Main Window
     MainWindow window;
-    window.setWindowTitle("Fertilizer OS - Enterprise Edition");
+    window.setWindowTitle(QObject::tr("Fertilizer OS - Enterprise Edition"));
 
     // Give the app a larger, modern default resolution
     window.resize(1100, 750);

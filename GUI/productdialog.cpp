@@ -2,7 +2,7 @@
 
 ProductDialog::ProductDialog(QWidget *parent) : QDialog(parent)
 {
-    setWindowTitle("Product Catalog - Add New");
+    setWindowTitle(tr("Product Catalog - Add New"));
     setFixedSize(400, 450);
     setStyleSheet("background-color: #ffffff; color: #2c3e50; font-size: 14px;");
 
@@ -14,40 +14,40 @@ ProductDialog::ProductDialog(QWidget *parent) : QDialog(parent)
 
     // Initialize Categories
     cmbCategory = new QComboBox(this);
-    cmbCategory->addItem("Raw Bone Fertilizer", clsProduct::enCategory::RawBoneFertilizer);
-    cmbCategory->addItem("Powder Fertilizer", clsProduct::enCategory::PowderFertilizer);
-    cmbCategory->addItem("Organic Fertilizer", clsProduct::enCategory::OrganicFertilizer);
-    cmbCategory->addItem("Feed Supplement", clsProduct::enCategory::FeedSupplement);
+    cmbCategory->addItem(tr("Raw Bone Fertilizer"), clsProduct::enCategory::RawBoneFertilizer);
+    cmbCategory->addItem(tr("Powder Fertilizer"), clsProduct::enCategory::PowderFertilizer);
+    cmbCategory->addItem(tr("Organic Fertilizer"), clsProduct::enCategory::OrganicFertilizer);
+    cmbCategory->addItem(tr("Feed Supplement"), clsProduct::enCategory::FeedSupplement);
     cmbCategory->setStyleSheet("padding: 5px; border: 1px solid #bdc3c7; border-radius: 4px;");
 
     txtPrice = new QLineEdit(this);
-    txtPrice->setPlaceholderText("0.00");
+    txtPrice->setPlaceholderText(tr("0.00"));
 
     txtStockQuantity = new QLineEdit(this);
-    txtStockQuantity->setPlaceholderText("0");
+    txtStockQuantity->setPlaceholderText(tr("0"));
 
     txtMinimumStock = new QLineEdit(this);
-    txtMinimumStock->setPlaceholderText("20"); // Encourage setting a threshold
+    txtMinimumStock->setPlaceholderText(tr("20"));
 
     txtProductionDate = new QLineEdit(this);
-    txtProductionDate->setPlaceholderText("YYYY-MM-DD");
+    txtProductionDate->setPlaceholderText(tr("YYYY-MM-DD"));
 
     txtExpiryDate = new QLineEdit(this);
-    txtExpiryDate->setPlaceholderText("YYYY-MM-DD");
+    txtExpiryDate->setPlaceholderText(tr("YYYY-MM-DD"));
 
     // Add to form
-    formLayout->addRow("Product Name:", txtName);
-    formLayout->addRow("Category:", cmbCategory);
-    formLayout->addRow("Price ($):", txtPrice);
-    formLayout->addRow("Current Stock:", txtStockQuantity);
-    formLayout->addRow("Minimum Stock Alert:", txtMinimumStock);
-    formLayout->addRow("Production Date:", txtProductionDate);
-    formLayout->addRow("Expiry Date:", txtExpiryDate);
+    formLayout->addRow(tr("Product Name:"), txtName);
+    formLayout->addRow(tr("Category:"), cmbCategory);
+    formLayout->addRow(tr("Price ($):"), txtPrice);
+    formLayout->addRow(tr("Current Stock:"), txtStockQuantity);
+    formLayout->addRow(tr("Minimum Stock Alert:"), txtMinimumStock);
+    formLayout->addRow(tr("Production Date:"), txtProductionDate);
+    formLayout->addRow(tr("Expiry Date:"), txtExpiryDate);
 
     // Buttons
     QHBoxLayout *buttonLayout = new QHBoxLayout();
-    btnSave = new QPushButton("Save Product", this);
-    btnCancel = new QPushButton("Cancel", this);
+    btnSave = new QPushButton(tr("Save Product"), this);
+    btnCancel = new QPushButton(tr("Cancel"), this);
 
     btnSave->setStyleSheet("background-color: #27ae60; color: white; padding: 8px; border-radius: 4px; font-weight: bold;");
     btnCancel->setStyleSheet("background-color: #95a5a6; color: white; padding: 8px; border-radius: 4px;");
@@ -70,8 +70,8 @@ void ProductDialog::loadProductForEdit(const string& productID)
 
     if (!product.IsEmpty())
     {
-        setWindowTitle("Product Catalog - Edit");
-        btnSave->setText("Update Product");
+        setWindowTitle(tr("Product Catalog - Edit"));
+        btnSave->setText(tr("Update Product"));
 
         // Pre-fill existing data
         txtName->setText(QString::fromStdString(product.Name()));
@@ -90,7 +90,7 @@ void ProductDialog::loadProductForEdit(const string& productID)
 void ProductDialog::handleSave()
 {
     if (txtName->text().isEmpty() || txtPrice->text().isEmpty()) {
-        QMessageBox::warning(this, "Validation Error", "Product Name and Price are required.");
+        QMessageBox::warning(this, tr("Validation Error"), tr("Product Name and Price are required."));
         return;
     }
 
@@ -116,19 +116,19 @@ void ProductDialog::handleSave()
     bool ok;
     double price = txtPrice->text().toDouble(&ok);
     if (!ok || price < 0) {
-        QMessageBox::warning(this, "Validation Error", "Price must be a valid positive number.");
+        QMessageBox::warning(this, tr("Validation Error"), tr("Price must be a valid positive number."));
         return;
     }
 
     int stock = txtStockQuantity->text().toInt(&ok);
     if (!ok || stock < 0) {
-        QMessageBox::warning(this, "Validation Error", "Stock must be a valid non-negative integer.");
+        QMessageBox::warning(this, tr("Validation Error"), tr("Stock must be a valid non-negative integer."));
         return;
     }
 
     int minStock = txtMinimumStock->text().toInt(&ok);
     if (!ok || minStock < 0) {
-        QMessageBox::warning(this, "Validation Error", "Minimum Stock must be a valid non-negative integer.");
+        QMessageBox::warning(this, tr("Validation Error"), tr("Minimum Stock must be a valid non-negative integer."));
         return;
     }
 

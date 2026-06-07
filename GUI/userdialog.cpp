@@ -3,7 +3,7 @@
 
 UserDialog::UserDialog(QWidget *parent) : QDialog(parent)
 {
-    setWindowTitle("User Management - Add User");
+    setWindowTitle(tr("User Management - Add User"));
     setFixedSize(400, 500);
     setStyleSheet("background-color: #ffffff; color: #2c3e50; font-size: 14px;");
 
@@ -19,26 +19,26 @@ UserDialog::UserDialog(QWidget *parent) : QDialog(parent)
     txtPassword->setEchoMode(QLineEdit::Password);
 
     cmbRole = new QComboBox(this);
-    cmbRole->addItem("Admin", clsUser::enRole::Admin);
-    cmbRole->addItem("Supplier", clsUser::enRole::Supplier);
-    cmbRole->addItem("Customer", clsUser::enRole::Customer);
+    cmbRole->addItem(tr("Admin"), clsUser::enRole::Admin);
+    cmbRole->addItem(tr("Supplier"), clsUser::enRole::Supplier);
+    cmbRole->addItem(tr("Customer"), clsUser::enRole::Customer);
     cmbRole->setStyleSheet("padding: 5px; border: 1px solid #bdc3c7; border-radius: 4px;");
 
-    chkIsActive = new QCheckBox("Account is Active", this);
+    chkIsActive = new QCheckBox(tr("Account is Active"), this);
     chkIsActive->setChecked(true);
 
-    formLayout->addRow("First Name:", txtFirstName);
-    formLayout->addRow("Last Name:", txtLastName);
-    formLayout->addRow("Email:", txtEmail);
-    formLayout->addRow("Phone:", txtPhone);
-    formLayout->addRow("Username:", txtUsername);
-    formLayout->addRow("Password:", txtPassword);
-    formLayout->addRow("Role:", cmbRole);
+    formLayout->addRow(tr("First Name:"), txtFirstName);
+    formLayout->addRow(tr("Last Name:"), txtLastName);
+    formLayout->addRow(tr("Email:"), txtEmail);
+    formLayout->addRow(tr("Phone:"), txtPhone);
+    formLayout->addRow(tr("Username:"), txtUsername);
+    formLayout->addRow(tr("Password:"), txtPassword);
+    formLayout->addRow(tr("Role:"), cmbRole);
     formLayout->addRow("", chkIsActive);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout();
-    btnSave = new QPushButton("Save User", this);
-    btnCancel = new QPushButton("Cancel", this);
+    btnSave = new QPushButton(tr("Save User"), this);
+    btnCancel = new QPushButton(tr("Cancel"), this);
 
     btnSave->setStyleSheet("background-color: #27ae60; color: white; padding: 8px; border-radius: 4px; font-weight: bold;");
     btnCancel->setStyleSheet("background-color: #95a5a6; color: white; padding: 8px; border-radius: 4px;");
@@ -61,8 +61,8 @@ void UserDialog::loadUserForEdit(const string& userID)
     clsUser user = clsUser::Find(userID);
     if (!user.IsEmpty())
     {
-        setWindowTitle("User Management - Edit User");
-        btnSave->setText("Update User");
+        setWindowTitle(tr("User Management - Edit User"));
+        btnSave->setText(tr("Update User"));
 
         txtFirstName->setText(QString::fromStdString(user.FirstName()));
         txtLastName->setText(QString::fromStdString(user.LastName()));
@@ -81,7 +81,7 @@ void UserDialog::loadUserForEdit(const string& userID)
 void UserDialog::handleSave()
 {
     if (txtUsername->text().isEmpty() || txtPassword->text().isEmpty()) {
-        QMessageBox::warning(this, "Validation Error", "Username and Password are required.");
+        QMessageBox::warning(this, tr("Validation Error"), tr("Username and Password are required."));
         return;
     }
 
@@ -110,7 +110,7 @@ void UserDialog::handleSave()
         vector<clsUser> existingUsers = clsUser::GetUsersList();
         for (clsUser& u : existingUsers) {
             if (u.Username() == txtUsername->text().toStdString()) {
-                QMessageBox::warning(this, "Validation Error", "Username already exists. Please choose another.");
+                QMessageBox::warning(this, tr("Validation Error"), tr("Username already exists. Please choose another."));
                 return;
             }
         }

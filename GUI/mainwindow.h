@@ -55,6 +55,8 @@ private slots:
     void refreshMyRewardsScreen();
 
 private:
+        void switchLanguage();
+
     // --- Core Layout Components ---
     QWidget *centralWidget;
     QHBoxLayout *mainLayout;

@@ -2,7 +2,7 @@
 
 SupplierDialog::SupplierDialog(QWidget *parent) : QDialog(parent)
 {
-    setWindowTitle("Supplier Management - Add New");
+    setWindowTitle(tr("Supplier Management - Add New"));
     setFixedSize(400, 450);
     setStyleSheet("background-color: #ffffff; color: #2c3e50; font-size: 14px;");
 
@@ -16,30 +16,30 @@ SupplierDialog::SupplierDialog(QWidget *parent) : QDialog(parent)
 
     // Initialize Type (Butcher, Restaurant, Individual)
     cmbType = new QComboBox(this);
-    cmbType->addItem("Butcher", clsSupplier::enSupplierType::Butcher);
-    cmbType->addItem("Restaurant", clsSupplier::enSupplierType::Restaurant);
-    cmbType->addItem("Individual", clsSupplier::enSupplierType::Individual);
+    cmbType->addItem(tr("Butcher"), clsSupplier::enSupplierType::Butcher);
+    cmbType->addItem(tr("Restaurant"), clsSupplier::enSupplierType::Restaurant);
+    cmbType->addItem(tr("Individual"), clsSupplier::enSupplierType::Individual);
     cmbType->setStyleSheet("padding: 5px; border: 1px solid #bdc3c7; border-radius: 4px;");
 
     txtBoneType = new QLineEdit(this);
     txtWeeklyQuantity = new QLineEdit(this);
-    txtWeeklyQuantity->setPlaceholderText("0.0");
+    txtWeeklyQuantity->setPlaceholderText(tr("0.0"));
     txtPoints = new QLineEdit(this);
-    txtPoints->setText("0"); // Default to 0 points
+    txtPoints->setText("0");
 
     // Add to form
-    formLayout->addRow("Name:", txtName);
-    formLayout->addRow("Phone:", txtPhone);
-    formLayout->addRow("Address:", txtAddress);
-    formLayout->addRow("Type:", cmbType);
-    formLayout->addRow("Primary Bone Type:", txtBoneType);
-    formLayout->addRow("Avg. Weekly Qty (kg):", txtWeeklyQuantity);
-    formLayout->addRow("Reward Points:", txtPoints);
+    formLayout->addRow(tr("Name:"), txtName);
+    formLayout->addRow(tr("Phone:"), txtPhone);
+    formLayout->addRow(tr("Address:"), txtAddress);
+    formLayout->addRow(tr("Type:"), cmbType);
+    formLayout->addRow(tr("Primary Bone Type:"), txtBoneType);
+    formLayout->addRow(tr("Avg. Weekly Qty (kg):"), txtWeeklyQuantity);
+    formLayout->addRow(tr("Reward Points:"), txtPoints);
 
     // Buttons
     QHBoxLayout *buttonLayout = new QHBoxLayout();
-    btnSave = new QPushButton("Save Supplier", this);
-    btnCancel = new QPushButton("Cancel", this);
+    btnSave = new QPushButton(tr("Save Supplier"), this);
+    btnCancel = new QPushButton(tr("Cancel"), this);
 
     btnSave->setStyleSheet("background-color: #27ae60; color: white; padding: 8px; border-radius: 4px; font-weight: bold;");
     btnCancel->setStyleSheet("background-color: #95a5a6; color: white; padding: 8px; border-radius: 4px;");
@@ -62,8 +62,8 @@ void SupplierDialog::loadSupplierForEdit(const string& supplierID)
 
     if (!supplier.IsEmpty())
     {
-        setWindowTitle("Supplier Management - Edit");
-        btnSave->setText("Update Supplier");
+        setWindowTitle(tr("Supplier Management - Edit"));
+        btnSave->setText(tr("Update Supplier"));
 
         // Pre-fill existing data
         txtName->setText(QString::fromStdString(supplier.FirstName()));
@@ -82,7 +82,7 @@ void SupplierDialog::loadSupplierForEdit(const string& supplierID)
 void SupplierDialog::handleSave()
 {
     if (txtName->text().isEmpty() || txtPhone->text().isEmpty()) {
-        QMessageBox::warning(this, "Validation Error", "Name and Phone are required.");
+        QMessageBox::warning(this, tr("Validation Error"), tr("Name and Phone are required."));
         return;
     }
 
@@ -109,13 +109,13 @@ void SupplierDialog::handleSave()
     bool ok;
     double weeklyQty = txtWeeklyQuantity->text().toDouble(&ok);
     if (!ok || weeklyQty < 0) {
-        QMessageBox::warning(this, "Validation Error", "Weekly Quantity must be a valid positive number.");
+        QMessageBox::warning(this, tr("Validation Error"), tr("Weekly Quantity must be a valid positive number."));
         return;
     }
 
     int points = txtPoints->text().toInt(&ok);
     if (!ok || points < 0) {
-        QMessageBox::warning(this, "Validation Error", "Points must be a valid non-negative integer.");
+        QMessageBox::warning(this, tr("Validation Error"), tr("Points must be a valid non-negative integer."));
         return;
     }
 

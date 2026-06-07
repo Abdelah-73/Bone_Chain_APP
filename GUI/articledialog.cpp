@@ -2,8 +2,8 @@
 
 ArticleDialog::ArticleDialog(QWidget *parent) : QDialog(parent)
 {
-    setWindowTitle("Article Publisher - Create New");
-    setFixedSize(500, 550); // Made slightly wider and taller for text editing
+    setWindowTitle(tr("Article Publisher - Create New"));
+    setFixedSize(500, 550);
     setStyleSheet("background-color: #ffffff; color: #2c3e50; font-size: 14px;");
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
@@ -14,25 +14,28 @@ ArticleDialog::ArticleDialog(QWidget *parent) : QDialog(parent)
 
     // Categories for the Articles
     cmbCategory = new QComboBox(this);
-    cmbCategory->addItems({"Agriculture Guides", "Industry News", "Company Updates", "Research & Science"});
+    cmbCategory->addItem(tr("Agriculture Guides"));
+    cmbCategory->addItem(tr("Industry News"));
+    cmbCategory->addItem(tr("Company Updates"));
+    cmbCategory->addItem(tr("Research & Science"));
     cmbCategory->setStyleSheet("padding: 5px; border: 1px solid #bdc3c7; border-radius: 4px;");
 
     txtContent = new QTextEdit(this);
-    txtContent->setPlaceholderText("Write your article content here...");
-    txtContent->setMinimumHeight(250); // Give the text area plenty of room
+    txtContent->setPlaceholderText(tr("Write your article content here..."));
+    txtContent->setMinimumHeight(250);
     txtContent->setStyleSheet("border: 2px solid #dfe6e9; border-radius: 8px; padding: 5px;");
 
     txtPublishDate = new QLineEdit(this);
-    txtPublishDate->setPlaceholderText("YYYY-MM-DD");
+    txtPublishDate->setPlaceholderText(tr("YYYY-MM-DD"));
 
-    formLayout->addRow("Title:", txtTitle);
-    formLayout->addRow("Category:", cmbCategory);
-    formLayout->addRow("Date:", txtPublishDate);
+    formLayout->addRow(tr("Title:"), txtTitle);
+    formLayout->addRow(tr("Category:"), cmbCategory);
+    formLayout->addRow(tr("Date:"), txtPublishDate);
 
     // Buttons
     QHBoxLayout *buttonLayout = new QHBoxLayout();
-    btnSave = new QPushButton("Publish Article", this);
-    btnCancel = new QPushButton("Cancel", this);
+    btnSave = new QPushButton(tr("Publish Article"), this);
+    btnCancel = new QPushButton(tr("Cancel"), this);
 
     btnSave->setStyleSheet("background-color: #27ae60; color: white; padding: 8px; border-radius: 4px; font-weight: bold;");
     btnCancel->setStyleSheet("background-color: #95a5a6; color: white; padding: 8px; border-radius: 4px;");
@@ -44,7 +47,7 @@ ArticleDialog::ArticleDialog(QWidget *parent) : QDialog(parent)
     mainLayout->addLayout(formLayout);
 
     // Add the content box below the form layout so it stretches fully
-    QLabel *lblContent = new QLabel("Article Content:", this);
+    QLabel *lblContent = new QLabel(tr("Article Content:"), this);
     lblContent->setStyleSheet("font-weight: bold; margin-top: 10px;");
     mainLayout->addWidget(lblContent);
     mainLayout->addWidget(txtContent);
@@ -62,8 +65,8 @@ void ArticleDialog::loadArticleForEdit(const string& articleID)
 
     if (!article.IsEmpty())
     {
-        setWindowTitle("Article Publisher - Edit");
-        btnSave->setText("Update Article");
+        setWindowTitle(tr("Article Publisher - Edit"));
+        btnSave->setText(tr("Update Article"));
 
         txtTitle->setText(QString::fromStdString(article.Title()));
         cmbCategory->setCurrentText(QString::fromStdString(article.Category()));
@@ -75,7 +78,7 @@ void ArticleDialog::loadArticleForEdit(const string& articleID)
 void ArticleDialog::handleSave()
 {
     if (txtTitle->text().isEmpty() || txtContent->toPlainText().isEmpty()) {
-        QMessageBox::warning(this, "Validation Error", "A Title and Content are required to publish.");
+        QMessageBox::warning(this, tr("Validation Error"), tr("A Title and Content are required to publish."));
         return;
     }
 
@@ -96,7 +99,7 @@ void ArticleDialog::handleSave()
         articleToSave = clsArticle::Find(_currentArticleID);
     }
 
-    // Apply data (Note the use of toPlainText() for the QTextEdit)
+    // Apply data
     articleToSave.SetTitle(txtTitle->text().toStdString());
     articleToSave.SetCategory(cmbCategory->currentText().toStdString());
     articleToSave.SetContent(txtContent->toPlainText().toStdString());

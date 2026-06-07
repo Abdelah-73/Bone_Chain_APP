@@ -2,7 +2,7 @@
 
 CustomerDialog::CustomerDialog(QWidget *parent) : QDialog(parent)
 {
-    setWindowTitle("Customer Management - Add New");
+    setWindowTitle(tr("Customer Management - Add New"));
     setFixedSize(400, 300);
     setStyleSheet("background-color: #ffffff; color: #2c3e50; font-size: 14px;");
 
@@ -14,23 +14,23 @@ CustomerDialog::CustomerDialog(QWidget *parent) : QDialog(parent)
     txtAddress = new QLineEdit(this);
 
     cmbType = new QComboBox(this);
-    cmbType->addItem("Farmer", clsCustomer::enCustomerType::Farmer);
-    cmbType->addItem("Breeder", clsCustomer::enCustomerType::Breeder);
-    cmbType->addItem("Company", clsCustomer::enCustomerType::Company);
+    cmbType->addItem(tr("Farmer"), clsCustomer::enCustomerType::Farmer);
+    cmbType->addItem(tr("Breeder"), clsCustomer::enCustomerType::Breeder);
+    cmbType->addItem(tr("Company"), clsCustomer::enCustomerType::Company);
     cmbType->setStyleSheet("padding: 5px; border: 1px solid #bdc3c7; border-radius: 4px;");
 
     txtPoints = new QLineEdit(this);
     txtPoints->setText("0");
 
-    formLayout->addRow("Name:", txtName);
-    formLayout->addRow("Phone:", txtPhone);
-    formLayout->addRow("Address:", txtAddress);
-    formLayout->addRow("Customer Type:", cmbType);
-    formLayout->addRow("Points:", txtPoints);
+    formLayout->addRow(tr("Name:"), txtName);
+    formLayout->addRow(tr("Phone:"), txtPhone);
+    formLayout->addRow(tr("Address:"), txtAddress);
+    formLayout->addRow(tr("Customer Type:"), cmbType);
+    formLayout->addRow(tr("Points:"), txtPoints);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout();
-    btnSave = new QPushButton("Save Customer", this);
-    btnCancel = new QPushButton("Cancel", this);
+    btnSave = new QPushButton(tr("Save Customer"), this);
+    btnCancel = new QPushButton(tr("Cancel"), this);
 
     btnSave->setStyleSheet("background-color: #27ae60; color: white; padding: 8px; border-radius: 4px; font-weight: bold;");
     btnCancel->setStyleSheet("background-color: #95a5a6; color: white; padding: 8px; border-radius: 4px;");
@@ -53,8 +53,8 @@ void CustomerDialog::loadCustomerForEdit(const string& customerID)
 
     if (!customer.IsEmpty())
     {
-        setWindowTitle("Customer Management - Edit");
-        btnSave->setText("Update Customer");
+        setWindowTitle(tr("Customer Management - Edit"));
+        btnSave->setText(tr("Update Customer"));
 
         txtName->setText(QString::fromStdString(customer.FirstName()));
         txtPhone->setText(QString::fromStdString(customer.PhoneNumber()));
@@ -69,7 +69,7 @@ void CustomerDialog::loadCustomerForEdit(const string& customerID)
 void CustomerDialog::handleSave()
 {
     if (txtName->text().isEmpty() || txtPhone->text().isEmpty()) {
-        QMessageBox::warning(this, "Validation Error", "Name and Phone are required.");
+        QMessageBox::warning(this, tr("Validation Error"), tr("Name and Phone are required."));
         return;
     }
 
