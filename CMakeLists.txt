@@ -11,6 +11,7 @@ set(CMAKE_AUTOUIC ON)
 
 # Find Qt6
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+find_package(Qt6 QUIET COMPONENTS Svg SvgWidgets)
 
 # Include directories so your GUI can find your Core headers
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Core)
@@ -52,6 +53,10 @@ add_executable(${PROJECT_NAME} WIN32 ${PROJECT_SOURCES})
 
 # Link Qt libraries to the executable
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+if(Qt6Svg_FOUND)
+    target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Svg Qt6::SvgWidgets)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE HAS_QT_SVG)
+endif()
 
 # Process translation files if LinguistTools is available
 if(Qt6LinguistTools_FOUND)

@@ -13,6 +13,14 @@
 #include <QTabWidget>
 #include <QProgressBar>
 #include <QFont>
+#include <QPixmap>
+#include <QPainter>
+#include <QPainterPath>
+#include <QIcon>
+#ifdef HAS_QT_SVG
+#include <QSvgRenderer>
+#endif
+#include <QApplication>
 #include <string>
 #include "../Core/clsUser.h"
 #include "../Core/clsSupplier.h"
@@ -93,6 +101,7 @@ private:
     // --- Core Setup Functions ---
     void setupUi();
     void setupSidebar();
+    QPixmap createLogo(int size);
     QTableWidget* createStandardTable(QStringList headers); // UI Optimization Helper
     void applyRolePermissions(int role);
     // --- The 11 Screens ---

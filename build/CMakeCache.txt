@@ -331,6 +331,12 @@ Qt6Gui_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt6Gui
 //The directory containing a CMake configuration file for Qt6LinguistTools.
 Qt6LinguistTools_DIR:PATH=Qt6LinguistTools_DIR-NOTFOUND
 
+//The directory containing a CMake configuration file for Qt6SvgWidgets.
+Qt6SvgWidgets_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt6SvgWidgets
+
+//The directory containing a CMake configuration file for Qt6Svg.
+Qt6Svg_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt6Svg
+
 //The directory containing a CMake configuration file for Qt6WidgetsTools.
 Qt6WidgetsTools_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt6WidgetsTools
 

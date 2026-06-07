@@ -66,11 +66,13 @@ include CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/compiler_depend.
 # Include the progress variables for this target.
 include CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/progress.make
 
+CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
-CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
+CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Svg.so.6.4.2
+CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6SvgWidgets.so.6.4.2
 
 BoneFertilizerApp_autogen_timestamp_deps: CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps
 BoneFertilizerApp_autogen_timestamp_deps: CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/build.make

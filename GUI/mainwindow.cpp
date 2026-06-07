@@ -21,6 +21,11 @@
 #include <QApplication>
 #include <QSettings>
 #include <QProcess>
+#include <QFile>
+#include <QDir>
+#ifdef HAS_QT_SVG
+#include <QSvgRenderer>
+#endif
 
 // --- Backend Core Includes ---
 #include "../Core/clsUser.h"
@@ -37,9 +42,117 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     setupUi();
     sidebarWidget->hide();
     stackedScreens->setCurrentIndex(ScreenIndex::Login);
+    setWindowIcon(QIcon(createLogo(64)));
 }
 
 MainWindow::~MainWindow() {}
+
+QPixmap MainWindow::createLogo(int size)
+{
+    QPixmap pix(size, size);
+    pix.fill(Qt::transparent);
+
+    // Try loading SVG logo from Assets folder
+#ifdef HAS_QT_SVG
+    QString svgPath = QApplication::applicationDirPath() + "/../Assets/REOSSA_logo_enhanced.svg";
+    if (!QFile::exists(svgPath))
+        svgPath = QApplication::applicationDirPath() + "/Assets/REOSSA_logo_enhanced.svg";
+    if (!QFile::exists(svgPath))
+        svgPath = QDir::currentPath() + "/Assets/REOSSA_logo_enhanced.svg";
+
+    if (QFile::exists(svgPath)) {
+        QSvgRenderer renderer(svgPath);
+        if (renderer.isValid()) {
+            QRectF bounds = renderer.viewBoxF();
+            QPixmap native(bounds.size().toSize());
+            native.fill(Qt::transparent);
+            QPainter p(&native);
+            p.setRenderHint(QPainter::Antialiasing);
+            p.setRenderHint(QPainter::SmoothPixmapTransform);
+            renderer.render(&p);
+            p.end();
+
+            QImage img = native.toImage();
+            int x1 = img.width(), y1 = img.height(), x2 = 0, y2 = 0;
+            for (int y = 0; y < img.height(); ++y) {
+                const QRgb *row = reinterpret_cast<const QRgb*>(img.constScanLine(y));
+                for (int x = 0; x < img.width(); ++x) {
+                    if (qAlpha(row[x]) > 40) {
+                        if (x < x1) x1 = x;
+                        if (x > x2) x2 = x;
+                        if (y < y1) y1 = y;
+                        if (y > y2) y2 = y;
+                    }
+                }
+            }
+
+            if (x1 < x2 && y1 < y2) {
+                QPixmap cropped = QPixmap::fromImage(img.copy(x1, y1, x2 - x1 + 1, y2 - y1 + 1));
+                pix = cropped.scaled(size, size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            } else {
+                pix = native.scaled(size, size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            }
+            return pix;
+        }
+    }
+#endif
+
+    // Fallback: QPainter-based logo
+    QPainter p(&pix);
+    p.setRenderHint(QPainter::Antialiasing);
+    p.setRenderHint(QPainter::SmoothPixmapTransform);
+
+    int half = size / 2;
+    qreal r = half * 0.92;
+
+    QRadialGradient bg(half, half, r, half * 0.6, half * 0.6);
+    bg.setColorAt(0, QColor("#2ecc71"));
+    bg.setColorAt(0.6, QColor("#27ae60"));
+    bg.setColorAt(1, QColor("#1e8449"));
+    p.setBrush(bg);
+    p.setPen(QPen(QColor("#1abc9c"), qMax(size / 60.0, 1.5)));
+    p.drawEllipse(QPointF(half, half), r, r);
+
+    int boneY = half - half / 3;
+    int bw = half * 0.8;
+    int bh = qMax(half / 8.0, 2.0);
+    int knob = qMax(half / 6.0, 2.0);
+
+    QRectF shaftRect(half - bw / 2, boneY - bh / 2, bw, bh);
+    p.setBrush(QColor("#ffffff"));
+    p.setPen(QPen(QColor("#1e8449"), qMax(1.0, size / 100.0)));
+    p.drawRoundedRect(shaftRect, bh / 3, bh / 3);
+    p.drawEllipse(QPointF(half - bw / 2, boneY), knob, knob);
+    p.drawEllipse(QPointF(half + bw / 2, boneY), knob, knob);
+
+    int lx = half;
+    int ly = boneY - half / 3;
+    int leafW = half / 2;
+    int leafH = half / 2.5;
+
+    QPainterPath leaf;
+    leaf.moveTo(lx, ly - leafH / 2);
+    leaf.cubicTo(lx + leafW / 2, ly - leafH / 3, lx + leafW / 3, ly + leafH / 4, lx, ly + leafH / 6);
+    leaf.cubicTo(lx - leafW / 3, ly + leafH / 4, lx - leafW / 2, ly - leafH / 3, lx, ly - leafH / 2);
+    p.setBrush(QColor("#f1c40f"));
+    p.setPen(Qt::NoPen);
+    p.drawPath(leaf);
+
+    p.setPen(QPen(QColor("#f39c12"), qMax(size / 40.0, 1.5)));
+    p.drawLine(lx, ly + leafH / 6, lx, ly + leafH / 3);
+
+    int fontSize = qMax(size / 5, 9);
+    QFont f("Segoe UI", fontSize, QFont::Bold);
+    p.setFont(f);
+    QRectF textRect(half - r * 0.9, half + half / 6, r * 1.8, half / 2);
+    p.setPen(QColor(0, 0, 0, 50));
+    p.drawText(textRect.translated(1, 1), Qt::AlignCenter, "REOSSA");
+    p.setPen(QColor("#ffffff"));
+    p.drawText(textRect, Qt::AlignCenter, "REOSSA");
+
+    p.end();
+    return pix;
+}
 
 
 
@@ -103,11 +216,24 @@ void MainWindow::setupSidebar()
     sidebarWidget->setFixedWidth(220);
     sidebarWidget->setStyleSheet("background-color: #2c3e50; color: white;");
     sidebarLayout = new QVBoxLayout(sidebarWidget);
+    sidebarLayout->setContentsMargins(0, 10, 0, 0);
+
+    // Logo header
+    QLabel *logoLabel = new QLabel(this);
+    logoLabel->setPixmap(createLogo(80));
+    logoLabel->setFixedSize(80, 80);
+    logoLabel->setAlignment(Qt::AlignCenter);
+    sidebarLayout->addWidget(logoLabel, 0, Qt::AlignCenter);
+
+    QLabel *brand = new QLabel("REOSSA", this);
+    brand->setStyleSheet("font-size: 16px; font-weight: bold; color: #1abc9c; border: none; padding: 0; margin: 0;");
+    brand->setAlignment(Qt::AlignCenter);
+    sidebarLayout->addWidget(brand);
 
     // Decorative separator
     QFrame *sep = new QFrame(this);
     sep->setFrameShape(QFrame::HLine);
-    sep->setStyleSheet("border: none; background-color: #34495e; max-height: 1px; margin: 0 15px 5px 15px;");
+    sep->setStyleSheet("border: none; background-color: #34495e; max-height: 1px; margin: 5px 15px 5px 15px;");
     sidebarLayout->addWidget(sep);
 
     btnDashboard = new QPushButton(tr(" Dashboard"), this);
@@ -367,6 +493,12 @@ void MainWindow::setupLoginScreen()
     l->setAlignment(Qt::AlignCenter);
     l->setSpacing(15);
 
+    // Logo
+    QLabel *logoLabel = new QLabel(this);
+    logoLabel->setPixmap(createLogo(180));
+    logoLabel->setFixedSize(180, 180);
+    logoLabel->setAlignment(Qt::AlignCenter);
+
     QLabel *title = new QLabel(tr("Secure Login"), this);
     title->setStyleSheet("font-size: 18px; font-weight: 600; color: #5d6d7e; margin-top: 0; letter-spacing: 1px;");
 
@@ -395,6 +527,7 @@ void MainWindow::setupLoginScreen()
     );
     btnLang->setCursor(Qt::PointingHandCursor);
 
+    l->addWidget(logoLabel, 0, Qt::AlignCenter);
     l->addWidget(title, 0, Qt::AlignCenter);
     l->addWidget(txtUsername, 0, Qt::AlignCenter);
     l->addWidget(txtPassword, 0, Qt::AlignCenter);

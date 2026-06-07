@@ -439,6 +439,29 @@ CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qprogressbar.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QPixmap \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qpixmap.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QPainter \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qpainter.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QPainterPath \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qpainterpath.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QIcon \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qicon.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer \
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qapplication.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qinputmethod.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication_platform.h \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsUser.h \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsProduct.h \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsOrder.h \

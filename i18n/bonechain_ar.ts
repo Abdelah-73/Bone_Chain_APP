@@ -277,1471 +277,1471 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="113"/>
-        <location filename="../GUI/mainwindow.cpp" line="126"/>
-        <location filename="../GUI/mainwindow.cpp" line="132"/>
+        <location filename="../GUI/mainwindow.cpp" line="154"/>
+        <location filename="../GUI/mainwindow.cpp" line="167"/>
+        <location filename="../GUI/mainwindow.cpp" line="173"/>
         <source> Dashboard</source>
         <translation type="unfinished"> لوحة التحكم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="114"/>
+        <location filename="../GUI/mainwindow.cpp" line="155"/>
         <source> Users</source>
         <translation type="unfinished"> المستخدمين</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="115"/>
+        <location filename="../GUI/mainwindow.cpp" line="156"/>
         <source> Suppliers</source>
         <translation type="unfinished"> الموردين</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="116"/>
+        <location filename="../GUI/mainwindow.cpp" line="157"/>
         <source> Customers</source>
         <translation type="unfinished"> العملاء</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="117"/>
-        <location filename="../GUI/mainwindow.cpp" line="133"/>
+        <location filename="../GUI/mainwindow.cpp" line="158"/>
+        <location filename="../GUI/mainwindow.cpp" line="174"/>
         <source> Products</source>
         <translation type="unfinished"> المنتجات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="118"/>
+        <location filename="../GUI/mainwindow.cpp" line="159"/>
         <source> Orders</source>
         <translation type="unfinished"> الطلبات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="119"/>
+        <location filename="../GUI/mainwindow.cpp" line="160"/>
         <source> Inventory Alerts</source>
         <translation type="unfinished"> تنبيهات المخزون</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="120"/>
+        <location filename="../GUI/mainwindow.cpp" line="161"/>
         <source> Reports</source>
         <translation type="unfinished"> التقارير</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="121"/>
+        <location filename="../GUI/mainwindow.cpp" line="162"/>
         <source> Articles</source>
         <translation type="unfinished"> المقالات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="122"/>
+        <location filename="../GUI/mainwindow.cpp" line="163"/>
         <source> Logout</source>
         <translation type="unfinished"> تسجيل الخروج</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="123"/>
+        <location filename="../GUI/mainwindow.cpp" line="164"/>
         <source> Deliveries</source>
         <translation type="unfinished"> التوصيلات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="127"/>
+        <location filename="../GUI/mainwindow.cpp" line="168"/>
         <source> My Deliveries</source>
         <translation type="unfinished"> توصيلاتي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="128"/>
+        <location filename="../GUI/mainwindow.cpp" line="169"/>
         <source> My Points &amp; Badges</source>
         <translation type="unfinished"> نقاطي وشاراتي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="129"/>
-        <location filename="../GUI/mainwindow.cpp" line="136"/>
+        <location filename="../GUI/mainwindow.cpp" line="170"/>
+        <location filename="../GUI/mainwindow.cpp" line="177"/>
         <source> My Profile</source>
         <translation type="unfinished"> ملفي الشخصي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="134"/>
+        <location filename="../GUI/mainwindow.cpp" line="175"/>
         <source> My Orders</source>
         <translation type="unfinished"> طلباتي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="135"/>
+        <location filename="../GUI/mainwindow.cpp" line="176"/>
         <source> My Points</source>
         <translation type="unfinished"> نقاطي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="182"/>
-        <location filename="../GUI/mainwindow.cpp" line="387"/>
+        <location filename="../GUI/mainwindow.cpp" line="223"/>
+        <location filename="../GUI/mainwindow.cpp" line="434"/>
         <source> العربية / English</source>
         <translation type="unfinished"> العربية / English</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="351"/>
+        <location filename="../GUI/mainwindow.cpp" line="392"/>
         <source>Welcome</source>
         <translation type="unfinished">مرحباً</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="352"/>
+        <location filename="../GUI/mainwindow.cpp" line="393"/>
         <source>Welcome to the Bone Fertilizer System.
 You can browse our articles and knowledge base.</source>
         <translation type="unfinished">مرحباً بك في نظام سماد العظام.
 يمكنك تصفح مقالاتنا وقاعدة المعرفة.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="370"/>
-        <location filename="../GUI/mainwindow.cpp" line="382"/>
+        <location filename="../GUI/mainwindow.cpp" line="417"/>
+        <location filename="../GUI/mainwindow.cpp" line="429"/>
         <source>Secure Login</source>
         <translation type="unfinished">تسجيل الدخول</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="374"/>
-        <location filename="../GUI/mainwindow.cpp" line="620"/>
+        <location filename="../GUI/mainwindow.cpp" line="421"/>
+        <location filename="../GUI/mainwindow.cpp" line="668"/>
         <source>Username</source>
         <translation type="unfinished">اسم المستخدم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="378"/>
+        <location filename="../GUI/mainwindow.cpp" line="425"/>
         <source>Password</source>
         <translation type="unfinished">كلمة المرور</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="435"/>
+        <location filename="../GUI/mainwindow.cpp" line="483"/>
         <source>Access Denied</source>
         <translation type="unfinished">تم رفض الوصول</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="435"/>
+        <location filename="../GUI/mainwindow.cpp" line="483"/>
         <source>Invalid Username/Password or Inactive Account.</source>
         <translation type="unfinished">اسم مستخدم أو كلمة مرور غير صالحة أو حساب غير نشط.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="473"/>
+        <location filename="../GUI/mainwindow.cpp" line="521"/>
         <source>Admin Control Center</source>
         <translation type="unfinished">مركز التحكم للإدارة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="478"/>
+        <location filename="../GUI/mainwindow.cpp" line="526"/>
         <source>Suppliers: 0</source>
         <translation type="unfinished">الموردون: ٠</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="479"/>
+        <location filename="../GUI/mainwindow.cpp" line="527"/>
         <source>Customers: 0</source>
         <translation type="unfinished">العملاء: ٠</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="480"/>
+        <location filename="../GUI/mainwindow.cpp" line="528"/>
         <source>Products: 0</source>
         <translation type="unfinished">المنتجات: ٠</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="481"/>
+        <location filename="../GUI/mainwindow.cpp" line="529"/>
         <source>Orders: 0</source>
         <translation type="unfinished">الطلبات: ٠</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="482"/>
+        <location filename="../GUI/mainwindow.cpp" line="530"/>
         <source>Collected Bones: 0 kg</source>
         <translation type="unfinished">العظام المجمعة: ٠ كجم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="483"/>
+        <location filename="../GUI/mainwindow.cpp" line="531"/>
         <source>Total Revenue: $0.00</source>
         <translation type="unfinished">إجمالي الإيرادات: $٠.٠٠</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="484"/>
-        <location filename="../GUI/mainwindow.cpp" line="1745"/>
+        <location filename="../GUI/mainwindow.cpp" line="532"/>
+        <location filename="../GUI/mainwindow.cpp" line="1793"/>
         <source>Total Deliveries: 0</source>
         <translation type="unfinished">إجمالي التوصيلات: ٠</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="505"/>
+        <location filename="../GUI/mainwindow.cpp" line="553"/>
         <source>Quick Actions</source>
         <translation type="unfinished">إجراءات سريعة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="509"/>
+        <location filename="../GUI/mainwindow.cpp" line="557"/>
         <source>+ Add Supplier</source>
         <translation type="unfinished">+ إضافة مورد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="510"/>
+        <location filename="../GUI/mainwindow.cpp" line="558"/>
         <source>+ Add Product</source>
         <translation type="unfinished">+ إضافة منتج</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="511"/>
+        <location filename="../GUI/mainwindow.cpp" line="559"/>
         <source>+ Create Article</source>
         <translation type="unfinished">+ إنشاء مقال</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="512"/>
+        <location filename="../GUI/mainwindow.cpp" line="560"/>
         <source>View Reports</source>
         <translation type="unfinished">عرض التقارير</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="559"/>
+        <location filename="../GUI/mainwindow.cpp" line="607"/>
         <source>⚠️ Low Stock Alerts</source>
         <translation type="unfinished">⚠️ تنبيهات المخزون المنخفض</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="562"/>
-        <location filename="../GUI/mainwindow.cpp" line="1268"/>
-        <location filename="../GUI/mainwindow.cpp" line="1275"/>
-        <location filename="../GUI/mainwindow.cpp" line="2322"/>
-        <location filename="../GUI/mainwindow.cpp" line="2536"/>
+        <location filename="../GUI/mainwindow.cpp" line="610"/>
+        <location filename="../GUI/mainwindow.cpp" line="1316"/>
+        <location filename="../GUI/mainwindow.cpp" line="1323"/>
+        <location filename="../GUI/mainwindow.cpp" line="2370"/>
+        <location filename="../GUI/mainwindow.cpp" line="2584"/>
         <source>Product</source>
         <translation type="unfinished">المنتج</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="562"/>
-        <location filename="../GUI/mainwindow.cpp" line="891"/>
-        <location filename="../GUI/mainwindow.cpp" line="2372"/>
+        <location filename="../GUI/mainwindow.cpp" line="610"/>
+        <location filename="../GUI/mainwindow.cpp" line="939"/>
+        <location filename="../GUI/mainwindow.cpp" line="2420"/>
         <source>Stock</source>
         <translation type="unfinished">المخزون</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="562"/>
+        <location filename="../GUI/mainwindow.cpp" line="610"/>
         <source>Min</source>
         <translation type="unfinished">الحد الأدنى</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="582"/>
+        <location filename="../GUI/mainwindow.cpp" line="630"/>
         <source>Suppliers: %1</source>
         <translation type="unfinished">الموردون: %1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="583"/>
+        <location filename="../GUI/mainwindow.cpp" line="631"/>
         <source>Customers: %1</source>
         <translation type="unfinished">العملاء: %1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="584"/>
+        <location filename="../GUI/mainwindow.cpp" line="632"/>
         <source>Products: %1</source>
         <translation type="unfinished">المنتجات: %1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="585"/>
+        <location filename="../GUI/mainwindow.cpp" line="633"/>
         <source>Orders: %1</source>
         <translation type="unfinished">الطلبات: %1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="587"/>
+        <location filename="../GUI/mainwindow.cpp" line="635"/>
         <source>Collected Bones: %1 kg</source>
         <translation type="unfinished">العظام المجمعة: %1 كجم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="588"/>
+        <location filename="../GUI/mainwindow.cpp" line="636"/>
         <source>Total Revenue: $%1</source>
         <translation type="unfinished">إجمالي الإيرادات: $%1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="589"/>
-        <location filename="../GUI/mainwindow.cpp" line="1789"/>
+        <location filename="../GUI/mainwindow.cpp" line="637"/>
+        <location filename="../GUI/mainwindow.cpp" line="1837"/>
         <source>Total Deliveries: %1</source>
         <translation type="unfinished">إجمالي التوصيلات: %1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="617"/>
+        <location filename="../GUI/mainwindow.cpp" line="665"/>
         <source>Users Management</source>
         <translation type="unfinished">إدارة المستخدمين</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="620"/>
-        <location filename="../GUI/mainwindow.cpp" line="717"/>
-        <location filename="../GUI/mainwindow.cpp" line="808"/>
-        <location filename="../GUI/mainwindow.cpp" line="891"/>
-        <location filename="../GUI/mainwindow.cpp" line="1436"/>
+        <location filename="../GUI/mainwindow.cpp" line="668"/>
+        <location filename="../GUI/mainwindow.cpp" line="765"/>
+        <location filename="../GUI/mainwindow.cpp" line="856"/>
+        <location filename="../GUI/mainwindow.cpp" line="939"/>
+        <location filename="../GUI/mainwindow.cpp" line="1484"/>
         <source>ID</source>
         <translation type="unfinished">المعرف</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="620"/>
-        <location filename="../GUI/mainwindow.cpp" line="717"/>
-        <location filename="../GUI/mainwindow.cpp" line="808"/>
-        <location filename="../GUI/mainwindow.cpp" line="891"/>
-        <location filename="../GUI/mainwindow.cpp" line="1171"/>
-        <location filename="../GUI/mainwindow.cpp" line="2372"/>
+        <location filename="../GUI/mainwindow.cpp" line="668"/>
+        <location filename="../GUI/mainwindow.cpp" line="765"/>
+        <location filename="../GUI/mainwindow.cpp" line="856"/>
+        <location filename="../GUI/mainwindow.cpp" line="939"/>
+        <location filename="../GUI/mainwindow.cpp" line="1219"/>
+        <location filename="../GUI/mainwindow.cpp" line="2420"/>
         <source>Name</source>
         <translation type="unfinished">الاسم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="620"/>
+        <location filename="../GUI/mainwindow.cpp" line="668"/>
         <source>Role</source>
         <translation type="unfinished">الدور</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="620"/>
-        <location filename="../GUI/mainwindow.cpp" line="1171"/>
-        <location filename="../GUI/mainwindow.cpp" line="1268"/>
-        <location filename="../GUI/mainwindow.cpp" line="1275"/>
-        <location filename="../GUI/mainwindow.cpp" line="1296"/>
-        <location filename="../GUI/mainwindow.cpp" line="1532"/>
-        <location filename="../GUI/mainwindow.cpp" line="1768"/>
-        <location filename="../GUI/mainwindow.cpp" line="1912"/>
-        <location filename="../GUI/mainwindow.cpp" line="2322"/>
-        <location filename="../GUI/mainwindow.cpp" line="2536"/>
+        <location filename="../GUI/mainwindow.cpp" line="668"/>
+        <location filename="../GUI/mainwindow.cpp" line="1219"/>
+        <location filename="../GUI/mainwindow.cpp" line="1316"/>
+        <location filename="../GUI/mainwindow.cpp" line="1323"/>
+        <location filename="../GUI/mainwindow.cpp" line="1344"/>
+        <location filename="../GUI/mainwindow.cpp" line="1580"/>
+        <location filename="../GUI/mainwindow.cpp" line="1816"/>
+        <location filename="../GUI/mainwindow.cpp" line="1960"/>
+        <location filename="../GUI/mainwindow.cpp" line="2370"/>
+        <location filename="../GUI/mainwindow.cpp" line="2584"/>
         <source>Status</source>
         <translation type="unfinished">الحالة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="624"/>
+        <location filename="../GUI/mainwindow.cpp" line="672"/>
         <source>Add New User</source>
         <translation type="unfinished">إضافة مستخدم جديد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="625"/>
+        <location filename="../GUI/mainwindow.cpp" line="673"/>
         <source>Edit User</source>
         <translation type="unfinished">تعديل المستخدم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="626"/>
+        <location filename="../GUI/mainwindow.cpp" line="674"/>
         <source>Delete User</source>
         <translation type="unfinished">حذف المستخدم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="658"/>
+        <location filename="../GUI/mainwindow.cpp" line="706"/>
         <source>Select User</source>
         <translation type="unfinished">اختيار مستخدم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="658"/>
+        <location filename="../GUI/mainwindow.cpp" line="706"/>
         <source>Please select a user to edit from the table first.</source>
         <translation type="unfinished">يرجى تحديد مستخدم للتعديل من الجدول أولاً.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="686"/>
+        <location filename="../GUI/mainwindow.cpp" line="734"/>
         <source>Active</source>
         <translation type="unfinished">نشط</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="686"/>
+        <location filename="../GUI/mainwindow.cpp" line="734"/>
         <source>Inactive</source>
         <translation type="unfinished">غير نشط</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="695"/>
-        <location filename="../GUI/mainwindow.cpp" line="784"/>
-        <location filename="../GUI/mainwindow.cpp" line="867"/>
+        <location filename="../GUI/mainwindow.cpp" line="743"/>
+        <location filename="../GUI/mainwindow.cpp" line="832"/>
+        <location filename="../GUI/mainwindow.cpp" line="915"/>
         <source>Confirm</source>
         <translation type="unfinished">تأكيد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="695"/>
+        <location filename="../GUI/mainwindow.cpp" line="743"/>
         <source>Delete User %1?</source>
         <translation type="unfinished">حذف المستخدم %1؟</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="714"/>
+        <location filename="../GUI/mainwindow.cpp" line="762"/>
         <source>Suppliers Management</source>
         <translation type="unfinished">إدارة الموردين</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="717"/>
-        <location filename="../GUI/mainwindow.cpp" line="808"/>
+        <location filename="../GUI/mainwindow.cpp" line="765"/>
+        <location filename="../GUI/mainwindow.cpp" line="856"/>
         <source>Phone</source>
         <translation type="unfinished">الهاتف</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="717"/>
-        <location filename="../GUI/mainwindow.cpp" line="1296"/>
-        <location filename="../GUI/mainwindow.cpp" line="1532"/>
-        <location filename="../GUI/mainwindow.cpp" line="1768"/>
-        <location filename="../GUI/mainwindow.cpp" line="1912"/>
+        <location filename="../GUI/mainwindow.cpp" line="765"/>
+        <location filename="../GUI/mainwindow.cpp" line="1344"/>
+        <location filename="../GUI/mainwindow.cpp" line="1580"/>
+        <location filename="../GUI/mainwindow.cpp" line="1816"/>
+        <location filename="../GUI/mainwindow.cpp" line="1960"/>
         <source>Bone Type</source>
         <translation type="unfinished">نوع العظم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="717"/>
+        <location filename="../GUI/mainwindow.cpp" line="765"/>
         <source>Points</source>
         <translation type="unfinished">النقاط</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="720"/>
+        <location filename="../GUI/mainwindow.cpp" line="768"/>
         <source>Add New Supplier</source>
         <translation type="unfinished">إضافة مورد جديد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="721"/>
+        <location filename="../GUI/mainwindow.cpp" line="769"/>
         <source>Edit Supplier</source>
         <translation type="unfinished">تعديل المورد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="722"/>
+        <location filename="../GUI/mainwindow.cpp" line="770"/>
         <source>Delete Supplier</source>
         <translation type="unfinished">حذف المورد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="751"/>
-        <location filename="../GUI/mainwindow.cpp" line="925"/>
-        <location filename="../GUI/mainwindow.cpp" line="1472"/>
+        <location filename="../GUI/mainwindow.cpp" line="799"/>
+        <location filename="../GUI/mainwindow.cpp" line="973"/>
+        <location filename="../GUI/mainwindow.cpp" line="1520"/>
         <source>Selection Required</source>
         <translation type="unfinished">مطلوب التحديد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="751"/>
+        <location filename="../GUI/mainwindow.cpp" line="799"/>
         <source>Please select a supplier to edit.</source>
         <translation type="unfinished">يرجى تحديد مورد للتعديل.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="784"/>
+        <location filename="../GUI/mainwindow.cpp" line="832"/>
         <source>Delete Supplier %1?</source>
         <translation type="unfinished">حذف المورد %1؟</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="805"/>
+        <location filename="../GUI/mainwindow.cpp" line="853"/>
         <source>Customers Management</source>
         <translation type="unfinished">إدارة العملاء</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="808"/>
+        <location filename="../GUI/mainwindow.cpp" line="856"/>
         <source>Address</source>
         <translation type="unfinished">العنوان</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="808"/>
-        <location filename="../GUI/mainwindow.cpp" line="1282"/>
-        <location filename="../GUI/mainwindow.cpp" line="1289"/>
+        <location filename="../GUI/mainwindow.cpp" line="856"/>
+        <location filename="../GUI/mainwindow.cpp" line="1330"/>
+        <location filename="../GUI/mainwindow.cpp" line="1337"/>
         <source>Type</source>
         <translation type="unfinished">النوع</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="811"/>
+        <location filename="../GUI/mainwindow.cpp" line="859"/>
         <source>Add Customer</source>
         <translation type="unfinished">إضافة عميل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="812"/>
+        <location filename="../GUI/mainwindow.cpp" line="860"/>
         <source>Edit Customer</source>
         <translation type="unfinished">تعديل العميل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="813"/>
+        <location filename="../GUI/mainwindow.cpp" line="861"/>
         <source>Delete Customer</source>
         <translation type="unfinished">حذف العميل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="867"/>
+        <location filename="../GUI/mainwindow.cpp" line="915"/>
         <source>Delete Customer %1?</source>
         <translation type="unfinished">حذف العميل %1؟</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="888"/>
+        <location filename="../GUI/mainwindow.cpp" line="936"/>
         <source>Products Catalog</source>
         <translation type="unfinished">كتالوج المنتجات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="891"/>
-        <location filename="../GUI/mainwindow.cpp" line="1275"/>
-        <location filename="../GUI/mainwindow.cpp" line="1436"/>
-        <location filename="../GUI/mainwindow.cpp" line="2372"/>
+        <location filename="../GUI/mainwindow.cpp" line="939"/>
+        <location filename="../GUI/mainwindow.cpp" line="1323"/>
+        <location filename="../GUI/mainwindow.cpp" line="1484"/>
+        <location filename="../GUI/mainwindow.cpp" line="2420"/>
         <source>Category</source>
         <translation type="unfinished">الفئة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="891"/>
+        <location filename="../GUI/mainwindow.cpp" line="939"/>
         <source>Price</source>
         <translation type="unfinished">السعر</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="894"/>
+        <location filename="../GUI/mainwindow.cpp" line="942"/>
         <source>Add New Product</source>
         <translation type="unfinished">إضافة منتج جديد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="895"/>
+        <location filename="../GUI/mainwindow.cpp" line="943"/>
         <source>Edit Product</source>
         <translation type="unfinished">تعديل المنتج</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="896"/>
+        <location filename="../GUI/mainwindow.cpp" line="944"/>
         <source>Delete Product</source>
         <translation type="unfinished">حذف المنتج</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="925"/>
+        <location filename="../GUI/mainwindow.cpp" line="973"/>
         <source>Please select a product to edit.</source>
         <translation type="unfinished">يرجى تحديد منتج للتعديل.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="968"/>
+        <location filename="../GUI/mainwindow.cpp" line="1016"/>
         <source>Order Processing</source>
         <translation type="unfinished">معالجة الطلب</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="971"/>
-        <location filename="../GUI/mainwindow.cpp" line="1268"/>
-        <location filename="../GUI/mainwindow.cpp" line="2322"/>
-        <location filename="../GUI/mainwindow.cpp" line="2536"/>
+        <location filename="../GUI/mainwindow.cpp" line="1019"/>
+        <location filename="../GUI/mainwindow.cpp" line="1316"/>
+        <location filename="../GUI/mainwindow.cpp" line="2370"/>
+        <location filename="../GUI/mainwindow.cpp" line="2584"/>
         <source>Order ID</source>
         <translation type="unfinished">معرف الطلب</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="971"/>
+        <location filename="../GUI/mainwindow.cpp" line="1019"/>
         <source>Customer ID</source>
         <translation type="unfinished">معرف العميل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="971"/>
-        <location filename="../GUI/mainwindow.cpp" line="1171"/>
-        <location filename="../GUI/mainwindow.cpp" line="2372"/>
+        <location filename="../GUI/mainwindow.cpp" line="1019"/>
+        <location filename="../GUI/mainwindow.cpp" line="1219"/>
+        <location filename="../GUI/mainwindow.cpp" line="2420"/>
         <source>Product ID</source>
         <translation type="unfinished">معرف المنتج</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="971"/>
+        <location filename="../GUI/mainwindow.cpp" line="1019"/>
         <source>Total Price</source>
         <translation type="unfinished">السعر الإجمالي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="971"/>
+        <location filename="../GUI/mainwindow.cpp" line="1019"/>
         <source>Status Code</source>
         <translation type="unfinished">رمز الحالة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="974"/>
+        <location filename="../GUI/mainwindow.cpp" line="1022"/>
         <source>Update Status</source>
         <translation type="unfinished">تحديث الحالة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="975"/>
+        <location filename="../GUI/mainwindow.cpp" line="1023"/>
         <source>Cancel Order</source>
         <translation type="unfinished">إلغاء الطلب</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="995"/>
-        <location filename="../GUI/mainwindow.cpp" line="1103"/>
+        <location filename="../GUI/mainwindow.cpp" line="1043"/>
+        <location filename="../GUI/mainwindow.cpp" line="1151"/>
         <source>Select Order</source>
         <translation type="unfinished">اختيار طلب</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="995"/>
+        <location filename="../GUI/mainwindow.cpp" line="1043"/>
         <source>Please select an order to update.</source>
         <translation type="unfinished">يرجى تحديد طلب للتحديث.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1027"/>
+        <location filename="../GUI/mainwindow.cpp" line="1075"/>
         <source>Invalid Transition</source>
         <translation type="unfinished">انتقال غير صالح</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1028"/>
+        <location filename="../GUI/mainwindow.cpp" line="1076"/>
         <source>The selected status change is not allowed.
 Valid flow: Pending → Confirmed → Processing → Delivered</source>
         <translation type="unfinished">تغيير الحالة المحدد غير مسموح به.
 التدفق الصحيح: قيد الانتظار → مؤكد → قيد المعالجة → تم التوصيل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1074"/>
-        <location filename="../GUI/mainwindow.cpp" line="1418"/>
-        <location filename="../GUI/mainwindow.cpp" line="1602"/>
-        <location filename="../GUI/mainwindow.cpp" line="1845"/>
-        <location filename="../GUI/mainwindow.cpp" line="1880"/>
-        <location filename="../GUI/mainwindow.cpp" line="2523"/>
-        <location filename="../GUI/mainwindow.cpp" line="2686"/>
-        <location filename="../GUI/mainwindow.cpp" line="2742"/>
+        <location filename="../GUI/mainwindow.cpp" line="1122"/>
+        <location filename="../GUI/mainwindow.cpp" line="1466"/>
+        <location filename="../GUI/mainwindow.cpp" line="1650"/>
+        <location filename="../GUI/mainwindow.cpp" line="1893"/>
+        <location filename="../GUI/mainwindow.cpp" line="1928"/>
+        <location filename="../GUI/mainwindow.cpp" line="2571"/>
+        <location filename="../GUI/mainwindow.cpp" line="2734"/>
+        <location filename="../GUI/mainwindow.cpp" line="2790"/>
         <source>Pending</source>
         <translation type="unfinished">قيد الانتظار</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1078"/>
-        <location filename="../GUI/mainwindow.cpp" line="2687"/>
-        <location filename="../GUI/mainwindow.cpp" line="2743"/>
+        <location filename="../GUI/mainwindow.cpp" line="1126"/>
+        <location filename="../GUI/mainwindow.cpp" line="2735"/>
+        <location filename="../GUI/mainwindow.cpp" line="2791"/>
         <source>Confirmed</source>
         <translation type="unfinished">مؤكد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1082"/>
-        <location filename="../GUI/mainwindow.cpp" line="2524"/>
-        <location filename="../GUI/mainwindow.cpp" line="2688"/>
-        <location filename="../GUI/mainwindow.cpp" line="2744"/>
+        <location filename="../GUI/mainwindow.cpp" line="1130"/>
+        <location filename="../GUI/mainwindow.cpp" line="2572"/>
+        <location filename="../GUI/mainwindow.cpp" line="2736"/>
+        <location filename="../GUI/mainwindow.cpp" line="2792"/>
         <source>Processing</source>
         <translation type="unfinished">قيد المعالجة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1086"/>
-        <location filename="../GUI/mainwindow.cpp" line="1327"/>
-        <location filename="../GUI/mainwindow.cpp" line="2525"/>
-        <location filename="../GUI/mainwindow.cpp" line="2689"/>
-        <location filename="../GUI/mainwindow.cpp" line="2745"/>
+        <location filename="../GUI/mainwindow.cpp" line="1134"/>
+        <location filename="../GUI/mainwindow.cpp" line="1375"/>
+        <location filename="../GUI/mainwindow.cpp" line="2573"/>
+        <location filename="../GUI/mainwindow.cpp" line="2737"/>
+        <location filename="../GUI/mainwindow.cpp" line="2793"/>
         <source>Delivered</source>
         <translation type="unfinished">تم التوصيل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1090"/>
-        <location filename="../GUI/mainwindow.cpp" line="1330"/>
-        <location filename="../GUI/mainwindow.cpp" line="2526"/>
-        <location filename="../GUI/mainwindow.cpp" line="2690"/>
-        <location filename="../GUI/mainwindow.cpp" line="2746"/>
+        <location filename="../GUI/mainwindow.cpp" line="1138"/>
+        <location filename="../GUI/mainwindow.cpp" line="1378"/>
+        <location filename="../GUI/mainwindow.cpp" line="2574"/>
+        <location filename="../GUI/mainwindow.cpp" line="2738"/>
+        <location filename="../GUI/mainwindow.cpp" line="2794"/>
         <source>Cancelled</source>
         <translation type="unfinished">ملغي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1103"/>
+        <location filename="../GUI/mainwindow.cpp" line="1151"/>
         <source>Please select an order to cancel.</source>
         <translation type="unfinished">يرجى تحديد طلب للإلغاء.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1114"/>
+        <location filename="../GUI/mainwindow.cpp" line="1162"/>
         <source>Cannot Cancel</source>
         <translation type="unfinished">لا يمكن الإلغاء</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1115"/>
+        <location filename="../GUI/mainwindow.cpp" line="1163"/>
         <source>Only Pending or Confirmed orders may be cancelled.</source>
         <translation type="unfinished">يمكن إلغاء الطلبات قيد الانتظار أو المؤكدة فقط.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1120"/>
+        <location filename="../GUI/mainwindow.cpp" line="1168"/>
         <source>Confirm Cancellation</source>
         <translation type="unfinished">تأكيد الإلغاء</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1121"/>
+        <location filename="../GUI/mainwindow.cpp" line="1169"/>
         <source>Are you sure you want to cancel this order? The items will be returned to inventory.</source>
         <translation type="unfinished">هل أنت متأكد من إلغاء هذا الطلب؟ سيتم إعادة العناصر إلى المخزون.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1137"/>
+        <location filename="../GUI/mainwindow.cpp" line="1185"/>
         <source>Order Cancelled</source>
         <translation type="unfinished">تم إلغاء الطلب</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1137"/>
+        <location filename="../GUI/mainwindow.cpp" line="1185"/>
         <source>The order has been cancelled and the items have been returned to inventory.</source>
         <translation type="unfinished">تم إلغاء الطلب وإعادة العناصر إلى المخزون.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1153"/>
+        <location filename="../GUI/mainwindow.cpp" line="1201"/>
         <source>Inventory Control</source>
         <translation type="unfinished">مراقبة المخزون</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1156"/>
+        <location filename="../GUI/mainwindow.cpp" line="1204"/>
         <source>Filter View:</source>
         <translation type="unfinished">تصفية العرض:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1160"/>
+        <location filename="../GUI/mainwindow.cpp" line="1208"/>
         <source>All Current Stock</source>
         <translation type="unfinished">جميع المخزون الحالي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1161"/>
+        <location filename="../GUI/mainwindow.cpp" line="1209"/>
         <source>Low Stock Alerts</source>
         <translation type="unfinished">تنبيهات المخزون المنخفض</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1162"/>
+        <location filename="../GUI/mainwindow.cpp" line="1210"/>
         <source>Out Of Stock</source>
         <translation type="unfinished">نفد من المخزون</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1171"/>
+        <location filename="../GUI/mainwindow.cpp" line="1219"/>
         <source>Quantity</source>
         <translation type="unfinished">الكمية</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1171"/>
+        <location filename="../GUI/mainwindow.cpp" line="1219"/>
         <source>Minimum</source>
         <translation type="unfinished">الحد الأدنى</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1220"/>
-        <location filename="../GUI/mainwindow.cpp" line="1357"/>
+        <location filename="../GUI/mainwindow.cpp" line="1268"/>
+        <location filename="../GUI/mainwindow.cpp" line="1405"/>
         <source>Out of Stock</source>
         <translation type="unfinished">نفد من المخزون</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1224"/>
+        <location filename="../GUI/mainwindow.cpp" line="1272"/>
         <source>Low Stock</source>
         <translation type="unfinished">مخزون منخفض</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1228"/>
-        <location filename="../GUI/mainwindow.cpp" line="1363"/>
+        <location filename="../GUI/mainwindow.cpp" line="1276"/>
+        <location filename="../GUI/mainwindow.cpp" line="1411"/>
         <source>Healthy</source>
         <translation type="unfinished">جيد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1246"/>
+        <location filename="../GUI/mainwindow.cpp" line="1294"/>
         <source>System Reports &amp; Analytics</source>
         <translation type="unfinished">تقارير النظام والتحليلات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1249"/>
+        <location filename="../GUI/mainwindow.cpp" line="1297"/>
         <source> Refresh Data</source>
         <translation type="unfinished"> تحديث البيانات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1268"/>
+        <location filename="../GUI/mainwindow.cpp" line="1316"/>
         <source>Customer</source>
         <translation type="unfinished">عميل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1268"/>
+        <location filename="../GUI/mainwindow.cpp" line="1316"/>
         <source>Total Revenue</source>
         <translation type="unfinished">إجمالي الإيرادات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1270"/>
+        <location filename="../GUI/mainwindow.cpp" line="1318"/>
         <source>Sales Reports</source>
         <translation type="unfinished">تقارير المبيعات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1275"/>
+        <location filename="../GUI/mainwindow.cpp" line="1323"/>
         <source>Stock Level</source>
         <translation type="unfinished">مستوى المخزون</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1275"/>
+        <location filename="../GUI/mainwindow.cpp" line="1323"/>
         <source>Min Alert</source>
         <translation type="unfinished">تنبيه الحد الأدنى</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1277"/>
+        <location filename="../GUI/mainwindow.cpp" line="1325"/>
         <source>Inventory Reports</source>
         <translation type="unfinished">تقارير المخزون</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1282"/>
+        <location filename="../GUI/mainwindow.cpp" line="1330"/>
         <source>Supplier Name</source>
         <translation type="unfinished">اسم المورد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1282"/>
+        <location filename="../GUI/mainwindow.cpp" line="1330"/>
         <source>Avg Weekly (kg)</source>
         <translation type="unfinished">متوسط الأسبوع (كجم)</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1282"/>
+        <location filename="../GUI/mainwindow.cpp" line="1330"/>
         <source>Points Issued</source>
         <translation type="unfinished">النقاط الممنوحة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1284"/>
+        <location filename="../GUI/mainwindow.cpp" line="1332"/>
         <source>Supplier Reports</source>
         <translation type="unfinished">تقارير الموردين</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1289"/>
+        <location filename="../GUI/mainwindow.cpp" line="1337"/>
         <source>Customer Name</source>
         <translation type="unfinished">اسم العميل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1289"/>
+        <location filename="../GUI/mainwindow.cpp" line="1337"/>
         <source>Contact</source>
         <translation type="unfinished">جهة الاتصال</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1289"/>
+        <location filename="../GUI/mainwindow.cpp" line="1337"/>
         <source>Points Balance</source>
         <translation type="unfinished">رصيد النقاط</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1291"/>
+        <location filename="../GUI/mainwindow.cpp" line="1339"/>
         <source>Customer Reports</source>
         <translation type="unfinished">تقارير العملاء</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1296"/>
-        <location filename="../GUI/mainwindow.cpp" line="1532"/>
-        <location filename="../GUI/mainwindow.cpp" line="1768"/>
-        <location filename="../GUI/mainwindow.cpp" line="1912"/>
+        <location filename="../GUI/mainwindow.cpp" line="1344"/>
+        <location filename="../GUI/mainwindow.cpp" line="1580"/>
+        <location filename="../GUI/mainwindow.cpp" line="1816"/>
+        <location filename="../GUI/mainwindow.cpp" line="1960"/>
         <source>Delivery ID</source>
         <translation type="unfinished">معرف التوصيل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1296"/>
-        <location filename="../GUI/mainwindow.cpp" line="1532"/>
+        <location filename="../GUI/mainwindow.cpp" line="1344"/>
+        <location filename="../GUI/mainwindow.cpp" line="1580"/>
         <source>Supplier</source>
         <translation type="unfinished">مورد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1296"/>
-        <location filename="../GUI/mainwindow.cpp" line="1532"/>
-        <location filename="../GUI/mainwindow.cpp" line="1768"/>
-        <location filename="../GUI/mainwindow.cpp" line="1912"/>
-        <location filename="../GUI/mainwindow.cpp" line="2322"/>
-        <location filename="../GUI/mainwindow.cpp" line="2536"/>
+        <location filename="../GUI/mainwindow.cpp" line="1344"/>
+        <location filename="../GUI/mainwindow.cpp" line="1580"/>
+        <location filename="../GUI/mainwindow.cpp" line="1816"/>
+        <location filename="../GUI/mainwindow.cpp" line="1960"/>
+        <location filename="../GUI/mainwindow.cpp" line="2370"/>
+        <location filename="../GUI/mainwindow.cpp" line="2584"/>
         <source>Date</source>
         <translation type="unfinished">التاريخ</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1296"/>
-        <location filename="../GUI/mainwindow.cpp" line="1532"/>
-        <location filename="../GUI/mainwindow.cpp" line="1768"/>
-        <location filename="../GUI/mainwindow.cpp" line="1912"/>
+        <location filename="../GUI/mainwindow.cpp" line="1344"/>
+        <location filename="../GUI/mainwindow.cpp" line="1580"/>
+        <location filename="../GUI/mainwindow.cpp" line="1816"/>
+        <location filename="../GUI/mainwindow.cpp" line="1960"/>
         <source>Quantity (kg)</source>
         <translation type="unfinished">الكمية (كجم)</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1298"/>
+        <location filename="../GUI/mainwindow.cpp" line="1346"/>
         <source>Delivery Reports</source>
         <translation type="unfinished">تقارير التوصيلات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1333"/>
+        <location filename="../GUI/mainwindow.cpp" line="1381"/>
         <source>In Progress</source>
         <translation type="unfinished">قيد التقدم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1360"/>
+        <location filename="../GUI/mainwindow.cpp" line="1408"/>
         <source>Needs Restock</source>
         <translation type="unfinished">بحاجة لإعادة تزويد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1412"/>
-        <location filename="../GUI/mainwindow.cpp" line="1596"/>
-        <location filename="../GUI/mainwindow.cpp" line="1620"/>
-        <location filename="../GUI/mainwindow.cpp" line="1706"/>
-        <location filename="../GUI/mainwindow.cpp" line="1839"/>
-        <location filename="../GUI/mainwindow.cpp" line="1874"/>
+        <location filename="../GUI/mainwindow.cpp" line="1460"/>
+        <location filename="../GUI/mainwindow.cpp" line="1644"/>
+        <location filename="../GUI/mainwindow.cpp" line="1668"/>
+        <location filename="../GUI/mainwindow.cpp" line="1754"/>
+        <location filename="../GUI/mainwindow.cpp" line="1887"/>
+        <location filename="../GUI/mainwindow.cpp" line="1922"/>
         <source>Approved</source>
         <translation type="unfinished">تمت الموافقة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1415"/>
-        <location filename="../GUI/mainwindow.cpp" line="1599"/>
-        <location filename="../GUI/mainwindow.cpp" line="1710"/>
-        <location filename="../GUI/mainwindow.cpp" line="1724"/>
-        <location filename="../GUI/mainwindow.cpp" line="1842"/>
-        <location filename="../GUI/mainwindow.cpp" line="1877"/>
+        <location filename="../GUI/mainwindow.cpp" line="1463"/>
+        <location filename="../GUI/mainwindow.cpp" line="1647"/>
+        <location filename="../GUI/mainwindow.cpp" line="1758"/>
+        <location filename="../GUI/mainwindow.cpp" line="1772"/>
+        <location filename="../GUI/mainwindow.cpp" line="1890"/>
+        <location filename="../GUI/mainwindow.cpp" line="1925"/>
         <source>Rejected</source>
         <translation type="unfinished">مرفوض</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1433"/>
+        <location filename="../GUI/mainwindow.cpp" line="1481"/>
         <source>Articles &amp; Publications</source>
         <translation type="unfinished">المقالات والمنشورات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1436"/>
+        <location filename="../GUI/mainwindow.cpp" line="1484"/>
         <source>Title</source>
         <translation type="unfinished">العنوان</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1436"/>
+        <location filename="../GUI/mainwindow.cpp" line="1484"/>
         <source>Publish Date</source>
         <translation type="unfinished">تاريخ النشر</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1439"/>
+        <location filename="../GUI/mainwindow.cpp" line="1487"/>
         <source>Create Article</source>
         <translation type="unfinished">إنشاء مقال</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1440"/>
+        <location filename="../GUI/mainwindow.cpp" line="1488"/>
         <source>Edit Article</source>
         <translation type="unfinished">تعديل المقال</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1441"/>
+        <location filename="../GUI/mainwindow.cpp" line="1489"/>
         <source>Delete Article</source>
         <translation type="unfinished">حذف المقال</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1472"/>
+        <location filename="../GUI/mainwindow.cpp" line="1520"/>
         <source>Please select an article to edit.</source>
         <translation type="unfinished">يرجى تحديد مقال للتعديل.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1513"/>
+        <location filename="../GUI/mainwindow.cpp" line="1561"/>
         <source>Confirm Delete</source>
         <translation type="unfinished">تأكيد الحذف</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1514"/>
+        <location filename="../GUI/mainwindow.cpp" line="1562"/>
         <source>Delete article &quot;%1&quot;?
 This cannot be undone.</source>
         <translation type="unfinished">حذف المقال &quot;%1&quot;؟
 لا يمكن التراجع عن هذا.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1529"/>
+        <location filename="../GUI/mainwindow.cpp" line="1577"/>
         <source>Deliveries Management</source>
         <translation type="unfinished">إدارة التوصيلات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1535"/>
-        <location filename="../GUI/mainwindow.cpp" line="1903"/>
-        <location filename="../GUI/mainwindow.cpp" line="2755"/>
+        <location filename="../GUI/mainwindow.cpp" line="1583"/>
+        <location filename="../GUI/mainwindow.cpp" line="1951"/>
+        <location filename="../GUI/mainwindow.cpp" line="2803"/>
         <source>Log New Delivery</source>
         <translation type="unfinished">تسجيل توصيل جديد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1536"/>
+        <location filename="../GUI/mainwindow.cpp" line="1584"/>
         <source>Approve Delivery</source>
         <translation type="unfinished">الموافقة على التوصيل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1537"/>
+        <location filename="../GUI/mainwindow.cpp" line="1585"/>
         <source>Reject</source>
         <translation type="unfinished">رفض</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1557"/>
-        <location filename="../GUI/mainwindow.cpp" line="2489"/>
-        <location filename="../GUI/mainwindow.cpp" line="2801"/>
+        <location filename="../GUI/mainwindow.cpp" line="1605"/>
+        <location filename="../GUI/mainwindow.cpp" line="2537"/>
+        <location filename="../GUI/mainwindow.cpp" line="2849"/>
         <source>Success</source>
         <translation type="unfinished">نجاح</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1557"/>
+        <location filename="../GUI/mainwindow.cpp" line="1605"/>
         <source>Delivery submitted! It is now Pending approval.</source>
         <translation type="unfinished">تم تقديم التوصيل! وهو الآن بانتظار الموافقة.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1614"/>
-        <location filename="../GUI/mainwindow.cpp" line="1701"/>
+        <location filename="../GUI/mainwindow.cpp" line="1662"/>
+        <location filename="../GUI/mainwindow.cpp" line="1749"/>
         <source>Select Delivery</source>
         <translation type="unfinished">اختيار توصيل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1614"/>
+        <location filename="../GUI/mainwindow.cpp" line="1662"/>
         <source>Please select a pending delivery to approve.</source>
         <translation type="unfinished">يرجى تحديد توصيل قيد الانتظار للموافقة.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1621"/>
-        <location filename="../GUI/mainwindow.cpp" line="1707"/>
+        <location filename="../GUI/mainwindow.cpp" line="1669"/>
+        <location filename="../GUI/mainwindow.cpp" line="1755"/>
         <source>Already Approved</source>
         <translation type="unfinished">تمت الموافقة مسبقاً</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1621"/>
+        <location filename="../GUI/mainwindow.cpp" line="1669"/>
         <source>This delivery has already been processed.</source>
         <translation type="unfinished">تمت معالجة هذا التوصيل مسبقاً.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1640"/>
+        <location filename="../GUI/mainwindow.cpp" line="1688"/>
         <source>Supplier Not Found</source>
         <translation type="unfinished">المورد غير موجود</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1641"/>
+        <location filename="../GUI/mainwindow.cpp" line="1689"/>
         <source>The supplier for this delivery no longer exists in the system.</source>
         <translation type="unfinished">المورد لهذا التوصيل لم يعد موجوداً في النظام.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1691"/>
+        <location filename="../GUI/mainwindow.cpp" line="1739"/>
         <source>Delivery Approved</source>
         <translation type="unfinished">تمت الموافقة على التوصيل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1692"/>
+        <location filename="../GUI/mainwindow.cpp" line="1740"/>
         <source>Successfully approved! %1 kg recorded and points awarded to supplier.</source>
         <translation type="unfinished">تمت الموافقة بنجاح! تم تسجيل %1 كجم ومنح النقاط للمورد.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1701"/>
+        <location filename="../GUI/mainwindow.cpp" line="1749"/>
         <source>Please select a pending delivery to reject.</source>
         <translation type="unfinished">يرجى تحديد توصيل قيد الانتظار للرفض.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1707"/>
+        <location filename="../GUI/mainwindow.cpp" line="1755"/>
         <source>Cannot reject an already approved delivery.</source>
         <translation type="unfinished">لا يمكن رفض توصيل تمت الموافقة عليه مسبقاً.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1711"/>
+        <location filename="../GUI/mainwindow.cpp" line="1759"/>
         <source>Already Rejected</source>
         <translation type="unfinished">مرفوض مسبقاً</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1711"/>
+        <location filename="../GUI/mainwindow.cpp" line="1759"/>
         <source>This delivery has already been rejected.</source>
         <translation type="unfinished">تم رفض هذا التوصيل مسبقاً.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1727"/>
+        <location filename="../GUI/mainwindow.cpp" line="1775"/>
         <source>Delivery Rejected</source>
         <translation type="unfinished">تم رفض التوصيل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1727"/>
+        <location filename="../GUI/mainwindow.cpp" line="1775"/>
         <source>The delivery has been rejected.</source>
         <translation type="unfinished">تم رفض التوصيل.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1739"/>
+        <location filename="../GUI/mainwindow.cpp" line="1787"/>
         <source>Supplier Dashboard</source>
         <translation type="unfinished">لوحة تحكم المورد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1746"/>
+        <location filename="../GUI/mainwindow.cpp" line="1794"/>
         <source>Total Bones Delivered: 0 kg</source>
         <translation type="unfinished">إجمالي العظام المسلمة: ٠ كجم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1747"/>
-        <location filename="../GUI/mainwindow.cpp" line="2589"/>
+        <location filename="../GUI/mainwindow.cpp" line="1795"/>
+        <location filename="../GUI/mainwindow.cpp" line="2637"/>
         <source>Current Points: 0</source>
         <translation type="unfinished">النقاط الحالية: ٠</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1748"/>
-        <location filename="../GUI/mainwindow.cpp" line="1951"/>
+        <location filename="../GUI/mainwindow.cpp" line="1796"/>
+        <location filename="../GUI/mainwindow.cpp" line="1999"/>
         <source>Current Rank: Bronze</source>
         <translation type="unfinished">الرتبة الحالية: برونزية</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1764"/>
+        <location filename="../GUI/mainwindow.cpp" line="1812"/>
         <source>Recent Deliveries</source>
         <translation type="unfinished">آخر التوصيلات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1790"/>
+        <location filename="../GUI/mainwindow.cpp" line="1838"/>
         <source>Total Bones Delivered: %1 kg</source>
         <translation type="unfinished">إجمالي العظام المسلمة: %1 كجم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1798"/>
-        <location filename="../GUI/mainwindow.cpp" line="2700"/>
+        <location filename="../GUI/mainwindow.cpp" line="1846"/>
+        <location filename="../GUI/mainwindow.cpp" line="2748"/>
         <source>Current Points: %1</source>
         <translation type="unfinished">النقاط الحالية: %1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1800"/>
-        <location filename="../GUI/mainwindow.cpp" line="2066"/>
-        <location filename="../GUI/mainwindow.cpp" line="2701"/>
+        <location filename="../GUI/mainwindow.cpp" line="1848"/>
+        <location filename="../GUI/mainwindow.cpp" line="2114"/>
+        <location filename="../GUI/mainwindow.cpp" line="2749"/>
         <source>Bronze</source>
         <translation type="unfinished">برونزية</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1804"/>
-        <location filename="../GUI/mainwindow.cpp" line="2070"/>
-        <location filename="../GUI/mainwindow.cpp" line="2702"/>
+        <location filename="../GUI/mainwindow.cpp" line="1852"/>
+        <location filename="../GUI/mainwindow.cpp" line="2118"/>
+        <location filename="../GUI/mainwindow.cpp" line="2750"/>
         <source>Platinum</source>
         <translation type="unfinished">بلاتينية</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1807"/>
-        <location filename="../GUI/mainwindow.cpp" line="2075"/>
-        <location filename="../GUI/mainwindow.cpp" line="2703"/>
+        <location filename="../GUI/mainwindow.cpp" line="1855"/>
+        <location filename="../GUI/mainwindow.cpp" line="2123"/>
+        <location filename="../GUI/mainwindow.cpp" line="2751"/>
         <source>Gold</source>
         <translation type="unfinished">ذهبية</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1810"/>
-        <location filename="../GUI/mainwindow.cpp" line="2077"/>
-        <location filename="../GUI/mainwindow.cpp" line="2704"/>
+        <location filename="../GUI/mainwindow.cpp" line="1858"/>
+        <location filename="../GUI/mainwindow.cpp" line="2125"/>
+        <location filename="../GUI/mainwindow.cpp" line="2752"/>
         <source>Silver</source>
         <translation type="unfinished">فضية</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1814"/>
-        <location filename="../GUI/mainwindow.cpp" line="2080"/>
+        <location filename="../GUI/mainwindow.cpp" line="1862"/>
+        <location filename="../GUI/mainwindow.cpp" line="2128"/>
         <source>Current Rank: %1</source>
         <translation type="unfinished">الرتبة الحالية: %1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1898"/>
+        <location filename="../GUI/mainwindow.cpp" line="1946"/>
         <source>My Deliveries</source>
         <translation type="unfinished">توصيلاتي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1934"/>
+        <location filename="../GUI/mainwindow.cpp" line="1982"/>
         <source>My Points &amp; Badges</source>
         <translation type="unfinished">نقاطي وشاراتي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1947"/>
+        <location filename="../GUI/mainwindow.cpp" line="1995"/>
         <source>Current Status</source>
         <translation type="unfinished">الحالة الحالية</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1950"/>
+        <location filename="../GUI/mainwindow.cpp" line="1998"/>
         <source>Total Points: 0</source>
         <translation type="unfinished">إجمالي النقاط: ٠</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1978"/>
+        <location filename="../GUI/mainwindow.cpp" line="2026"/>
         <source>Progress to next rank:</source>
         <translation type="unfinished">التقدم للرتبة التالية:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="1993"/>
+        <location filename="../GUI/mainwindow.cpp" line="2041"/>
         <source>Certifications &amp; Awards</source>
         <translation type="unfinished">الشهادات والجوائز</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2041"/>
-        <location filename="../GUI/mainwindow.cpp" line="2101"/>
+        <location filename="../GUI/mainwindow.cpp" line="2089"/>
+        <location filename="../GUI/mainwindow.cpp" line="2149"/>
         <source>Eco Friendly Supplier</source>
         <translation type="unfinished">مورد صديق للبيئة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2041"/>
+        <location filename="../GUI/mainwindow.cpp" line="2089"/>
         <source>Unlock at 1,000 pts</source>
         <translation type="unfinished">افتح عند ١٠٠٠ نقطة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2042"/>
-        <location filename="../GUI/mainwindow.cpp" line="2103"/>
+        <location filename="../GUI/mainwindow.cpp" line="2090"/>
+        <location filename="../GUI/mainwindow.cpp" line="2151"/>
         <source>Sustainability Champion</source>
         <translation type="unfinished">بطل الاستدامة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2042"/>
+        <location filename="../GUI/mainwindow.cpp" line="2090"/>
         <source>Unlock at 5,000 pts</source>
         <translation type="unfinished">افتح عند ٥٠٠٠ نقطة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2043"/>
-        <location filename="../GUI/mainwindow.cpp" line="2105"/>
+        <location filename="../GUI/mainwindow.cpp" line="2091"/>
+        <location filename="../GUI/mainwindow.cpp" line="2153"/>
         <source>Golden Partner</source>
         <translation type="unfinished">شريك ذهبي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2043"/>
+        <location filename="../GUI/mainwindow.cpp" line="2091"/>
         <source>Unlock at 10,000 pts</source>
         <translation type="unfinished">افتح عند ١٠٠٠٠ نقطة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2063"/>
+        <location filename="../GUI/mainwindow.cpp" line="2111"/>
         <source>Total Points: %1</source>
         <translation type="unfinished">إجمالي النقاط: %1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2073"/>
+        <location filename="../GUI/mainwindow.cpp" line="2121"/>
         <source>Max Rank Reached!</source>
         <translation type="unfinished">تم الوصول إلى أعلى رتبة!</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2085"/>
+        <location filename="../GUI/mainwindow.cpp" line="2133"/>
         <source>%1 / %2 pts</source>
         <translation type="unfinished">%1 / %2 نقطة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2101"/>
+        <location filename="../GUI/mainwindow.cpp" line="2149"/>
         <source>1,000 pts required</source>
         <translation type="unfinished">١٠٠٠ نقطة مطلوبة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2103"/>
+        <location filename="../GUI/mainwindow.cpp" line="2151"/>
         <source>5,000 pts required</source>
         <translation type="unfinished">٥٠٠٠ نقطة مطلوبة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2105"/>
+        <location filename="../GUI/mainwindow.cpp" line="2153"/>
         <source>10,000 pts required</source>
         <translation type="unfinished">١٠٠٠٠ نقطة مطلوبة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2139"/>
+        <location filename="../GUI/mainwindow.cpp" line="2187"/>
         <source>✓ %1 pts earned</source>
         <translation type="unfinished">✓ تم كسب %1 نقطة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2175"/>
-        <location filename="../GUI/mainwindow.cpp" line="2616"/>
+        <location filename="../GUI/mainwindow.cpp" line="2223"/>
+        <location filename="../GUI/mainwindow.cpp" line="2664"/>
         <source>My Profile</source>
         <translation type="unfinished">ملفي الشخصي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2188"/>
+        <location filename="../GUI/mainwindow.cpp" line="2236"/>
         <source>Account Information</source>
         <translation type="unfinished">معلومات الحساب</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2223"/>
+        <location filename="../GUI/mainwindow.cpp" line="2271"/>
         <source>Full Name:</source>
         <translation type="unfinished">الاسم الكامل:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2224"/>
+        <location filename="../GUI/mainwindow.cpp" line="2272"/>
         <source>Username:</source>
         <translation type="unfinished">اسم المستخدم:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2225"/>
-        <location filename="../GUI/mainwindow.cpp" line="2640"/>
+        <location filename="../GUI/mainwindow.cpp" line="2273"/>
+        <location filename="../GUI/mainwindow.cpp" line="2688"/>
         <source>Email:</source>
         <translation type="unfinished">البريد الإلكتروني:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2226"/>
+        <location filename="../GUI/mainwindow.cpp" line="2274"/>
         <source>Phone Number:</source>
         <translation type="unfinished">رقم الهاتف:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2227"/>
+        <location filename="../GUI/mainwindow.cpp" line="2275"/>
         <source>Account Role:</source>
         <translation type="unfinished">دور الحساب:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2238"/>
+        <location filename="../GUI/mainwindow.cpp" line="2286"/>
         <source>Request Profile Update</source>
         <translation type="unfinished">طلب تحديث الملف الشخصي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2259"/>
+        <location filename="../GUI/mainwindow.cpp" line="2307"/>
         <source>Certified Supplier</source>
         <translation type="unfinished">مورد معتمد</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2262"/>
+        <location filename="../GUI/mainwindow.cpp" line="2310"/>
         <source>System Administrator</source>
         <translation type="unfinished">مسؤول النظام</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2279"/>
+        <location filename="../GUI/mainwindow.cpp" line="2327"/>
         <source>Customer Dashboard</source>
         <translation type="unfinished">لوحة تحكم العميل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2304"/>
+        <location filename="../GUI/mainwindow.cpp" line="2352"/>
         <source>Total Orders</source>
         <translation type="unfinished">إجمالي الطلبات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2305"/>
+        <location filename="../GUI/mainwindow.cpp" line="2353"/>
         <source>Completed</source>
         <translation type="unfinished">مكتمل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2306"/>
+        <location filename="../GUI/mainwindow.cpp" line="2354"/>
         <source>My Points</source>
         <translation type="unfinished">نقاطي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2311"/>
+        <location filename="../GUI/mainwindow.cpp" line="2359"/>
         <source>Recent Orders</source>
         <translation type="unfinished">آخر الطلبات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2314"/>
-        <location filename="../GUI/mainwindow.cpp" line="2559"/>
+        <location filename="../GUI/mainwindow.cpp" line="2362"/>
+        <location filename="../GUI/mainwindow.cpp" line="2607"/>
         <source>⟳  Refresh</source>
         <translation type="unfinished">⟳  تحديث</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2322"/>
-        <location filename="../GUI/mainwindow.cpp" line="2536"/>
+        <location filename="../GUI/mainwindow.cpp" line="2370"/>
+        <location filename="../GUI/mainwindow.cpp" line="2584"/>
         <source>Qty</source>
         <translation type="unfinished">الكمية</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2322"/>
-        <location filename="../GUI/mainwindow.cpp" line="2536"/>
+        <location filename="../GUI/mainwindow.cpp" line="2370"/>
+        <location filename="../GUI/mainwindow.cpp" line="2584"/>
         <source>Total</source>
         <translation type="unfinished">المجموع</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2340"/>
+        <location filename="../GUI/mainwindow.cpp" line="2388"/>
         <source>Product Catalog</source>
         <translation type="unfinished">كتالوج المنتجات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2346"/>
+        <location filename="../GUI/mainwindow.cpp" line="2394"/>
         <source>Search products...</source>
         <translation type="unfinished">البحث عن منتجات...</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2351"/>
+        <location filename="../GUI/mainwindow.cpp" line="2399"/>
         <source>All Categories</source>
         <translation type="unfinished">جميع الفئات</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2352"/>
-        <location filename="../GUI/mainwindow.cpp" line="2393"/>
+        <location filename="../GUI/mainwindow.cpp" line="2400"/>
+        <location filename="../GUI/mainwindow.cpp" line="2441"/>
         <source>Raw Bone Fertilizer</source>
         <translation type="unfinished">سماد العظام الخام</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2353"/>
-        <location filename="../GUI/mainwindow.cpp" line="2394"/>
+        <location filename="../GUI/mainwindow.cpp" line="2401"/>
+        <location filename="../GUI/mainwindow.cpp" line="2442"/>
         <source>Powder Fertilizer</source>
         <translation type="unfinished">سماد بودرة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2354"/>
-        <location filename="../GUI/mainwindow.cpp" line="2395"/>
+        <location filename="../GUI/mainwindow.cpp" line="2402"/>
+        <location filename="../GUI/mainwindow.cpp" line="2443"/>
         <source>Organic Fertilizer</source>
         <translation type="unfinished">سماد عضوي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2355"/>
-        <location filename="../GUI/mainwindow.cpp" line="2396"/>
+        <location filename="../GUI/mainwindow.cpp" line="2403"/>
+        <location filename="../GUI/mainwindow.cpp" line="2444"/>
         <source>Feed Supplement</source>
         <translation type="unfinished">مكمل غذائي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2360"/>
+        <location filename="../GUI/mainwindow.cpp" line="2408"/>
         <source>Search</source>
         <translation type="unfinished">بحث</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2363"/>
+        <location filename="../GUI/mainwindow.cpp" line="2411"/>
         <source>+ Create Order</source>
         <translation type="unfinished">+ إنشاء طلب</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2372"/>
+        <location filename="../GUI/mainwindow.cpp" line="2420"/>
         <source>Price ($)</source>
         <translation type="unfinished">السعر ($)</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2372"/>
+        <location filename="../GUI/mainwindow.cpp" line="2420"/>
         <source>Expiry</source>
         <translation type="unfinished">تاريخ الانتهاء</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2412"/>
+        <location filename="../GUI/mainwindow.cpp" line="2460"/>
         <source>Error</source>
         <translation type="unfinished">خطأ</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2412"/>
+        <location filename="../GUI/mainwindow.cpp" line="2460"/>
         <source>No customer profile linked to your account.</source>
         <translation type="unfinished">لا يوجد ملف تعريف عميل مرتبط بحسابك.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2416"/>
+        <location filename="../GUI/mainwindow.cpp" line="2464"/>
         <source>Create Order</source>
         <translation type="unfinished">إنشاء طلب</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2433"/>
+        <location filename="../GUI/mainwindow.cpp" line="2481"/>
         <source>Qty: </source>
         <translation type="unfinished">الكمية: </translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2435"/>
+        <location filename="../GUI/mainwindow.cpp" line="2483"/>
         <source>Total: $0.00</source>
         <translation type="unfinished">المجموع: $٠.٠٠</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2442"/>
-        <location filename="../GUI/mainwindow.cpp" line="2448"/>
+        <location filename="../GUI/mainwindow.cpp" line="2490"/>
+        <location filename="../GUI/mainwindow.cpp" line="2496"/>
         <source>Total: $%1</source>
         <translation type="unfinished">المجموع: $%1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2451"/>
+        <location filename="../GUI/mainwindow.cpp" line="2499"/>
         <source>Submit Order</source>
         <translation type="unfinished">إرسال الطلب</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2462"/>
+        <location filename="../GUI/mainwindow.cpp" line="2510"/>
         <source>Insufficient Stock</source>
         <translation type="unfinished">مخزون غير كافٍ</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2463"/>
+        <location filename="../GUI/mainwindow.cpp" line="2511"/>
         <source>Only %1 units available. Requested: %2.</source>
         <translation type="unfinished">يتوفر %1 وحدة فقط. المطلوب: %2.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2489"/>
+        <location filename="../GUI/mainwindow.cpp" line="2537"/>
         <source>Order placed successfully!</source>
         <translation type="unfinished">تم تقديم الطلب بنجاح!</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2493"/>
+        <location filename="../GUI/mainwindow.cpp" line="2541"/>
         <source>Select Product:</source>
         <translation type="unfinished">اختر المنتج:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2517"/>
+        <location filename="../GUI/mainwindow.cpp" line="2565"/>
         <source>My Orders</source>
         <translation type="unfinished">طلباتي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2522"/>
+        <location filename="../GUI/mainwindow.cpp" line="2570"/>
         <source>All</source>
         <translation type="unfinished">الكل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2580"/>
+        <location filename="../GUI/mainwindow.cpp" line="2628"/>
         <source>My Points &amp; Rewards</source>
         <translation type="unfinished">نقاطي ومكافآتي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2592"/>
+        <location filename="../GUI/mainwindow.cpp" line="2640"/>
         <source>Reward Level: Bronze</source>
         <translation type="unfinished">مستوى المكافأة: برونزية</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2595"/>
+        <location filename="../GUI/mainwindow.cpp" line="2643"/>
         <source>Earn points by placing orders. 100 points per order completed.</source>
         <translation type="unfinished">اكسب النقاط عن طريق تقديم الطلبات. ١٠٠ نقطة لكل طلب مكتمل.</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2638"/>
+        <location filename="../GUI/mainwindow.cpp" line="2686"/>
         <source>Name:</source>
         <translation type="unfinished">الاسم:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2639"/>
+        <location filename="../GUI/mainwindow.cpp" line="2687"/>
         <source>Phone:</source>
         <translation type="unfinished">الهاتف:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2641"/>
+        <location filename="../GUI/mainwindow.cpp" line="2689"/>
         <source>Address:</source>
         <translation type="unfinished">العنوان:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2642"/>
+        <location filename="../GUI/mainwindow.cpp" line="2690"/>
         <source>Type:</source>
         <translation type="unfinished">النوع:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2705"/>
+        <location filename="../GUI/mainwindow.cpp" line="2753"/>
         <source>Reward Level: %1</source>
         <translation type="unfinished">مستوى المكافأة: %1</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2716"/>
+        <location filename="../GUI/mainwindow.cpp" line="2764"/>
         <source>Farmer</source>
         <translation type="unfinished">مزارع</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2717"/>
+        <location filename="../GUI/mainwindow.cpp" line="2765"/>
         <source>Breeder</source>
         <translation type="unfinished">مربي</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2718"/>
+        <location filename="../GUI/mainwindow.cpp" line="2766"/>
         <source>Company</source>
         <translation type="unfinished">شركة</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2766"/>
+        <location filename="../GUI/mainwindow.cpp" line="2814"/>
         <source>Cow Bones</source>
         <translation type="unfinished">عظام بقر</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2766"/>
+        <location filename="../GUI/mainwindow.cpp" line="2814"/>
         <source>Sheep Bones</source>
         <translation type="unfinished">عظام غنم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2766"/>
+        <location filename="../GUI/mainwindow.cpp" line="2814"/>
         <source>Chicken Bones</source>
         <translation type="unfinished">عظام دجاج</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2766"/>
+        <location filename="../GUI/mainwindow.cpp" line="2814"/>
         <source>Mixed</source>
         <translation type="unfinished">مختلط</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2770"/>
+        <location filename="../GUI/mainwindow.cpp" line="2818"/>
         <source> kg</source>
         <translation type="unfinished"> كجم</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2772"/>
+        <location filename="../GUI/mainwindow.cpp" line="2820"/>
         <source>Submit Delivery</source>
         <translation type="unfinished">إرسال التوصيل</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2775"/>
+        <location filename="../GUI/mainwindow.cpp" line="2823"/>
         <source>Bone Type:</source>
         <translation type="unfinished">نوع العظم:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2777"/>
+        <location filename="../GUI/mainwindow.cpp" line="2825"/>
         <source>Quantity:</source>
         <translation type="unfinished">الكمية:</translation>
     </message>
     <message>
-        <location filename="../GUI/mainwindow.cpp" line="2801"/>
+        <location filename="../GUI/mainwindow.cpp" line="2849"/>
         <source>Delivery logged! It is now pending Admin approval.</source>
         <translation type="unfinished">تم تسجيل التوصيل! وهو بانتظار موافقة الإدارة.</translation>
     </message>

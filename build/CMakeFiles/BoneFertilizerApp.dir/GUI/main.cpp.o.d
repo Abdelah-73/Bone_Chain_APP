@@ -402,6 +402,19 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qprogressbar.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QPixmap \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qpixmap.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QPainter \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qpainter.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QPainterPath \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qpainterpath.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QIcon \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qicon.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/QSvgRenderer \
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qsvgrenderer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qxmlstream.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgglobal.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSvg/qtsvgexports.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsUser.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/basic_ios.h \
