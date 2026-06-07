@@ -156,6 +156,7 @@ void UserDialog::handleSave()
         clsCustomer::CreateNewCustomer(newCustID,
             txtFirstName->text().toStdString(),
             txtPhone->text().toStdString());
+        userToSave.SetCustomerID(newCustID);
     }
 
     userToSave.Save();

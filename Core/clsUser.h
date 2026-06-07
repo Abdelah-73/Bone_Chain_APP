@@ -18,17 +18,22 @@ private:
     int _Role;
     bool _IsActive;
     string _SupplierID;
+    string _CustomerID;
 
     static clsUser _ConvertLineToUserObject(string Line, string Separator = "#//#")
     {
         vector<string> vUserData = clsString::Split(Line, Separator);
+        if (vUserData.size() == 11)
+        {
+            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]), vUserData[9], vUserData[10]);
+        }
         if (vUserData.size() == 10)
         {
-            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]), vUserData[9]);
+            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]), vUserData[9], "");
         }
         if (vUserData.size() == 9)
         {
-            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]), "");
+            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]), "", "");
         }
         return GetEmptyUserObject();
     }
@@ -45,7 +50,8 @@ private:
         UserRecord += User.Password() + Separator;
         UserRecord += to_string(User.Role()) + Separator;
         UserRecord += to_string(User.IsActive()) + Separator;
-        UserRecord += User.SupplierID();
+        UserRecord += User.SupplierID() + Separator;
+        UserRecord += User.CustomerID();
         return UserRecord;
     }
 
@@ -114,7 +120,7 @@ private:
 public:
     enum enRole { Admin = 1, Supplier = 2, Customer = 3 };
 
-    clsUser(enMode Mode, string UserID, string FirstName, string LastName, string Email, string Phone, string Username, string Password, int Role, bool IsActive, string SupplierID = "")
+    clsUser(enMode Mode, string UserID, string FirstName, string LastName, string Email, string Phone, string Username, string Password, int Role, bool IsActive, string SupplierID = "", string CustomerID = "")
         : clsPerson(FirstName, LastName, Email, Phone)
     {
         _Mode = Mode;
@@ -124,15 +130,18 @@ public:
         _Role = Role;
         _IsActive = IsActive;
         _SupplierID = SupplierID;
+        _CustomerID = CustomerID;
     }
 
     bool IsEmpty() const { return _Mode == enMode::EmptyMode; }
     string SupplierID() const { return _SupplierID; }
     void SetSupplierID(string SupplierID) { _SupplierID = SupplierID; }
+    string CustomerID() const { return _CustomerID; }
+    void SetCustomerID(string CustomerID) { _CustomerID = CustomerID; }
 
     static clsUser GetEmptyUserObject()
     {
-        return clsUser(enMode::EmptyMode, "", "", "", "", "", "", "", 0, false, "");
+        return clsUser(enMode::EmptyMode, "", "", "", "", "", "", "", 0, false, "", "");
     }
 
     string UserID() const { return _UserID; }
@@ -172,7 +181,7 @@ public:
 
     static clsUser GetAddNewUserObject(string UserID)
     {
-        return clsUser(enMode::AddNewMode, UserID, "", "", "", "", "", "", 0, true, "");
+        return clsUser(enMode::AddNewMode, UserID, "", "", "", "", "", "", 0, true, "", "");
     }
 
     bool Delete()

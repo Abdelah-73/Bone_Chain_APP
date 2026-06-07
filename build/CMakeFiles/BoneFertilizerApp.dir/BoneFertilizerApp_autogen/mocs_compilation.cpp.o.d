@@ -440,12 +440,12 @@ CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsUser.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsProduct.h \
+ /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsOrder.h \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_orderstatusdialog.cpp \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/orderstatusdialog.h \
- /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsOrder.h \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_productdialog.cpp \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/productdialog.h \
- /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/../Core/clsProduct.h \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_supplierdialog.cpp \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/../../../GUI/supplierdialog.h \
  /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_userdialog.cpp \

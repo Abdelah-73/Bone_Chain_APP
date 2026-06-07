@@ -71,7 +71,15 @@ void CustomerDialog::handleSave()
     clsCustomer customerToSave = clsCustomer::GetEmptyCustomerObject();
 
     if (_currentCustomerID.empty()) {
-        string newID = "CUST-" + to_string(clsCustomer::GetCustomersList().size() + 1);
+        int maxNum = 0;
+        for (const auto& c : clsCustomer::GetCustomersList()) {
+            string cid = c.CustomerID();
+            if (cid.size() > 5 && cid.substr(0, 5) == "CUST-") {
+                int n = stoi(cid.substr(5));
+                if (n > maxNum) maxNum = n;
+            }
+        }
+        string newID = "CUST-" + to_string(maxNum + 1);
         customerToSave = clsCustomer::GetAddNewCustomerObject(newID);
     } else {
         customerToSave = clsCustomer::Find(_currentCustomerID);

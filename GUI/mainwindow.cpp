@@ -72,6 +72,12 @@ void MainWindow::setupUi()
     setupMyDeliveriesScreen();
     setupMyRewardsScreen();
     setupMyProfileScreen();
+    // Customer screens
+    setupCustDashboardScreen();
+    setupCustProductsScreen();
+    setupCustOrdersScreen();
+    setupCustPointsScreen();
+    setupCustProfileScreen();
 }
 
 // --- UI Helper Method ---
@@ -119,9 +125,17 @@ void MainWindow::setupSidebar()
     btnMyRewards    = new QPushButton(" My Points & Badges", this);
     btnMyProfile    = new QPushButton(" My Profile", this);
 
+    //Customer Part :
+    btnCustDashboard = new QPushButton(" Dashboard", this);
+    btnCustProducts = new QPushButton(" Products", this);
+    btnCustOrders   = new QPushButton(" My Orders", this);
+    btnCustPoints   = new QPushButton(" My Points", this);
+    btnCustProfile  = new QPushButton(" My Profile", this);
+
     QPushButton* buttons[] = {btnDashboard, btnUsers, btnSuppliers, btnCustomers,
                               btnProducts, btnOrders, btnInventory, btnReports, btnArticles,btnDeliveries,
-                              btnSupDashboard,btnMyDeliveries,btnMyRewards,btnMyProfile};
+                              btnSupDashboard,btnMyDeliveries,btnMyRewards,btnMyProfile,
+                              btnCustDashboard,btnCustProducts,btnCustOrders,btnCustPoints,btnCustProfile};
 
    for (QPushButton* btn : buttons) {
         // We use a specific QSS rule just for the sidebar buttons here
@@ -182,6 +196,13 @@ void MainWindow::setupSidebar()
     connect(btnMyDeliveries, &QPushButton::clicked, [this]() { navigateToScreen(ScreenIndex::MyDeliveries); });
     connect(btnMyRewards, &QPushButton::clicked, [this]() { navigateToScreen(ScreenIndex::MyRewards); });
     connect(btnMyProfile, &QPushButton::clicked, [this]() { navigateToScreen(ScreenIndex::MyProfile); });
+
+    // Connect the Customer buttons to their screens
+    connect(btnCustDashboard, &QPushButton::clicked, [this]() { navigateToScreen(ScreenIndex::CustDashboard); });
+    connect(btnCustProducts, &QPushButton::clicked, [this]() { navigateToScreen(ScreenIndex::CustProducts); });
+    connect(btnCustOrders, &QPushButton::clicked, [this]() { navigateToScreen(ScreenIndex::CustOrders); });
+    connect(btnCustPoints, &QPushButton::clicked, [this]() { navigateToScreen(ScreenIndex::CustPoints); });
+    connect(btnCustProfile, &QPushButton::clicked, [this]() { navigateToScreen(ScreenIndex::CustProfile); });
 }
 
 void MainWindow::navigateToScreen(int index)
@@ -192,8 +213,9 @@ void MainWindow::navigateToScreen(int index)
         if (index != ScreenIndex::Articles) return;
     }
     if (_currentRole == clsUser::enRole::Customer) {
-        // Customers may only access Articles
-        if (index != ScreenIndex::Articles) return;
+        // Customers may access their screens and Articles
+        if (index != ScreenIndex::Articles && (index < ScreenIndex::CustDashboard || index > ScreenIndex::CustProfile))
+            return;
     }
 
     stackedScreens->setCurrentIndex(index);
@@ -214,6 +236,11 @@ void MainWindow::navigateToScreen(int index)
         case ScreenIndex::MyDeliveries: refreshMyDeliveriesTable(); break;
         case ScreenIndex::MyRewards: refreshMyRewardsScreen(); break;
         case ScreenIndex::MyProfile: refreshMyProfileScreen(); break;
+        case ScreenIndex::CustDashboard: break;
+        case ScreenIndex::CustProducts: break;
+        case ScreenIndex::CustOrders: break;
+        case ScreenIndex::CustPoints: loadCustDashboardData(); break;
+        case ScreenIndex::CustProfile: loadCustDashboardData(); break;
     }
 }
 
@@ -234,6 +261,12 @@ void MainWindow::applyRolePermissions(int role)
     btnMyDeliveries->setVisible(false);
     btnMyRewards->setVisible(false);
     btnMyProfile->setVisible(false);
+
+    btnCustDashboard->setVisible(false);
+    btnCustProducts->setVisible(false);
+    btnCustOrders->setVisible(false);
+    btnCustPoints->setVisible(false);
+    btnCustProfile->setVisible(false);
 
     btnArticles->setVisible(false);
 
@@ -280,10 +313,16 @@ void MainWindow::applyRolePermissions(int role)
     }
     else if (role == clsUser::enRole::Customer)
     {
+        btnCustDashboard->setVisible(true);
+        btnCustProducts->setVisible(true);
+        btnCustOrders->setVisible(true);
+        btnCustPoints->setVisible(true);
+        btnCustProfile->setVisible(true);
         btnArticles->setVisible(true);
 
         _currentRole = clsUser::enRole::Customer;
-        stackedScreens->setCurrentIndex(ScreenIndex::Articles);
+        stackedScreens->setCurrentIndex(ScreenIndex::CustDashboard);
+        loadCustDashboardData();
         loadArticlesData();
         QMessageBox::information(this, "Welcome",
             "Welcome to the Bone Fertilizer System.\nYou can browse our articles and knowledge base.");
@@ -337,10 +376,15 @@ void MainWindow::handleLogin()
         txtPassword->clear();
 
         _currentUser = CurrentUser;
-        _currentSupplierID.clear();
+    _currentSupplierID.clear();
+    _currentCustomerID.clear();
+        _currentCustomerID.clear();
 
         if (CurrentUser.Role() == clsUser::enRole::Supplier) {
             _currentSupplierID = CurrentUser.SupplierID();
+        }
+        if (CurrentUser.Role() == clsUser::enRole::Customer) {
+            _currentCustomerID = CurrentUser.CustomerID();
         }
 
         sidebarWidget->show();
@@ -763,7 +807,18 @@ void MainWindow::deleteSelectedCustomer()
 {
     int row = tableCustomers->currentRow();
     if (row < 0) return;
-    if (clsCustomer::Find(tableCustomers->item(row, 0)->text().toStdString()).Delete()) loadCustomersData();
+    QString id = tableCustomers->item(row, 0)->text();
+    if (QMessageBox::question(this, "Confirm", "Delete Customer " + id + "?") == QMessageBox::Yes) {
+        // Also delete linked user to avoid orphans
+        vector<clsUser> users = clsUser::GetUsersList();
+        for (clsUser& u : users) {
+            if (u.CustomerID() == id.toStdString()) {
+                u.Delete();
+                break;
+            }
+        }
+        if (clsCustomer::Find(id.toStdString()).Delete()) loadCustomersData();
+    }
 }
 
 // ==========================================
@@ -1881,24 +1936,46 @@ void MainWindow::setupMyRewardsScreen()
     certsMainLayout->addWidget(lblCertsTitle);
 
     QHBoxLayout *certsLayout = new QHBoxLayout();
-    certsLayout->setSpacing(15);
-
-    QString lockedStyle = "QFrame { background-color: #f8f9fa; border: 2px dashed #bdc3c7; border-radius: 10px; } QLabel { color: #b0b0b0; font-size: 13px; border: none; }";
+    certsLayout->setSpacing(20);
 
     auto createCert = [&](const QString& icon, const QString& title, const QString& req) -> QFrame* {
         QFrame *frame = new QFrame(cardCerts);
-        frame->setStyleSheet(lockedStyle);
-        frame->setMinimumSize(180, 140);
+        frame->setMinimumSize(200, 180);
+        frame->setStyleSheet(
+            "QFrame { background-color: #f8f9fa; border: 2px dashed #bdc3c7; border-radius: 12px; }"
+        );
+
         QVBoxLayout *lay = new QVBoxLayout(frame);
-        lay->setAlignment(Qt::AlignCenter);
-        QLabel *ico = new QLabel(icon, frame);
-        ico->setStyleSheet("font-size: 28px; border: none;");
+        lay->setContentsMargins(15, 20, 15, 15);
+        lay->setSpacing(8);
+
+        // Icon area
+        QLabel *ico = new QLabel(frame);
         ico->setAlignment(Qt::AlignCenter);
-        QLabel *lbl = new QLabel(title + "\n" + req, frame);
+        ico->setStyleSheet("font-size: 36px; border: none; color: #b0b0b0;");
+
+        // Title
+        QLabel *lbl = new QLabel(frame);
         lbl->setAlignment(Qt::AlignCenter);
-        lbl->setStyleSheet("color: #b0b0b0; font-size: 13px; border: none;");
+        lbl->setStyleSheet("color: #b0b0b0; font-size: 13px; font-weight: 600; border: none;");
+
+        // Requirement
+        QLabel *reqLbl = new QLabel(req, frame);
+        reqLbl->setAlignment(Qt::AlignCenter);
+        reqLbl->setStyleSheet("color: #ccd1d9; font-size: 11px; border: none;");
+
+        ico->setText(icon);
+        lbl->setText(title);
+        lay->addStretch();
         lay->addWidget(ico);
         lay->addWidget(lbl);
+        lay->addWidget(reqLbl);
+        lay->addStretch();
+
+        // Store pointers for later update
+        frame->setProperty("icoPtr", QVariant::fromValue(reinterpret_cast<quintptr>(ico)));
+        frame->setProperty("lblPtr", QVariant::fromValue(reinterpret_cast<quintptr>(lbl)));
+        frame->setProperty("reqPtr", QVariant::fromValue(reinterpret_cast<quintptr>(reqLbl)));
         return frame;
     };
 
@@ -1950,36 +2027,80 @@ void MainWindow::refreshMyRewardsScreen()
     }
 
     // 3. Reset all certificates to locked, then unlock conditionally
-    struct CertInfo { int pts; const char* iconLocked; const char* iconUnlocked; const char* title; const char* req; const char* bg; const char* border; const char* text; };
+    struct CertInfo {
+        int pts;
+        const char* iconLocked;
+        const char* iconUnlocked;
+        const char* title;
+        const char* req;
+        const char* ribbonBg;
+        const char* borderClr;
+        const char* textClr;
+        const char* badgeClr;
+    };
     CertInfo certs[3] = {
-        {1000, "\xF0\x9F\x94\x92", "\xF0\x9F\x9C\x91", "Eco Friendly Supplier", "Unlock at 1,000 pts", "#e8f8f0", "#27ae60", "#1e8449"},
-        {5000, "\xF0\x9F\x94\x92", "\xF0\x9F\x8C\x8D", "Sustainability Champion", "Unlock at 5,000 pts", "#eaf2f8", "#2980b9", "#1a5276"},
-        {10000, "\xF0\x9F\x94\x92", "\xE2\xAD\x90", "Golden Partner", "Unlock at 10,000 pts", "#fff8e1", "#f1c40f", "#b7950b"},
+        {1000, "\xF0\x9F\x94\x92", "\xF0\x9F\x9C\x91", "Eco Friendly Supplier", "1,000 pts required",
+         "#27ae60", "#27ae60", "#1e8449", "#e8f8f0"},
+        {5000, "\xF0\x9F\x94\x92", "\xF0\x9F\x8C\x8D", "Sustainability Champion", "5,000 pts required",
+         "#2980b9", "#2980b9", "#1a5276", "#eaf2f8"},
+        {10000, "\xF0\x9F\x94\x92", "\xE2\xAD\x90", "Golden Partner", "10,000 pts required",
+         "#f39c12", "#f1c40f", "#7d6608", "#fff8e1"},
     };
 
     for (int i = 0; i < 3; i++) {
         QFrame *f = certFrames[i];
-        QLayout *lay = f->layout();
-        QLabel *ico = qobject_cast<QLabel*>(lay->itemAt(0)->widget());
-        QLabel *lbl = qobject_cast<QLabel*>(lay->itemAt(1)->widget());
+        QLabel *ico = reinterpret_cast<QLabel*>(f->property("icoPtr").value<quintptr>());
+        QLabel *lbl = reinterpret_cast<QLabel*>(f->property("lblPtr").value<quintptr>());
+        QLabel *reqLbl = reinterpret_cast<QLabel*>(f->property("reqPtr").value<quintptr>());
 
         if (points >= certs[i].pts) {
+            // Ribbon band at top via gradient top border, clean card below
             f->setStyleSheet(QString(
-                "QFrame { background: qlineargradient(x1:0,y1:0,x2:0,y2:1,"
-                "  stop:0 %1, stop:1 white);"
-                "  border: 2px solid %2; border-radius: 10px; }"
-            ).arg(certs[i].bg).arg(certs[i].border));
-            if (ico) { ico->setText(certs[i].iconUnlocked); ico->setStyleSheet("font-size: 32px; border: none;"); }
+                "QFrame {"
+                "  background-color: white;"
+                "  border: 2px solid %2;"
+                "  border-top: 14px solid %2;"
+                "  border-radius: 8px;"
+                "}"
+            ).arg(certs[i].borderClr));
+            if (ico) {
+                ico->setText(certs[i].iconUnlocked);
+                ico->setStyleSheet(QString(
+                    "font-size: 40px; border: none; background: %1;"
+                    "  border-radius: 20px; padding: 4px;"
+                ).arg(certs[i].badgeClr));
+            }
             if (lbl) {
-                lbl->setText(QString("%1\n\xE2\x9C\x85 UNLOCKED").arg(certs[i].title));
-                lbl->setStyleSheet(QString("color: %1; font-weight: bold; font-size: 13px; border: none;").arg(certs[i].text));
+                lbl->setText(certs[i].title);
+                lbl->setStyleSheet(QString(
+                    "color: %1; font-size: 14px; font-weight: 700; border: none; margin-top: 4px;"
+                ).arg(certs[i].textClr));
+            }
+            if (reqLbl) {
+                reqLbl->setText(QString("✓ %1 pts earned").arg(certs[i].pts));
+                reqLbl->setStyleSheet(QString(
+                    "color: %1; font-size: 11px; font-weight: 600; border: none;"
+                ).arg(certs[i].borderClr));
             }
         } else {
-            f->setStyleSheet("QFrame { background-color: #f8f9fa; border: 2px dashed #bdc3c7; border-radius: 10px; } QLabel { color: #b0b0b0; font-size: 13px; border: none; }");
-            if (ico) { ico->setText(certs[i].iconLocked); ico->setStyleSheet("font-size: 28px; border: none;"); }
+            f->setStyleSheet(
+                "QFrame {"
+                "  background-color: #f8f9fa;"
+                "  border: 2px dashed #ccd1d9;"
+                "  border-radius: 8px;"
+                "}"
+            );
+            if (ico) {
+                ico->setText(certs[i].iconLocked);
+                ico->setStyleSheet("font-size: 34px; border: none; color: #b0b0b0;");
+            }
             if (lbl) {
-                lbl->setText(QString("%1\n%2").arg(certs[i].title).arg(certs[i].req));
-                lbl->setStyleSheet("color: #b0b0b0; font-size: 13px; border: none;");
+                lbl->setText(certs[i].title);
+                lbl->setStyleSheet("color: #b0b0b0; font-size: 13px; font-weight: 600; border: none;");
+            }
+            if (reqLbl) {
+                reqLbl->setText(certs[i].req);
+                reqLbl->setStyleSheet("color: #ccd1d9; font-size: 11px; border: none;");
             }
         }
     }
@@ -2082,6 +2203,508 @@ void MainWindow::refreshMyProfileScreen()
             lblProfileRole->setText("System Administrator");
             lblProfileRole->setStyleSheet("color: #e74c3c; font-weight: bold; border: none; font-size: 16px;");
         }
+    }
+}
+
+// ==========================================
+// CUSTOMER PORTAL
+// ==========================================
+
+void MainWindow::setupCustDashboardScreen()
+{
+    QWidget *w = new QWidget();
+    QVBoxLayout *l = new QVBoxLayout(w);
+    l->setContentsMargins(20, 20, 20, 20);
+    l->setSpacing(20);
+
+    QLabel *title = new QLabel("Customer Dashboard", this);
+    title->setStyleSheet("font-size: 26px; font-weight: bold; color: #2c3e50;");
+
+    // Metrics row
+    QHBoxLayout *metrics = new QHBoxLayout();
+    metrics->setSpacing(15);
+
+    auto createMetric = [&](const QString& label, QLabel*& value, const QString& color) {
+        QFrame *card = new QFrame(w);
+        card->setStyleSheet("QFrame { background-color: white; border-radius: 8px; border: 1px solid #dfe6e9; }");
+        QVBoxLayout *cl = new QVBoxLayout(card);
+        cl->setContentsMargins(20, 15, 20, 15);
+        cl->setAlignment(Qt::AlignCenter);
+        value = new QLabel("0", card);
+        value->setStyleSheet(QString("font-size: 28px; font-weight: bold; color: %1; border: none;").arg(color));
+        value->setAlignment(Qt::AlignCenter);
+        QLabel *lbl = new QLabel(label, card);
+        lbl->setStyleSheet("font-size: 13px; color: #7f8c8d; border: none;");
+        lbl->setAlignment(Qt::AlignCenter);
+        cl->addWidget(value);
+        cl->addWidget(lbl);
+        card->setMinimumSize(180, 100);
+        return card;
+    };
+
+    metrics->addWidget(createMetric("Total Orders", lblCustTotalOrders, "#2980b9"));
+    metrics->addWidget(createMetric("Completed", lblCustCompletedOrders, "#27ae60"));
+    metrics->addWidget(createMetric("My Points", lblCustPoints, "#f39c12"));
+    metrics->addStretch();
+
+    // Recent Orders
+    QHBoxLayout *recentHeader = new QHBoxLayout();
+    QLabel *subTitle = new QLabel("Recent Orders", this);
+    subTitle->setStyleSheet("font-size: 18px; font-weight: bold; color: #34495e; margin-top: 10px;");
+
+    QPushButton *btnRefreshDash = new QPushButton("\xE2\x9F\xB3  Refresh", this);
+    btnRefreshDash->setStyleSheet("background-color: #3498db; color: white; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 12px;");
+    connect(btnRefreshDash, &QPushButton::clicked, this, &MainWindow::loadCustDashboardData);
+
+    recentHeader->addWidget(subTitle);
+    recentHeader->addStretch();
+    recentHeader->addWidget(btnRefreshDash);
+
+    tableCustRecentOrders = createStandardTable({"Order ID", "Product", "Qty", "Total", "Date", "Status"});
+
+    QVBoxLayout *cl = static_cast<QVBoxLayout*>(l);
+    cl->addWidget(title);
+    cl->addLayout(metrics);
+    cl->addLayout(recentHeader);
+    cl->addWidget(tableCustRecentOrders);
+
+    stackedScreens->insertWidget(ScreenIndex::CustDashboard, w);
+}
+
+void MainWindow::setupCustProductsScreen()
+{
+    QWidget *w = new QWidget();
+    QVBoxLayout *l = new QVBoxLayout(w);
+    l->setContentsMargins(20, 20, 20, 20);
+    l->setSpacing(15);
+
+    QLabel *title = new QLabel("Product Catalog", this);
+    title->setStyleSheet("font-size: 26px; font-weight: bold; color: #2c3e50;");
+
+    // Search & Filter bar
+    QHBoxLayout *filterBar = new QHBoxLayout();
+    txtCustSearch = new QLineEdit(this);
+    txtCustSearch->setPlaceholderText("Search products...");
+    txtCustSearch->setFixedWidth(250);
+    txtCustSearch->setStyleSheet("padding: 6px; border: 1px solid #bdc3c7; border-radius: 4px;");
+
+    cmbCustCategoryFilter = new QComboBox(this);
+    cmbCustCategoryFilter->addItem("All Categories", -1);
+    cmbCustCategoryFilter->addItem("Raw Bone Fertilizer", clsProduct::enCategory::RawBoneFertilizer);
+    cmbCustCategoryFilter->addItem("Powder Fertilizer", clsProduct::enCategory::PowderFertilizer);
+    cmbCustCategoryFilter->addItem("Organic Fertilizer", clsProduct::enCategory::OrganicFertilizer);
+    cmbCustCategoryFilter->addItem("Feed Supplement", clsProduct::enCategory::FeedSupplement);
+    cmbCustCategoryFilter->setStyleSheet("padding: 6px; border: 1px solid #bdc3c7; border-radius: 4px;");
+
+    QPushButton *btnSearch = new QPushButton("Search", this);
+    btnSearch->setStyleSheet("background-color: #2980b9; color: white; padding: 6px 15px; border-radius: 4px; font-weight: bold;");
+
+    QPushButton *btnCreateOrder = new QPushButton("+ Create Order", this);
+    btnCreateOrder->setStyleSheet("background-color: #27ae60; color: white; padding: 6px 15px; border-radius: 4px; font-weight: bold;");
+
+    filterBar->addWidget(txtCustSearch);
+    filterBar->addWidget(btnSearch);
+    filterBar->addWidget(cmbCustCategoryFilter);
+    filterBar->addStretch();
+    filterBar->addWidget(btnCreateOrder);
+
+    tableCustProducts = createStandardTable({"Product ID", "Name", "Category", "Price ($)", "Stock", "Expiry"});
+
+    // Filter logic
+    auto reloadProducts = [this]() {
+        tableCustProducts->setRowCount(0);
+        vector<clsProduct> all = clsProduct::GetProductsList();
+        QString query = txtCustSearch->text().toLower();
+        int catFilter = cmbCustCategoryFilter->currentData().toInt();
+
+        for (size_t i = 0; i < all.size(); i++) {
+            if (!query.isEmpty() && !QString::fromStdString(all[i].Name()).toLower().contains(query))
+                continue;
+            if (catFilter != -1 && all[i].Category() != catFilter)
+                continue;
+
+            int r = tableCustProducts->rowCount();
+            tableCustProducts->insertRow(r);
+            tableCustProducts->setItem(r, 0, new QTableWidgetItem(QString::fromStdString(all[i].ProductID())));
+            tableCustProducts->setItem(r, 1, new QTableWidgetItem(QString::fromStdString(all[i].Name())));
+            QString cat;
+            switch (all[i].Category()) {
+                case 1: cat = "Raw Bone Fertilizer"; break;
+                case 2: cat = "Powder Fertilizer"; break;
+                case 3: cat = "Organic Fertilizer"; break;
+                case 4: cat = "Feed Supplement"; break;
+            }
+            tableCustProducts->setItem(r, 2, new QTableWidgetItem(cat));
+            tableCustProducts->setItem(r, 3, new QTableWidgetItem(QString::number(all[i].Price(), 'f', 2)));
+            tableCustProducts->setItem(r, 4, new QTableWidgetItem(QString::number(all[i].StockQuantity())));
+            tableCustProducts->setItem(r, 5, new QTableWidgetItem(QString::fromStdString(all[i].ExpiryDate())));
+        }
+    };
+
+    connect(btnSearch, &QPushButton::clicked, this, reloadProducts);
+    connect(cmbCustCategoryFilter, QOverload<int>::of(&QComboBox::currentIndexChanged), this, reloadProducts);
+    connect(txtCustSearch, &QLineEdit::returnPressed, this, reloadProducts);
+
+    // Create Order dialog
+    connect(btnCreateOrder, &QPushButton::clicked, [this]() {
+        if (_currentCustomerID.empty()) {
+            QMessageBox::warning(this, "Error", "No customer profile linked to your account.");
+            return;
+        }
+        QDialog dlg(this);
+        dlg.setWindowTitle("Create Order");
+        dlg.setFixedSize(350, 280);
+        dlg.setStyleSheet("background-color: white; color: #2c3e50; font-size: 14px;");
+
+        QVBoxLayout *dl = new QVBoxLayout(&dlg);
+
+        QComboBox *cmbProduct = new QComboBox(&dlg);
+        cmbProduct->setStyleSheet("padding: 5px; border: 1px solid #bdc3c7; border-radius: 4px;");
+        vector<clsProduct> prods = clsProduct::GetProductsList();
+        for (auto& p : prods) {
+            if (p.StockQuantity() > 0)
+                cmbProduct->addItem(QString::fromStdString(p.Name() + " ($" + to_string(p.Price()) + ")"),
+                    QString::fromStdString(p.ProductID()));
+        }
+
+        QSpinBox *spinQty = new QSpinBox(&dlg);
+        spinQty->setRange(1, 999);
+        spinQty->setPrefix("Qty: ");
+
+        QLabel *lblTotal = new QLabel("Total: $0.00", &dlg);
+        lblTotal->setStyleSheet("font-size: 18px; font-weight: bold; color: #27ae60; border: none;");
+
+        connect(cmbProduct, QOverload<int>::of(&QComboBox::currentIndexChanged), [&]() {
+            if (cmbProduct->currentIndex() < 0) return;
+            string pid = cmbProduct->currentData().toString().toStdString();
+            clsProduct p = clsProduct::Find(pid);
+            lblTotal->setText(QString("Total: $%1").arg(p.Price() * spinQty->value(), 0, 'f', 2));
+        });
+        connect(spinQty, QOverload<int>::of(&QSpinBox::valueChanged), [&]() {
+            if (cmbProduct->currentIndex() < 0) return;
+            string pid = cmbProduct->currentData().toString().toStdString();
+            clsProduct p = clsProduct::Find(pid);
+            lblTotal->setText(QString("Total: $%1").arg(p.Price() * spinQty->value(), 0, 'f', 2));
+        });
+
+        QPushButton *btnSubmit = new QPushButton("Submit Order", &dlg);
+        btnSubmit->setStyleSheet("background-color: #27ae60; color: white; padding: 8px; border-radius: 4px; font-weight: bold;");
+
+        connect(btnSubmit, &QPushButton::clicked, [&]() {
+            if (cmbProduct->currentIndex() < 0) return;
+            string pid = cmbProduct->currentData().toString().toStdString();
+            clsProduct prod = clsProduct::Find(pid);
+            if (prod.IsEmpty()) return;
+
+            // Generate new order ID
+            int maxNum = 0;
+            for (auto& o : clsOrder::GetOrdersList()) {
+                string oid = o.OrderID();
+                if (oid.size() > 4 && oid.substr(0, 4) == "ORD-") {
+                    try { int n = stoi(oid.substr(4)); if (n > maxNum) maxNum = n; }
+                    catch (...) {}
+                }
+            }
+            clsOrder order = clsOrder::GetAddNewOrderObject("ORD-" + to_string(maxNum + 1));
+            order.SetCustomerID(_currentCustomerID);
+            order.SetProductID(pid);
+            order.SetQuantity(spinQty->value());
+            order.SetTotalPrice(prod.Price() * spinQty->value());
+            order.SetOrderDate(QDateTime::currentDateTime().toString("yyyy-MM-dd").toStdString());
+            order.SetStatus(clsOrder::enStatus::Pending);
+            order.Save();
+
+            // Decrease stock
+            prod.SetStockQuantity(prod.StockQuantity() - spinQty->value());
+            prod.Save();
+
+            QMessageBox::information(&dlg, "Success", "Order placed successfully!");
+            dlg.accept();
+        });
+
+        dl->addWidget(new QLabel("Select Product:", &dlg));
+        dl->addWidget(cmbProduct);
+        dl->addWidget(spinQty);
+        dl->addWidget(lblTotal);
+        dl->addStretch();
+        dl->addWidget(btnSubmit);
+
+        dlg.exec();
+    });
+
+    l->addWidget(title);
+    l->addLayout(filterBar);
+    l->addWidget(tableCustProducts);
+
+    stackedScreens->insertWidget(ScreenIndex::CustProducts, w);
+}
+
+void MainWindow::setupCustOrdersScreen()
+{
+    QWidget *w = new QWidget();
+    QVBoxLayout *l = new QVBoxLayout(w);
+    l->setContentsMargins(20, 20, 20, 20);
+    l->setSpacing(15);
+
+    QLabel *title = new QLabel("My Orders", this);
+    title->setStyleSheet("font-size: 26px; font-weight: bold; color: #2c3e50;");
+
+    // Status filter buttons
+    QHBoxLayout *filters = new QHBoxLayout();
+    QPushButton *btnAll = new QPushButton("All", this);
+    QPushButton *btnPending = new QPushButton("Pending", this);
+    QPushButton *btnProcessing = new QPushButton("Processing", this);
+    QPushButton *btnDelivered = new QPushButton("Delivered", this);
+    QPushButton *btnCancelled = new QPushButton("Cancelled", this);
+
+    QString activeBtn = "background-color: #2980b9; color: white; padding: 6px 12px; border-radius: 4px; font-weight: bold;";
+    QString inactiveBtn = "background-color: #ecf0f1; color: #7f8c8d; padding: 6px 12px; border-radius: 4px;";
+    btnAll->setStyleSheet(activeBtn);
+    btnPending->setStyleSheet(inactiveBtn);
+    btnProcessing->setStyleSheet(inactiveBtn);
+    btnDelivered->setStyleSheet(inactiveBtn);
+    btnCancelled->setStyleSheet(inactiveBtn);
+
+    tableCustOrders = createStandardTable({"Order ID", "Product", "Qty", "Total", "Date", "Status"});
+
+    auto setFilter = [=](QPushButton* active, int statusFilter) {
+        for (auto b : {btnAll, btnPending, btnProcessing, btnDelivered, btnCancelled})
+            b->setStyleSheet(inactiveBtn);
+        active->setStyleSheet(activeBtn);
+        loadCustOrdersData();
+        // Store filter value for loadCustOrdersData to use
+        for (int r = 0; r < tableCustOrders->rowCount(); r++) {
+            bool show = (statusFilter == -1);
+            if (!show) {
+                QString s = tableCustOrders->item(r, 5)->text();
+                int st = (s == "Pending" ? 1 : s == "Confirmed" ? 2 : s == "Processing" ? 3 : s == "Delivered" ? 4 : 5);
+                show = (st == statusFilter);
+            }
+            tableCustOrders->setRowHidden(r, !show);
+        }
+    };
+
+    connect(btnAll, &QPushButton::clicked, [=]() { setFilter(btnAll, -1); });
+    connect(btnPending, &QPushButton::clicked, [=]() { setFilter(btnPending, 1); });
+    connect(btnProcessing, &QPushButton::clicked, [=]() { setFilter(btnProcessing, 3); });
+    connect(btnDelivered, &QPushButton::clicked, [=]() { setFilter(btnDelivered, 4); });
+    connect(btnCancelled, &QPushButton::clicked, [=]() { setFilter(btnCancelled, 5); });
+
+    filters->addWidget(btnAll);
+    filters->addWidget(btnPending);
+    filters->addWidget(btnProcessing);
+    filters->addWidget(btnDelivered);
+    filters->addWidget(btnCancelled);
+    filters->addStretch();
+
+    QPushButton *btnRefreshOrders = new QPushButton("\xE2\x9F\xB3  Refresh", this);
+    btnRefreshOrders->setStyleSheet("background-color: #3498db; color: white; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 12px;");
+    connect(btnRefreshOrders, &QPushButton::clicked, [=]() {
+        // Reload and keep current filter active
+        loadCustOrdersData();
+        // Re-apply hidden rows based on button styles
+        for (int r = 0; r < tableCustOrders->rowCount(); r++) {
+            bool show = true;
+            if (btnPending->styleSheet() == activeBtn) {
+                QString s = tableCustOrders->item(r, 5)->text();
+                show = (s == "Pending");
+            } else if (btnProcessing->styleSheet() == activeBtn) {
+                QString s = tableCustOrders->item(r, 5)->text();
+                show = (s == "Processing" || s == "Confirmed");
+            } else if (btnDelivered->styleSheet() == activeBtn) {
+                QString s = tableCustOrders->item(r, 5)->text();
+                show = (s == "Delivered");
+            } else if (btnCancelled->styleSheet() == activeBtn) {
+                QString s = tableCustOrders->item(r, 5)->text();
+                show = (s == "Cancelled");
+            }
+            tableCustOrders->setRowHidden(r, !show);
+        }
+    });
+    filters->addWidget(btnRefreshOrders);
+
+    l->addWidget(title);
+    l->addLayout(filters);
+    l->addWidget(tableCustOrders);
+
+    stackedScreens->insertWidget(ScreenIndex::CustOrders, w);
+}
+
+void MainWindow::setupCustPointsScreen()
+{
+    QWidget *w = new QWidget();
+    QVBoxLayout *l = new QVBoxLayout(w);
+    l->setContentsMargins(20, 20, 20, 20);
+    l->setSpacing(20);
+
+    QLabel *title = new QLabel("My Points & Rewards", this);
+    title->setStyleSheet("font-size: 26px; font-weight: bold; color: #2c3e50;");
+
+    QFrame *card = new QFrame(this);
+    card->setStyleSheet("QFrame { background-color: white; border-radius: 8px; border: 1px solid #dfe6e9; }");
+    QVBoxLayout *cl = new QVBoxLayout(card);
+    cl->setContentsMargins(30, 30, 30, 30);
+    cl->setSpacing(15);
+
+    lblCustPointsDisplay = new QLabel("Current Points: 0", this);
+    lblCustPointsDisplay->setStyleSheet("font-size: 24px; font-weight: bold; color: #f39c12; border: none;");
+
+    lblCustRewardLevel = new QLabel("Reward Level: Bronze", this);
+    lblCustRewardLevel->setStyleSheet("font-size: 18px; font-weight: bold; color: #8e44ad; border: none;");
+
+    QLabel *info = new QLabel("Earn points by placing orders. 100 points per order completed.", this);
+    info->setStyleSheet("font-size: 13px; color: #95a5a6; border: none;");
+
+    cl->addWidget(lblCustPointsDisplay);
+    cl->addWidget(lblCustRewardLevel);
+    cl->addWidget(info);
+
+    l->addWidget(title);
+    l->addWidget(card);
+    l->addStretch();
+
+    stackedScreens->insertWidget(ScreenIndex::CustPoints, w);
+}
+
+void MainWindow::setupCustProfileScreen()
+{
+    QWidget *w = new QWidget();
+    QVBoxLayout *l = new QVBoxLayout(w);
+    l->setContentsMargins(20, 20, 20, 20);
+    l->setSpacing(20);
+
+    QLabel *title = new QLabel("My Profile", this);
+    title->setStyleSheet("font-size: 26px; font-weight: bold; color: #2c3e50;");
+
+    QFrame *card = new QFrame(this);
+    card->setStyleSheet("QFrame { background-color: white; border-radius: 8px; border: 1px solid #dfe6e9; }");
+    QVBoxLayout *cl = new QVBoxLayout(card);
+    cl->setContentsMargins(30, 30, 30, 30);
+    cl->setSpacing(12);
+
+    auto createField = [&](const QString& label) -> QLabel* {
+        QHBoxLayout *row = new QHBoxLayout();
+        QLabel *k = new QLabel(label, card);
+        k->setStyleSheet("font-weight: bold; color: #34495e; border: none; min-width: 120px;");
+        QLabel *v = new QLabel("-", card);
+        v->setStyleSheet("color: #2c3e50; border: none;");
+        row->addWidget(k);
+        row->addWidget(v);
+        row->addStretch();
+        cl->addLayout(row);
+        return v;
+    };
+
+    lblCustProfName = createField("Name:");
+    lblCustProfPhone = createField("Phone:");
+    lblCustProfEmail = createField("Email:");
+    lblCustProfAddr = createField("Address:");
+    lblCustProfType = createField("Type:");
+
+    l->addWidget(title);
+    l->addWidget(card);
+    l->addStretch();
+
+    stackedScreens->insertWidget(ScreenIndex::CustProfile, w);
+}
+
+void MainWindow::loadCustDashboardData()
+{
+    if (_currentCustomerID.empty()) return;
+
+    clsCustomer cust = clsCustomer::Find(_currentCustomerID);
+    int totalOrders = 0, completedOrders = 0;
+
+    for (const auto& o : clsOrder::GetOrdersList()) {
+        if (o.CustomerID() == _currentCustomerID) {
+            totalOrders++;
+            if (o.Status() == clsOrder::enStatus::Delivered) completedOrders++;
+        }
+    }
+
+    if (lblCustTotalOrders) lblCustTotalOrders->setText(QString::number(totalOrders));
+    if (lblCustCompletedOrders) lblCustCompletedOrders->setText(QString::number(completedOrders));
+    if (lblCustPoints) lblCustPoints->setText(QString::number(cust.Points()));
+
+    // Recent Orders (last 5)
+    if (tableCustRecentOrders) {
+        tableCustRecentOrders->setRowCount(0);
+        vector<clsOrder> all = clsOrder::GetOrdersList();
+        int count = 0;
+        for (int i = (int)all.size() - 1; i >= 0 && count < 5; i--) {
+            if (all[i].CustomerID() == _currentCustomerID) {
+                int r = tableCustRecentOrders->rowCount();
+                tableCustRecentOrders->insertRow(r);
+                tableCustRecentOrders->setItem(r, 0, new QTableWidgetItem(QString::fromStdString(all[i].OrderID())));
+                clsProduct p = clsProduct::Find(all[i].ProductID());
+                tableCustRecentOrders->setItem(r, 1, new QTableWidgetItem(QString::fromStdString(p.IsEmpty() ? all[i].ProductID() : p.Name())));
+                tableCustRecentOrders->setItem(r, 2, new QTableWidgetItem(QString::number(all[i].Quantity())));
+                tableCustRecentOrders->setItem(r, 3, new QTableWidgetItem(QString::number(all[i].TotalPrice(), 'f', 2)));
+                tableCustRecentOrders->setItem(r, 4, new QTableWidgetItem(QString::fromStdString(all[i].OrderDate())));
+                QString status;
+                switch (all[i].Status()) {
+                    case 1: status = "Pending"; break;
+                    case 2: status = "Confirmed"; break;
+                    case 3: status = "Processing"; break;
+                    case 4: status = "Delivered"; break;
+                    case 5: status = "Cancelled"; break;
+                }
+                tableCustRecentOrders->setItem(r, 5, new QTableWidgetItem(status));
+                count++;
+            }
+        }
+    }
+
+    // Points screen
+    if (lblCustPointsDisplay) {
+        lblCustPointsDisplay->setText(QString("Current Points: %1").arg(cust.Points()));
+        QString rank = "Bronze";
+        if (cust.Points() >= 5000) rank = "Platinum";
+        else if (cust.Points() >= 2000) rank = "Gold";
+        else if (cust.Points() >= 500) rank = "Silver";
+        lblCustRewardLevel->setText(QString("Reward Level: %1").arg(rank));
+    }
+
+    // Profile screen
+    if (lblCustProfName) {
+        lblCustProfName->setText(QString::fromStdString(cust.FirstName()));
+        lblCustProfPhone->setText(QString::fromStdString(cust.PhoneNumber()));
+        lblCustProfEmail->setText(QString::fromStdString(_currentUser.Email()));
+        lblCustProfAddr->setText(QString::fromStdString(cust.Address()));
+        QString type;
+        switch (cust.CustomerType()) {
+            case 1: type = "Farmer"; break;
+            case 2: type = "Breeder"; break;
+            case 3: type = "Company"; break;
+        }
+        lblCustProfType->setText(type);
+    }
+}
+
+void MainWindow::loadCustOrdersData()
+{
+    if (tableCustOrders == nullptr) return;
+    tableCustOrders->setRowCount(0);
+
+    for (const auto& o : clsOrder::GetOrdersList()) {
+        if (o.CustomerID() != _currentCustomerID) continue;
+        int r = tableCustOrders->rowCount();
+        tableCustOrders->insertRow(r);
+        tableCustOrders->setItem(r, 0, new QTableWidgetItem(QString::fromStdString(o.OrderID())));
+        clsProduct p = clsProduct::Find(o.ProductID());
+        tableCustOrders->setItem(r, 1, new QTableWidgetItem(QString::fromStdString(p.IsEmpty() ? o.ProductID() : p.Name())));
+        tableCustOrders->setItem(r, 2, new QTableWidgetItem(QString::number(o.Quantity())));
+        tableCustOrders->setItem(r, 3, new QTableWidgetItem(QString::number(o.TotalPrice(), 'f', 2)));
+        tableCustOrders->setItem(r, 4, new QTableWidgetItem(QString::fromStdString(o.OrderDate())));
+        QString status;
+        switch (o.Status()) {
+            case 1: status = "Pending"; break;
+            case 2: status = "Confirmed"; break;
+            case 3: status = "Processing"; break;
+            case 4: status = "Delivered"; break;
+            case 5: status = "Cancelled"; break;
+        }
+        tableCustOrders->setItem(r, 5, new QTableWidgetItem(status));
     }
 }
 

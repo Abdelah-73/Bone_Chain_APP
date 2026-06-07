@@ -16,6 +16,9 @@
 #include <string>
 #include "../Core/clsUser.h"
 #include "../Core/clsSupplier.h"
+#include "../Core/clsCustomer.h"
+#include "../Core/clsProduct.h"
+#include "../Core/clsOrder.h"
 
 using namespace std;
 
@@ -70,13 +73,19 @@ private:
     QPushButton *btnMyDeliveries;
     QPushButton *btnMyRewards;
     QPushButton *btnMyProfile;
+    // --- Customer Navigation Buttons ---
+    QPushButton *btnCustDashboard;
+    QPushButton *btnCustProducts;
+    QPushButton *btnCustOrders;
+    QPushButton *btnCustPoints;
+    QPushButton *btnCustProfile;
 
 
     enum ScreenIndex {
         Login = 0, Dashboard, Users, Suppliers, Customers,
-        Products, Orders, Inventory, Reports, Articles,Deliveries,
-        // --- NEW SUPPLIER SCREENS ---
-        SupDashboard, MyDeliveries, MyRewards, MyProfile
+        Products, Orders, Inventory, Reports, Articles, Deliveries,
+        SupDashboard, MyDeliveries, MyRewards, MyProfile,
+        CustDashboard, CustProducts, CustOrders, CustPoints, CustProfile
     };
 
     // --- Core Setup Functions ---
@@ -109,10 +118,19 @@ private:
     void setupMyDeliveriesScreen();
     void setupMyRewardsScreen();
     void setupMyProfileScreen();
-    void refreshSupplierDashboard(); // To calculate their specific stats
+    void refreshSupplierDashboard();
     void openNewDeliveryForm();
     void refreshMyDeliveriesTable();
-    void refreshMyProfileScreen(); // The function that fetches the real data
+    void refreshMyProfileScreen();
+
+    // --- Customer Portal ---
+    void setupCustDashboardScreen();
+    void setupCustProductsScreen();
+    void setupCustOrdersScreen();
+    void setupCustPointsScreen();
+    void setupCustProfileScreen();
+    void loadCustDashboardData();
+    void loadCustOrdersData();
 
     // Supplier Dashboard Metrics
     QLabel *lblSupDashTotalDeliveries;
@@ -173,5 +191,16 @@ private:
 
     clsUser _currentUser = clsUser::GetEmptyUserObject();
     string _currentSupplierID;
+    string _currentCustomerID;
     int _currentRole = 0;
+
+    // --- Customer Portal Members ---
+    QLabel *lblCustTotalOrders, *lblCustCompletedOrders, *lblCustPoints;
+    QTableWidget *tableCustRecentOrders;
+    QTableWidget *tableCustProducts;
+    QLineEdit *txtCustSearch;
+    QComboBox *cmbCustCategoryFilter;
+    QTableWidget *tableCustOrders;
+    QLabel *lblCustPointsDisplay, *lblCustRewardLevel;
+    QLabel *lblCustProfName, *lblCustProfPhone, *lblCustProfEmail, *lblCustProfAddr, *lblCustProfType;
 };

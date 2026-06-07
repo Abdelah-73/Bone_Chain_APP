@@ -18,13 +18,18 @@ private:
     string _CustomerID;
     string _Address;
     enCustomerType _CustomerType;
+    int _Points;
 
     static clsCustomer _ConvertLineToCustomerObject(string Line, string Separator = "#//#")
     {
         vector<string> vData = clsString::Split(Line, Separator);
+        if (vData.size() == 6)
+        {
+            return clsCustomer(enMode::UpdateMode, vData[0], vData[1], vData[2], vData[3], (enCustomerType)stoi(vData[4]), stoi(vData[5]));
+        }
         if (vData.size() == 5)
         {
-            return clsCustomer(enMode::UpdateMode, vData[0], vData[1], vData[2], vData[3], (enCustomerType)stoi(vData[4]));
+            return clsCustomer(enMode::UpdateMode, vData[0], vData[1], vData[2], vData[3], (enCustomerType)stoi(vData[4]), 0);
         }
         return GetEmptyCustomerObject();
     }
@@ -33,10 +38,11 @@ private:
     {
         string Record = "";
         Record += Customer.CustomerID() + Separator;
-        Record += Customer.FirstName() + Separator; // Using FirstName as Name
+        Record += Customer.FirstName() + Separator;
         Record += Customer.PhoneNumber() + Separator;
         Record += Customer.Address() + Separator;
-        Record += to_string(Customer.CustomerType());
+        Record += to_string(Customer.CustomerType()) + Separator;
+        Record += to_string(Customer.Points());
         return Record;
     }
 
@@ -103,20 +109,21 @@ private:
     }
 
 public:
-    clsCustomer(enMode Mode, string CustomerID, string Name, string Phone, string Address, enCustomerType CustomerType)
+    clsCustomer(enMode Mode, string CustomerID, string Name, string Phone, string Address, enCustomerType CustomerType, int Points = 0)
         : clsPerson(Name, "", "", Phone)
     {
         _Mode = Mode;
         _CustomerID = CustomerID;
         _Address = Address;
         _CustomerType = CustomerType;
+        _Points = Points;
     }
 
     bool IsEmpty() const { return _Mode == enMode::EmptyMode; }
 
     static clsCustomer GetEmptyCustomerObject()
     {
-        return clsCustomer(enMode::EmptyMode, "", "", "", "", enCustomerType::Farmer);
+        return clsCustomer(enMode::EmptyMode, "", "", "", "", enCustomerType::Farmer, 0);
     }
 
     string CustomerID() const { return _CustomerID; }
@@ -124,6 +131,8 @@ public:
     string Address() const { return _Address; }
     void SetCustomerType(enCustomerType Type) { _CustomerType = Type; }
     enCustomerType CustomerType() const { return _CustomerType; }
+    void SetPoints(int Points) { _Points = Points; }
+    int Points() const { return _Points; }
 
     static clsCustomer Find(string CustomerID)
     {
@@ -142,12 +151,12 @@ public:
 
     static clsCustomer GetAddNewCustomerObject(string CustomerID)
     {
-        return clsCustomer(enMode::AddNewMode, CustomerID, "", "", "", enCustomerType::Farmer);
+        return clsCustomer(enMode::AddNewMode, CustomerID, "", "", "", enCustomerType::Farmer, 0);
     }
 
     static clsCustomer CreateNewCustomer(const string& customerID, const string& name, const string& phone)
     {
-        clsCustomer c(enMode::AddNewMode, customerID, name, phone, "", enCustomerType::Farmer);
+        clsCustomer c(enMode::AddNewMode, customerID, name, phone, "", enCustomerType::Farmer, 0);
         c.Save();
         return c;
     }

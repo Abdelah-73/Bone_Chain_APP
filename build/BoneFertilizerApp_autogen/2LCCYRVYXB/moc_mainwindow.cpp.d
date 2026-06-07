@@ -1,6 +1,9 @@
 /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/2LCCYRVYXB/moc_mainwindow.cpp: /home/abdellah/Desktop/BoneChain/GUI/mainwindow.h \
   /home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/moc_predefs.h \
+  /home/abdellah/Desktop/BoneChain/Core/clsCustomer.h \
+  /home/abdellah/Desktop/BoneChain/Core/clsOrder.h \
   /home/abdellah/Desktop/BoneChain/Core/clsPerson.h \
+  /home/abdellah/Desktop/BoneChain/Core/clsProduct.h \
   /home/abdellah/Desktop/BoneChain/Core/clsSupplier.h \
   /home/abdellah/Desktop/BoneChain/Core/clsUser.h \
   /home/abdellah/Desktop/BoneChain/Lib/clsString.h \

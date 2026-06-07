@@ -420,6 +420,9 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o: \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsPerson.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/../Lib/clsString.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsSupplier.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsCustomer.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsProduct.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsOrder.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QDateTime \
