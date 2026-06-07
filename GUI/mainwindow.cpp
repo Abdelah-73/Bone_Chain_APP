@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "ThemeManager.h"
 #include "userdialog.h"
 #include "supplierdialog.h"
 #include "productdialog.h"
@@ -40,6 +41,7 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     setupUi();
+    refreshAllStyles();
     sidebarWidget->hide();
     stackedScreens->setCurrentIndex(ScreenIndex::Login);
     setWindowIcon(QIcon(createLogo(64)));
@@ -205,7 +207,6 @@ QTableWidget* MainWindow::createStandardTable(QStringList headers)
     table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     table->setSelectionBehavior(QAbstractItemView::SelectRows);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    table->setStyleSheet("QTableWidget { background-color: #f8f9fa; alternate-background-color: #ffffff; }");
     table->setAlternatingRowColors(true);
     return table;
 }
@@ -305,24 +306,55 @@ void MainWindow::setupSidebar()
     sidebarLayout->addWidget(btnLogout);
 
     // Language switch button
-    QPushButton *btnLang = new QPushButton(tr(" العربية / English"), this);
+    QPushButton *btnLang = new QPushButton(tr("  [ EN / AR ]"), this);
     btnLang->setStyleSheet(R"(
         QPushButton {
-            background-color: #34495e;
-            color: #bdc3c7;
-            padding: 10px;
+            background-color: rgba(255,255,255,0.07);
+            color: #cbd5e1;
+            padding: 10px 16px;
             font-size: 13px;
-            border-radius: 6px;
-            margin: 5px 10px;
+            font-weight: 600;
+            border-radius: 20px;
+            margin: 4px 12px;
+            border: 1px solid rgba(255,255,255,0.06);
         }
         QPushButton:hover {
-            background-color: #2c3e50;
-            color: #1abc9c;
+            background-color: rgba(255,255,255,0.14);
+            color: #60a5fa;
+            border: 1px solid rgba(96,165,250,0.3);
         }
     )");
     btnLang->setCursor(Qt::PointingHandCursor);
     sidebarLayout->addWidget(btnLang);
     connect(btnLang, &QPushButton::clicked, this, &MainWindow::switchLanguage);
+
+    // Theme toggle button
+    QPushButton *btnTheme = new QPushButton(tr(" Theme"), this);
+    btnTheme->setObjectName("sidebarThemeBtn");
+    btnTheme->setStyleSheet(R"(
+        QPushButton {
+            background-color: rgba(255,255,255,0.07);
+            color: #cbd5e1;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 20px;
+            margin: 4px 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        QPushButton:hover {
+            background-color: rgba(255,255,255,0.14);
+            color: #fbbf24;
+            border: 1px solid rgba(251,191,36,0.3);
+        }
+    )");
+    QString themeIcon = ThemeManager::instance().currentTheme() == "dark"
+        ? QString::fromUtf8("\xE2\x98\xBE ")   // ☾
+        : QString::fromUtf8("\xE2\x98\x80 ");   // ☀
+    btnTheme->setText(themeIcon + tr(" Theme"));
+    btnTheme->setCursor(Qt::PointingHandCursor);
+    sidebarLayout->addWidget(btnTheme);
+    connect(btnTheme, &QPushButton::clicked, this, &MainWindow::toggleTheme);
 
     // Routing
     connect(btnDashboard, &QPushButton::clicked, [this](){ navigateToScreen(ScreenIndex::Dashboard); });
@@ -516,14 +548,23 @@ void MainWindow::setupLoginScreen()
     btnLogin->setStyleSheet("background-color: #2980b9; color: white; font-weight: bold; font-size: 16px;");
 
     // Language toggle
-    QPushButton *btnLang = new QPushButton(tr(" العربية / English"), this);
-    btnLang->setFixedSize(300, 35);
+    QPushButton *btnLang = new QPushButton(tr("[ EN / AR ]"), this);
+    btnLang->setFixedSize(300, 40);
     btnLang->setStyleSheet(
-        "background-color: transparent;"
-        "color: #7f8c8d;"
-        "font-size: 13px;"
-        "border: 1px solid #bdc3c7;"
-        "border-radius: 4px;"
+        "QPushButton {"
+        "  background-color: transparent;"
+        "  color: #64748b;"
+        "  font-size: 13px;"
+        "  font-weight: 600;"
+        "  border: 1.5px solid #cbd5e1;"
+        "  border-radius: 20px;"
+        "  padding: 8px;"
+        "}"
+        "QPushButton:hover {"
+        "  border: 1.5px solid #2563eb;"
+        "  color: #2563eb;"
+        "  background-color: rgba(37,99,235,0.06);"
+        "}"
     );
     btnLang->setCursor(Qt::PointingHandCursor);
 
@@ -534,9 +575,23 @@ void MainWindow::setupLoginScreen()
     l->addWidget(btnLogin, 0, Qt::AlignCenter);
     l->addSpacing(10);
     l->addWidget(btnLang, 0, Qt::AlignCenter);
+    l->addSpacing(6);
+
+    // Theme toggle on login screen
+    QPushButton *btnLoginTheme = new QPushButton(this);
+    btnLoginTheme->setObjectName("loginThemeBtn");
+    btnLoginTheme->setFixedSize(300, 40);
+    btnLoginTheme->setCursor(Qt::PointingHandCursor);
+    updateLoginThemeButton(btnLoginTheme);
+    l->addWidget(btnLoginTheme, 0, Qt::AlignCenter);
 
     connect(btnLogin, &QPushButton::clicked, this, &MainWindow::handleLogin);
     connect(btnLang, &QPushButton::clicked, this, &MainWindow::switchLanguage);
+    connect(btnLoginTheme, &QPushButton::clicked, this, [this, btnLoginTheme]() {
+        ThemeManager &tm = ThemeManager::instance();
+        tm.loadTheme(tm.currentTheme() == "light" ? "dark" : "light");
+        updateLoginThemeButton(btnLoginTheme);
+    });
     stackedScreens->insertWidget(ScreenIndex::Login, w);
 }
 
@@ -587,6 +642,211 @@ void MainWindow::switchLanguage()
     settings.sync();
     QProcess::startDetached(QApplication::applicationFilePath());
     QApplication::quit();
+}
+
+void MainWindow::toggleTheme()
+{
+    ThemeManager &tm = ThemeManager::instance();
+    QString next = tm.currentTheme() == "light" ? "dark" : "light";
+    tm.loadTheme(next);
+
+    refreshAllStyles();
+
+    // Update sidebar nav buttons
+    for (QPushButton *btn : {btnDashboard, btnUsers, btnSuppliers, btnCustomers,
+                             btnProducts, btnOrders, btnInventory, btnReports,
+                             btnArticles, btnDeliveries,
+                             btnSupDashboard, btnMyDeliveries, btnMyRewards,
+                             btnMyProfile,
+                             btnCustDashboard, btnCustProducts, btnCustOrders,
+                             btnCustPoints, btnCustProfile})
+    {
+        QString bg = tm.currentTheme() == "dark" ? "#1E293B" : "transparent";
+        QString txt = tm.currentTheme() == "dark" ? "#CBD5E1" : "#bdc3c7";
+        QString hov = tm.currentTheme() == "dark" ? "#60A5FA" : "#1abc9c";
+        btn->setStyleSheet(QString(R"(
+            QPushButton {
+                text-align: left;
+                padding: 12px 15px;
+                border: none;
+                font-size: 15px;
+                background-color: %1;
+                color: %2;
+                border-radius: 6px;
+                margin: 2px 10px;
+            }
+            QPushButton:hover {
+                background-color: #34495e;
+                color: %3;
+            }
+        )").arg(bg, txt, hov));
+    }
+
+    // Update sidebar theme button label
+    QPushButton *sbBtn = sidebarWidget->findChild<QPushButton*>("sidebarThemeBtn");
+    if (sbBtn) {
+        bool dark = tm.currentTheme() == "dark";
+        QString icon = dark
+            ? QString::fromUtf8("\xE2\x98\xBE ")
+            : QString::fromUtf8("\xE2\x98\x80 ");
+        sbBtn->setText(icon + tr(dark ? "Dark Mode" : "Light Mode"));
+    }
+
+    // Update login theme button if visible
+    QPushButton *loginBtn = findChild<QPushButton*>("loginThemeBtn");
+    if (loginBtn)
+        updateLoginThemeButton(loginBtn);
+}
+
+void MainWindow::updateLoginThemeButton(QPushButton *btn)
+{
+    ThemeManager &tm = ThemeManager::instance();
+    bool dark = tm.currentTheme() == "dark";
+    QString icon = dark ? QString::fromUtf8("\xE2\x98\xBE ")    // ☾
+                        : QString::fromUtf8("\xE2\x98\x80 ");   // ☀
+    btn->setText(icon + tr(dark ? "Switch to Light" : "Switch to Dark"));
+    QString fg = dark ? "#e2e8f0" : "#64748b";
+    QString border = dark ? "#475569" : "#cbd5e1";
+    QString accent = dark ? "#fbbf24" : "#2563eb";
+    btn->setStyleSheet(
+        QString("QPushButton {"
+                "  background-color: transparent;"
+                "  color: %1;"
+                "  font-size: 13px;"
+                "  font-weight: 600;"
+                "  border: 1.5px solid %2;"
+                "  border-radius: 20px;"
+                "  padding: 8px;"
+                "}"
+                "QPushButton:hover {"
+                "  border: 1.5px solid %3;"
+                "  color: %3;"
+                "  background-color: rgba(37,99,235,0.06);"
+                "}")
+        .arg(fg, border, accent)
+    );
+}
+
+void MainWindow::refreshAllStyles()
+{
+    ThemeManager &tm = ThemeManager::instance();
+    bool dark = tm.currentTheme() == "dark";
+
+    // Color palette based on current theme
+    QString cardBg   = dark ? "#1E293B" : "white";
+    QString cardBdr  = dark ? "#334155" : "#dfe6e9";
+    QString panelBg  = dark ? "#1E293B" : "white";
+    QString titleClr = dark ? "#F8FAFC" : "#2c3e50";
+    QString bodyClr  = dark ? "#CBD5E1" : "#7f8c8d";
+    QString valueClr = dark ? "#F8FAFC" : "#2c3e50";
+    QString frameBg  = dark ? "#1E293B" : "#f8f9fa";
+    QString frameBdr = dark ? "#334155" : "#dfe6e9";
+
+    // ========== DASHBOARD ==========
+    if (lblDashSuppliers) {
+        QString card = QString("background-color: %1; padding: 15px; border-radius: 8px; "
+                               "font-size: 16px; font-weight: bold; border: 1px solid %2; color: %3;")
+                       .arg(cardBg, cardBdr, valueClr);
+        QString cardOrg = card + "color: #d35400;";
+        QString cardGrn = card + "color: #27ae60;";
+        QString cardBlu = card + "color: #2980b9;";
+
+        lblDashSuppliers->setStyleSheet(card);
+        lblDashCustomers->setStyleSheet(card);
+        lblDashProducts->setStyleSheet(card);
+        lblDashOrders->setStyleSheet(card);
+        lblDashBones->setStyleSheet(cardOrg);
+        lblDashRevenue->setStyleSheet(cardGrn);
+        lblDashDeliveries->setStyleSheet(cardBlu);
+    }
+
+    if (btnQuickAddSupplier) {
+        QString act = QString("background-color: %1; color: white; padding: 10px; "
+                              "border-radius: 6px; font-weight: bold;")
+                      .arg(dark ? "#2563EB" : "#34495e");
+        btnQuickAddSupplier->setStyleSheet(act);
+        btnQuickAddProduct->setStyleSheet(act);
+        btnQuickAddArticle->setStyleSheet(act);
+        btnQuickReports->setStyleSheet(act);
+    }
+
+    // ========== SUPPLIER DASHBOARD ==========
+    if (lblSupDashTotalDeliveries) {
+        QString card = QString("background-color: %1; padding: 20px; border-radius: 8px; "
+                               "font-size: 16px; font-weight: bold; border: 1px solid %2;")
+                       .arg(cardBg, cardBdr);
+        lblSupDashTotalDeliveries->setStyleSheet(card + "color: #2980b9;");
+        lblSupDashTotalBones->setStyleSheet(card + "color: #d35400;");
+        lblSupDashPoints->setStyleSheet(card + "color: #27ae60;");
+        lblSupDashRank->setStyleSheet(card + "color: #8e44ad;");
+    }
+
+    // ========== CUSTOMER DASHBOARD ==========
+    QFrame *custCard = findChild<QFrame*>("custDashCard");
+    if (custCard) {
+        custCard->setStyleSheet(
+            QString("QFrame { background-color: %1; border-radius: 8px; border: 1px solid %2; }")
+            .arg(panelBg, cardBdr)
+        );
+    }
+
+    // ========== MY REWARDS (cards) ==========
+    QFrame *statsCard = findChild<QFrame*>("rewardsStatsCard");
+    if (statsCard) {
+        statsCard->setStyleSheet(
+            QString("QFrame { background-color: %1; border-radius: 8px; border: 1px solid %2; }")
+            .arg(cardBg, cardBdr)
+        );
+    }
+    QFrame *certsCard = findChild<QFrame*>("rewardsCertsCard");
+    if (certsCard) {
+        certsCard->setStyleSheet(
+            QString("QFrame { background-color: %1; border-radius: 8px; border: 1px solid %2; }")
+            .arg(cardBg, cardBdr)
+        );
+    }
+    // Refresh certificate sub-frames
+    for (int i = 0; i < 3; ++i) {
+        QFrame *f = certFrames[i];
+        if (!f) continue;
+        if (f->property("earned").toBool()) {
+            QString earnedColor = f->property("earnedColor").toString();
+            f->setStyleSheet(
+                QString("QFrame { background-color: %1; border: 2px solid %2; border-radius: 12px; }")
+                .arg(cardBg, earnedColor)
+            );
+        } else {
+            f->setStyleSheet(
+                QString("QFrame { background-color: %1; border: 2px dashed %2; border-radius: 12px; }")
+                .arg(frameBg, dark ? "#475569" : "#bdc3c7")
+            );
+        }
+    }
+
+    // ========== MY PROFILE / CUSTOMER PROFILE ==========
+    QFrame *profileCard = findChild<QFrame*>("profileCard");
+    if (profileCard) {
+        profileCard->setStyleSheet(
+            QString("QFrame { background-color: %1; border-radius: 8px; border: 1px solid %2; }")
+            .arg(cardBg, cardBdr)
+        );
+    }
+    QFrame *custProfileCard = findChild<QFrame*>("customerProfileCard");
+    if (custProfileCard) {
+        custProfileCard->setStyleSheet(
+            QString("QFrame { background-color: %1; border-radius: 8px; border: 1px solid %2; }")
+            .arg(cardBg, cardBdr)
+        );
+    }
+
+    // ========== CUSTOMER POINTS ==========
+    QFrame *pointsCard = findChild<QFrame*>("pointsCard");
+    if (pointsCard) {
+        pointsCard->setStyleSheet(
+            QString("QFrame { background-color: %1; border-radius: 8px; border: 1px solid %2; }")
+            .arg(cardBg, cardBdr)
+        );
+    }
 }
 
 // ==========================================
@@ -1388,12 +1648,6 @@ void MainWindow::setupReportsScreen()
 
     // Initialize the Tab Widget
     tabReports = new QTabWidget(this);
-    tabReports->setStyleSheet(R"(
-        QTabWidget::pane { border: 1px solid #bdc3c7; border-radius: 4px; background: white; }
-        QTabBar::tab { background: #ecf0f1; padding: 10px 20px; border-top-left-radius: 4px; border-top-right-radius: 4px; font-weight: bold; color: #7f8c8d; margin-right: 2px; }
-        QTabBar::tab:selected { background: #3498db; color: white; }
-        QTabBar::tab:hover:!selected { background: #d0d3d4; }
-    )");
 
     // --- Tab 1: Sales & Orders Report ---
     QWidget *tabSales = new QWidget();
@@ -2072,6 +2326,7 @@ void MainWindow::setupMyRewardsScreen()
     // TOP CARD: STATUS & PROGRESS
     // ==========================================
     QFrame *cardStats = new QFrame(this);
+    cardStats->setObjectName("rewardsStatsCard");
     cardStats->setStyleSheet("QFrame { background-color: white; border-radius: 8px; border: 1px solid #dfe6e9; }");
     QVBoxLayout *statsLayout = new QVBoxLayout(cardStats);
     statsLayout->setContentsMargins(20, 20, 20, 20);
@@ -2119,6 +2374,7 @@ void MainWindow::setupMyRewardsScreen()
     // BOTTOM CARD: CERTIFICATES
     // ==========================================
     QFrame *cardCerts = new QFrame(this);
+    cardCerts->setObjectName("rewardsCertsCard");
     cardCerts->setStyleSheet("QFrame { background-color: white; border-radius: 8px; border: 1px solid #dfe6e9; }");
     QVBoxLayout *certsMainLayout = new QVBoxLayout(cardCerts);
     certsMainLayout->setContentsMargins(20, 20, 20, 20);
@@ -2313,6 +2569,7 @@ void MainWindow::setupMyProfileScreen()
     // PROFILE CARD
     // ==========================================
     QFrame *card = new QFrame(this);
+    card->setObjectName("profileCard");
     card->setStyleSheet("QFrame { background-color: white; border-radius: 8px; border: 1px solid #dfe6e9; }");
 
     QVBoxLayout *cardLayout = new QVBoxLayout(card);
@@ -2714,6 +2971,7 @@ void MainWindow::setupCustPointsScreen()
     title->setStyleSheet("font-size: 26px; font-weight: bold; color: #2c3e50;");
 
     QFrame *card = new QFrame(this);
+    card->setObjectName("pointsCard");
     card->setStyleSheet("QFrame { background-color: white; border-radius: 8px; border: 1px solid #dfe6e9; }");
     QVBoxLayout *cl = new QVBoxLayout(card);
     cl->setContentsMargins(30, 30, 30, 30);
@@ -2750,6 +3008,7 @@ void MainWindow::setupCustProfileScreen()
     title->setStyleSheet("font-size: 26px; font-weight: bold; color: #2c3e50;");
 
     QFrame *card = new QFrame(this);
+    card->setObjectName("customerProfileCard");
     card->setStyleSheet("QFrame { background-color: white; border-radius: 8px; border: 1px solid #dfe6e9; }");
     QVBoxLayout *cl = new QVBoxLayout(card);
     cl->setContentsMargins(30, 30, 30, 30);

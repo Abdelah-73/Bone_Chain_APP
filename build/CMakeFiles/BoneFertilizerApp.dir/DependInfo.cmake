@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "BoneFertilizerApp_autogen/timestamp" "custom" "BoneFertilizerApp_autogen/deps"
   "/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/mocs_compilation.cpp" "CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o.d"
+  "/home/abdellah/Desktop/BoneChain/GUI/ThemeManager.cpp" "CMakeFiles/BoneFertilizerApp.dir/GUI/ThemeManager.cpp.o" "gcc" "CMakeFiles/BoneFertilizerApp.dir/GUI/ThemeManager.cpp.o.d"
   "/home/abdellah/Desktop/BoneChain/GUI/articledialog.cpp" "CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o" "gcc" "CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o.d"
   "/home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.cpp" "CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o" "gcc" "CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o.d"
   "/home/abdellah/Desktop/BoneChain/GUI/customerdialog.cpp" "CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o" "gcc" "CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o.d"

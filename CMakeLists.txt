@@ -30,6 +30,8 @@ set(PROJECT_SOURCES
     GUI/main.cpp
     GUI/mainwindow.cpp
     GUI/mainwindow.h
+    GUI/ThemeManager.cpp
+    GUI/ThemeManager.h
     GUI/userdialog.cpp
     GUI/userdialog.h
     GUI/supplierdialog.cpp

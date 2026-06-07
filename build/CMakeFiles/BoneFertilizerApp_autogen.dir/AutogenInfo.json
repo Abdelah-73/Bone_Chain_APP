@@ -206,6 +206,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/home/abdellah/Desktop/BoneChain/GUI/ThemeManager.h",
+			"MU",
+			"2LCCYRVYXB/moc_ThemeManager.cpp",
+			null
+		],
+		[
 			"/home/abdellah/Desktop/BoneChain/GUI/articledialog.h",
 			"MU",
 			"2LCCYRVYXB/moc_articledialog.cpp",
@@ -329,6 +335,7 @@
 	"SETTINGS_FILE" : "/home/abdellah/Desktop/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/abdellah/Desktop/BoneChain/GUI/ThemeManager.cpp", "MU", null ],
 		[ "/home/abdellah/Desktop/BoneChain/GUI/articledialog.cpp", "MU", null ],
 		[
 			"/home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.cpp",

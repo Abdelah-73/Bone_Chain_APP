@@ -64,6 +64,7 @@ private slots:
 
 private:
         void switchLanguage();
+        void toggleTheme();
 
     // --- Core Layout Components ---
     QWidget *centralWidget;
@@ -102,6 +103,8 @@ private:
     void setupUi();
     void setupSidebar();
     QPixmap createLogo(int size);
+    void updateLoginThemeButton(QPushButton *btn);
+    void refreshAllStyles();
     QTableWidget* createStandardTable(QStringList headers); // UI Optimization Helper
     void applyRolePermissions(int role);
     // --- The 11 Screens ---

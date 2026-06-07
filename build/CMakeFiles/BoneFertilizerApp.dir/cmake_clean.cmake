@@ -8,6 +8,8 @@ file(REMOVE_RECURSE
   "BoneFertilizerApp_autogen/timestamp"
   "CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o"
   "CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.o.d"
+  "CMakeFiles/BoneFertilizerApp.dir/GUI/ThemeManager.cpp.o"
+  "CMakeFiles/BoneFertilizerApp.dir/GUI/ThemeManager.cpp.o.d"
   "CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o"
   "CMakeFiles/BoneFertilizerApp.dir/GUI/articledialog.cpp.o.d"
   "CMakeFiles/BoneFertilizerApp.dir/GUI/articlereaderdialog.cpp.o"

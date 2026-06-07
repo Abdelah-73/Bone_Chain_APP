@@ -436,8 +436,13 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o: \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsCustomer.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsProduct.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsOrder.h \
+ /home/abdellah/Desktop/BoneChain/GUI/ThemeManager.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QStringList \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QDateTime \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
@@ -460,6 +465,4 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/main.cpp.o: \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QStringList \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h

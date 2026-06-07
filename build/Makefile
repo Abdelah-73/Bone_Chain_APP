@@ -179,6 +179,30 @@ BoneFertilizerApp_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp.dir/build.make CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.s
 .PHONY : BoneFertilizerApp_autogen/mocs_compilation.cpp.s
 
+GUI/ThemeManager.o: GUI/ThemeManager.cpp.o
+.PHONY : GUI/ThemeManager.o
+
+# target to build an object file
+GUI/ThemeManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp.dir/build.make CMakeFiles/BoneFertilizerApp.dir/GUI/ThemeManager.cpp.o
+.PHONY : GUI/ThemeManager.cpp.o
+
+GUI/ThemeManager.i: GUI/ThemeManager.cpp.i
+.PHONY : GUI/ThemeManager.i
+
+# target to preprocess a source file
+GUI/ThemeManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp.dir/build.make CMakeFiles/BoneFertilizerApp.dir/GUI/ThemeManager.cpp.i
+.PHONY : GUI/ThemeManager.cpp.i
+
+GUI/ThemeManager.s: GUI/ThemeManager.cpp.s
+.PHONY : GUI/ThemeManager.s
+
+# target to generate assembly for a file
+GUI/ThemeManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp.dir/build.make CMakeFiles/BoneFertilizerApp.dir/GUI/ThemeManager.cpp.s
+.PHONY : GUI/ThemeManager.cpp.s
+
 GUI/articledialog.o: GUI/articledialog.cpp.o
 .PHONY : GUI/articledialog.o
 
@@ -433,6 +457,9 @@ help:
 	@echo "... BoneFertilizerApp_autogen/mocs_compilation.o"
 	@echo "... BoneFertilizerApp_autogen/mocs_compilation.i"
 	@echo "... BoneFertilizerApp_autogen/mocs_compilation.s"
+	@echo "... GUI/ThemeManager.o"
+	@echo "... GUI/ThemeManager.i"
+	@echo "... GUI/ThemeManager.s"
 	@echo "... GUI/articledialog.o"
 	@echo "... GUI/articledialog.i"
 	@echo "... GUI/articledialog.s"

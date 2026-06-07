@@ -8,6 +8,8 @@ BoneFertilizerApp_autogen/timestamp: \
 	/home/abdellah/Desktop/BoneChain/Core/clsProduct.h \
 	/home/abdellah/Desktop/BoneChain/Core/clsSupplier.h \
 	/home/abdellah/Desktop/BoneChain/Core/clsUser.h \
+	/home/abdellah/Desktop/BoneChain/GUI/ThemeManager.cpp \
+	/home/abdellah/Desktop/BoneChain/GUI/ThemeManager.h \
 	/home/abdellah/Desktop/BoneChain/GUI/articledialog.cpp \
 	/home/abdellah/Desktop/BoneChain/GUI/articledialog.h \
 	/home/abdellah/Desktop/BoneChain/GUI/articlereaderdialog.cpp \
@@ -323,6 +325,9 @@ BoneFertilizerApp_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QStringList \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qabstractitemmodel.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
