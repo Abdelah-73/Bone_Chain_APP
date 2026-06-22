@@ -2,8 +2,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <fstream>
-#include "../Lib/clsString.h" // Ensures you can use your Split function
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QVariant>
+#include "clsDatabase.h"
 
 using namespace std;
 
@@ -24,58 +26,7 @@ private:
     double _Quantity;
     enStatus _Status;
 
-    // ========================================================
-    // PRIVATE HELPER METHODS (File I/O Translation)
-    // ========================================================
-
-    static clsDelivery _ConvertLineToDeliveryObject(string Line, string Separator = "#//#")
-    {
-        vector<string> vDeliveryData = clsString::Split(Line, Separator);
-        if (vDeliveryData.size() != 6)
-            return GetEmptyDeliveryObject();
-
-        return clsDelivery(enMode::UpdateMode,
-                           vDeliveryData[0],
-                           vDeliveryData[1],
-                           vDeliveryData[2],
-                           vDeliveryData[3],
-                           stod(vDeliveryData[4]),
-                           (enStatus)stoi(vDeliveryData[5]));
-    }
-
-    static string _ConvertDeliveryObjectToLine(const clsDelivery& Delivery, string Separator = "#//#")
-    {
-        string stDeliveryRecord = "";
-        stDeliveryRecord += Delivery.DeliveryID() + Separator;
-        stDeliveryRecord += Delivery.SupplierID() + Separator;
-        stDeliveryRecord += Delivery.ProductID() + Separator;
-        stDeliveryRecord += Delivery.Date() + Separator;
-        stDeliveryRecord += to_string(Delivery.Quantity()) + Separator;
-        stDeliveryRecord += to_string((int)Delivery.Status());
-
-        return stDeliveryRecord;
-    }
-
-    static void _SaveDeliveriesDataToFile(const vector<clsDelivery>& vDeliveries)
-    {
-        fstream MyFile;
-        MyFile.open("../Data/Deliveries.txt", ios::out);
-
-        if (MyFile.is_open())
-        {
-            for (const clsDelivery& C : vDeliveries)
-            {
-                MyFile << _ConvertDeliveryObjectToLine(C) << endl;
-            }
-            MyFile.close();
-        }
-    }
-
 public:
-    // ========================================================
-    // CONSTRUCTOR & GETTERS/SETTERS
-    // ========================================================
-
     clsDelivery(enMode Mode, string DeliveryID, string SupplierID, string ProductID, string Date, double Quantity, enStatus Status)
     {
         _Mode = Mode;
@@ -101,7 +52,6 @@ public:
     void SetProductID(string ProductID) { _ProductID = ProductID; }
     bool IsEmpty() const { return _Mode == enMode::EmptyMode; }
 
-    // BoneType helpers (ProductID stores the bone type string)
     enBoneType BoneTypeEnum()
     {
         if (_ProductID == "Cow Bones") return enBoneType::CowBones;
@@ -123,10 +73,6 @@ public:
         }
     }
 
-    // ========================================================
-    // STATIC FACTORY METHODS
-    // ========================================================
-
     static clsDelivery GetEmptyDeliveryObject()
     {
         return clsDelivery(enMode::EmptyMode, "", "", "", "", 0, enStatus::Pending);
@@ -137,74 +83,76 @@ public:
         return clsDelivery(enMode::AddNewMode, DeliveryID, "", "", "", 0, enStatus::Pending);
     }
 
-    // ========================================================
-    // CORE FILE I/O METHODS (Find, Read All, Save)
-    // ========================================================
-
     static vector<clsDelivery> GetDeliveriesList()
     {
         vector<clsDelivery> vDeliveries;
-        fstream MyFile;
-        MyFile.open("../Data/Deliveries.txt", ios::in); // ios::in is Read Mode
-
-        if (MyFile.is_open())
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        if (q.exec("SELECT * FROM Deliveries"))
         {
-            string Line;
-            while (getline(MyFile, Line))
+            while (q.next())
             {
-                if (Line != "")
-                {
-                    clsDelivery Delivery = _ConvertLineToDeliveryObject(Line);
-                    vDeliveries.push_back(Delivery);
-                }
+                vDeliveries.push_back(clsDelivery(enMode::UpdateMode,
+                    q.value(0).toString().toStdString(),
+                    q.value(1).toString().toStdString(),
+                    q.value(2).toString().toStdString(),
+                    q.value(3).toString().toStdString(),
+                    q.value(4).toDouble(),
+                    (enStatus)q.value(5).toInt()));
             }
-            MyFile.close();
         }
         return vDeliveries;
     }
 
     static clsDelivery Find(string DeliveryID)
     {
-        vector<clsDelivery> vDeliveries = GetDeliveriesList();
-
-        for (clsDelivery Delivery : vDeliveries)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT * FROM Deliveries WHERE DeliveryID=?");
+        q.addBindValue(QString::fromStdString(DeliveryID));
+        if (q.exec() && q.next())
         {
-            if (Delivery.DeliveryID() == DeliveryID)
-            {
-                return Delivery;
-            }
+            return clsDelivery(enMode::UpdateMode,
+                q.value(0).toString().toStdString(),
+                q.value(1).toString().toStdString(),
+                q.value(2).toString().toStdString(),
+                q.value(3).toString().toStdString(),
+                q.value(4).toDouble(),
+                (enStatus)q.value(5).toInt());
         }
-
         return GetEmptyDeliveryObject();
     }
 
     void Save()
     {
-        vector<clsDelivery> vDeliveries = GetDeliveriesList();
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
 
         switch (_Mode)
         {
             case enMode::EmptyMode:
-            {
                 return;
-            }
+
             case enMode::UpdateMode:
             {
-                for (clsDelivery& D : vDeliveries)
-                {
-                    if (D.DeliveryID() == DeliveryID())
-                    {
-                        D = *this;
-                        break;
-                    }
-                }
-                _SaveDeliveriesDataToFile(vDeliveries);
+                q.prepare("UPDATE Deliveries SET SupplierID=?,ProductID=?,Date=?,Quantity=?,Status=? WHERE DeliveryID=?");
+                q.addBindValue(QString::fromStdString(_SupplierID));
+                q.addBindValue(QString::fromStdString(_ProductID));
+                q.addBindValue(QString::fromStdString(_Date));
+                q.addBindValue(_Quantity);
+                q.addBindValue((int)_Status);
+                q.addBindValue(QString::fromStdString(_DeliveryID));
+                q.exec();
                 break;
             }
+
             case enMode::AddNewMode:
             {
-                vDeliveries.push_back(*this);
-                _SaveDeliveriesDataToFile(vDeliveries);
+                q.prepare("INSERT INTO Deliveries VALUES (?,?,?,?,?,?)");
+                q.addBindValue(QString::fromStdString(_DeliveryID));
+                q.addBindValue(QString::fromStdString(_SupplierID));
+                q.addBindValue(QString::fromStdString(_ProductID));
+                q.addBindValue(QString::fromStdString(_Date));
+                q.addBindValue(_Quantity);
+                q.addBindValue((int)_Status);
+                q.exec();
                 _Mode = enMode::UpdateMode;
                 break;
             }

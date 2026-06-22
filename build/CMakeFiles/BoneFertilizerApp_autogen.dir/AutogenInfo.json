@@ -159,6 +159,15 @@
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsVersionlessTargets.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Sql/Qt6SqlConfigVersion.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Sql/Qt6SqlConfigVersionImpl.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Sql/Qt6SqlConfig.cmake",
+		"/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Sql/Qt6SqlDependencies.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Sql/Qt6SqlTargets.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Sql/Qt6SqlTargets-none.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Sql/Qt6SqlAdditionalTargetInfo.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Sql/Qt6SqlVersionlessTargets.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6/Qt6ConfigVersion.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6/Qt6ConfigVersionImpl.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6/Qt6Config.cmake",
@@ -274,6 +283,7 @@
 		"HAS_QT_SVG",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
+		"QT_SQL_LIB",
 		"QT_SVGWIDGETS_LIB",
 		"QT_SVG_LIB",
 		"QT_WIDGETS_LIB"
@@ -293,6 +303,7 @@
 		"/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++",
 		"/usr/include/x86_64-linux-gnu/qt6/QtGui",
 		"/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
+		"/usr/include/x86_64-linux-gnu/qt6/QtSql",
 		"/usr/include/x86_64-linux-gnu/qt6/QtSvg",
 		"/usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets",
 		"/usr/include",
@@ -324,7 +335,10 @@
 	],
 	"MOC_PREDEFS_FILE" : "/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
-	"MOC_SKIP" : [],
+	"MOC_SKIP" : 
+	[
+		"/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_test_autogen/mocs_compilation.cpp"
+	],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 6,
 	"PARSE_CACHE_FILE" : "/home/abdellah/Desktop/BoneChain/build/CMakeFiles/BoneFertilizerApp_autogen.dir/ParseCache.txt",
@@ -357,7 +371,10 @@
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
-	"UIC_SKIP" : [],
+	"UIC_SKIP" : 
+	[
+		"/home/abdellah/Desktop/BoneChain/build/BoneFertilizerApp_test_autogen/mocs_compilation.cpp"
+	],
 	"UIC_UI_FILES" : [],
 	"VERBOSITY" : 0
 }

@@ -71,6 +71,7 @@ CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/l
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
+CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Sql.so.6.4.2
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Svg.so.6.4.2
 CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6SvgWidgets.so.6.4.2
 

@@ -10,7 +10,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 # Find Qt6
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Sql)
 find_package(Qt6 QUIET COMPONENTS Svg SvgWidgets)
 
 # Include directories so your GUI can find your Core headers
@@ -54,7 +54,7 @@ set(PROJECT_SOURCES
 add_executable(${PROJECT_NAME} WIN32 ${PROJECT_SOURCES})
 
 # Link Qt libraries to the executable
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Sql)
 if(Qt6Svg_FOUND)
     target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Svg Qt6::SvgWidgets)
     target_compile_definitions(${PROJECT_NAME} PRIVATE HAS_QT_SVG)

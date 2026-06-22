@@ -275,6 +275,7 @@ BoneFertilizerApp: CMakeFiles/BoneFertilizerApp.dir/GUI/customerdialog.cpp.o
 BoneFertilizerApp: CMakeFiles/BoneFertilizerApp.dir/GUI/orderstatusdialog.cpp.o
 BoneFertilizerApp: CMakeFiles/BoneFertilizerApp.dir/GUI/deliverydialog.cpp.o
 BoneFertilizerApp: CMakeFiles/BoneFertilizerApp.dir/build.make
+BoneFertilizerApp: /usr/lib/x86_64-linux-gnu/libQt6Sql.so.6.4.2
 BoneFertilizerApp: /usr/lib/x86_64-linux-gnu/libQt6SvgWidgets.so.6.4.2
 BoneFertilizerApp: /usr/lib/x86_64-linux-gnu/libQt6Svg.so.6.4.2
 BoneFertilizerApp: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2

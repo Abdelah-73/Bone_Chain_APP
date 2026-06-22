@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <fstream>
-#include "../Lib/clsString.h"
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QVariant>
+#include "clsDatabase.h"
 
 using namespace std;
 
@@ -17,87 +19,28 @@ private:
     string _Content;
     string _PublishDate;
 
-    static clsArticle _ConvertLineToArticleObject(string Line, string Separator = "#//#")
-    {
-        vector<string> vData = clsString::Split(Line, Separator);
-        if (vData.size() == 5)
-        {
-            return clsArticle(enMode::UpdateMode, vData[0], vData[1], vData[2], vData[3], vData[4]);
-        }
-        return GetEmptyArticleObject();
-    }
-
-    static string _ConvertArticleObjectToLine(const clsArticle& Article, string Separator = "#//#")
-    {
-        string Record = "";
-        Record += Article.ArticleID() + Separator;
-        Record += Article.Title() + Separator;
-        Record += Article.Category() + Separator;
-        Record += Article.Content() + Separator;
-        Record += Article.PublishDate();
-        return Record;
-    }
-
-    static vector<clsArticle> _LoadArticlesDataFromFile(string FileName = "../Data/Articles.txt")
-    {
-        vector<clsArticle> vArticles;
-        fstream MyFile;
-        MyFile.open(FileName, ios::in);
-        if (MyFile.is_open())
-        {
-            string Line;
-            while (getline(MyFile, Line))
-            {
-                clsArticle A = _ConvertLineToArticleObject(Line);
-                vArticles.push_back(A);
-            }
-            MyFile.close();
-        }
-        return vArticles;
-    }
-
-    static void _SaveArticlesDataToFile(const vector<clsArticle>& vArticles, string FileName = "../Data/Articles.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out);
-        if (MyFile.is_open())
-        {
-            for (const clsArticle& A : vArticles)
-            {
-                MyFile << _ConvertArticleObjectToLine(A) << endl;
-            }
-            MyFile.close();
-        }
-    }
-
-    void _AddDataLineToFile(string Line, string FileName = "../Data/Articles.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out | ios::app);
-        if (MyFile.is_open())
-        {
-            MyFile << Line << endl;
-            MyFile.close();
-        }
-    }
-
     void _Update()
     {
-        vector<clsArticle> vArticles = _LoadArticlesDataFromFile();
-        for (clsArticle& A : vArticles)
-        {
-            if (A.ArticleID() == ArticleID())
-            {
-                A = *this;
-                break;
-            }
-        }
-        _SaveArticlesDataToFile(vArticles);
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("UPDATE Articles SET Title=?,Category=?,Content=?,PublishDate=? WHERE ArticleID=?");
+        q.addBindValue(QString::fromStdString(_Title));
+        q.addBindValue(QString::fromStdString(_Category));
+        q.addBindValue(QString::fromStdString(_Content));
+        q.addBindValue(QString::fromStdString(_PublishDate));
+        q.addBindValue(QString::fromStdString(_ArticleID));
+        q.exec();
     }
 
     void _AddNew()
     {
-        _AddDataLineToFile(_ConvertArticleObjectToLine(*this));
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("INSERT INTO Articles VALUES (?,?,?,?,?)");
+        q.addBindValue(QString::fromStdString(_ArticleID));
+        q.addBindValue(QString::fromStdString(_Title));
+        q.addBindValue(QString::fromStdString(_Category));
+        q.addBindValue(QString::fromStdString(_Content));
+        q.addBindValue(QString::fromStdString(_PublishDate));
+        q.exec();
     }
 
 public:
@@ -130,17 +73,29 @@ public:
 
     static clsArticle Find(string ArticleID)
     {
-        vector<clsArticle> vArticles = _LoadArticlesDataFromFile();
-        for (const clsArticle& A : vArticles)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT * FROM Articles WHERE ArticleID=?");
+        q.addBindValue(QString::fromStdString(ArticleID));
+        if (q.exec() && q.next())
         {
-            if (A.ArticleID() == ArticleID) return A;
+            return clsArticle(enMode::UpdateMode,
+                q.value(0).toString().toStdString(),
+                q.value(1).toString().toStdString(),
+                q.value(2).toString().toStdString(),
+                q.value(3).toString().toStdString(),
+                q.value(4).toString().toStdString());
         }
         return GetEmptyArticleObject();
     }
 
     static bool IsArticleExist(string ArticleID)
     {
-        return !Find(ArticleID).IsEmpty();
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT COUNT(*) FROM Articles WHERE ArticleID=?");
+        q.addBindValue(QString::fromStdString(ArticleID));
+        if (q.exec() && q.next())
+            return q.value(0).toInt() > 0;
+        return false;
     }
 
     static clsArticle GetAddNewArticleObject(string ArticleID)
@@ -150,16 +105,13 @@ public:
 
     bool Delete()
     {
-        vector<clsArticle> vArticles = _LoadArticlesDataFromFile();
-        for (auto it = vArticles.begin(); it != vArticles.end(); ++it)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("DELETE FROM Articles WHERE ArticleID=?");
+        q.addBindValue(QString::fromStdString(_ArticleID));
+        if (q.exec() && q.numRowsAffected() > 0)
         {
-            if (it->ArticleID() == _ArticleID)
-            {
-                vArticles.erase(it);
-                _SaveArticlesDataToFile(vArticles);
-                *this = GetEmptyArticleObject();
-                return true;
-            }
+            *this = GetEmptyArticleObject();
+            return true;
         }
         return false;
     }
@@ -182,6 +134,20 @@ public:
 
     static vector<clsArticle> GetArticlesList()
     {
-        return _LoadArticlesDataFromFile();
+        vector<clsArticle> vArticles;
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        if (q.exec("SELECT * FROM Articles"))
+        {
+            while (q.next())
+            {
+                vArticles.push_back(clsArticle(enMode::UpdateMode,
+                    q.value(0).toString().toStdString(),
+                    q.value(1).toString().toStdString(),
+                    q.value(2).toString().toStdString(),
+                    q.value(3).toString().toStdString(),
+                    q.value(4).toString().toStdString()));
+            }
+        }
+        return vArticles;
     }
 };

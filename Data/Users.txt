@@ -3,3 +3,4 @@ USR-002#//#Bob#//#Butcher#//#bob@meat.com#//#555-1111#//#supplier#//#1234#//#2#/
 USR-3#//#Abdellah#//#Abdi#//#Abdi@gmail.com#//#0774738382#//#AbdouAbdi#//#12345#//#2#//#1#//#SUP-2#//#
 USR-004#//#Green Valley#//#Farms#//#green@farm.com#//#555-8888#//#customer#//#1234#//#3#//#1#//##//#CUST-001
 USR-5#//#Ahmed#//#Abdi#//#Ahmed@gmail.com#//#06536727272#//#ahmed#//#12345#//#3#//#1#//##//#CUST-2
+USR-6#//#سارة#//#عابدي#//#Sarah@gmail.com#//#0564733822#//#sarah#//#12345678#//#2#//#1#//#SUP-3#//#

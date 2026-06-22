@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <fstream>
-#include "../Lib/clsString.h"
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QVariant>
+#include "clsDatabase.h"
 
 using namespace std;
 
@@ -23,90 +25,35 @@ private:
     string _ProductionDate;
     string _ExpiryDate;
 
-    static clsProduct _ConvertLineToProductObject(string Line, string Separator = "#//#")
-    {
-        vector<string> vData = clsString::Split(Line, Separator);
-        if (vData.size() == 8)
-        {
-            return clsProduct(enMode::UpdateMode, vData[0], vData[1], (enCategory)stoi(vData[2]), stod(vData[3]), stoi(vData[4]), stoi(vData[5]), vData[6], vData[7]);
-        }
-        return GetEmptyProductObject();
-    }
-
-    static string _ConvertProductObjectToLine(const clsProduct& Product, string Separator = "#//#")
-    {
-        string Record = "";
-        Record += Product.ProductID() + Separator;
-        Record += Product.Name() + Separator;
-        Record += to_string(Product.Category()) + Separator;
-        Record += to_string(Product.Price()) + Separator;
-        Record += to_string(Product.StockQuantity()) + Separator;
-        Record += to_string(Product.MinimumStock()) + Separator;
-        Record += Product.ProductionDate() + Separator;
-        Record += Product.ExpiryDate();
-        return Record;
-    }
-
-    static vector<clsProduct> _LoadProductsDataFromFile(string FileName = "../Data/Products.txt")
-    {
-        vector<clsProduct> vProducts;
-        fstream MyFile;
-        MyFile.open(FileName, ios::in);
-        if (MyFile.is_open())
-        {
-            string Line;
-            while (getline(MyFile, Line))
-            {
-                clsProduct P = _ConvertLineToProductObject(Line);
-                vProducts.push_back(P);
-            }
-            MyFile.close();
-        }
-        return vProducts;
-    }
-
-    static void _SaveProductsDataToFile(const vector<clsProduct>& vProducts, string FileName = "../Data/Products.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out);
-        if (MyFile.is_open())
-        {
-            for (const clsProduct& P : vProducts)
-            {
-                MyFile << _ConvertProductObjectToLine(P) << endl;
-            }
-            MyFile.close();
-        }
-    }
-
-    void _AddDataLineToFile(string Line, string FileName = "../Data/Products.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out | ios::app);
-        if (MyFile.is_open())
-        {
-            MyFile << Line << endl;
-            MyFile.close();
-        }
-    }
-
     void _Update()
     {
-        vector<clsProduct> vProducts = _LoadProductsDataFromFile();
-        for (clsProduct& P : vProducts)
-        {
-            if (P.ProductID() == ProductID())
-            {
-                P = *this;
-                break;
-            }
-        }
-        _SaveProductsDataToFile(vProducts);
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("UPDATE Products SET Name=?,Category=?,Price=?,StockQuantity=?,"
+            "MinimumStock=?,ProductionDate=?,ExpiryDate=? WHERE ProductID=?");
+        q.addBindValue(QString::fromStdString(_Name));
+        q.addBindValue((int)_Category);
+        q.addBindValue(_Price);
+        q.addBindValue(_StockQuantity);
+        q.addBindValue(_MinimumStock);
+        q.addBindValue(QString::fromStdString(_ProductionDate));
+        q.addBindValue(QString::fromStdString(_ExpiryDate));
+        q.addBindValue(QString::fromStdString(_ProductID));
+        q.exec();
     }
 
     void _AddNew()
     {
-        _AddDataLineToFile(_ConvertProductObjectToLine(*this));
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("INSERT INTO Products VALUES (?,?,?,?,?,?,?,?)");
+        q.addBindValue(QString::fromStdString(_ProductID));
+        q.addBindValue(QString::fromStdString(_Name));
+        q.addBindValue((int)_Category);
+        q.addBindValue(_Price);
+        q.addBindValue(_StockQuantity);
+        q.addBindValue(_MinimumStock);
+        q.addBindValue(QString::fromStdString(_ProductionDate));
+        q.addBindValue(QString::fromStdString(_ExpiryDate));
+        q.exec();
     }
 
 public:
@@ -148,17 +95,32 @@ public:
 
     static clsProduct Find(string ProductID)
     {
-        vector<clsProduct> vProducts = _LoadProductsDataFromFile();
-        for (const clsProduct& P : vProducts)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT * FROM Products WHERE ProductID=?");
+        q.addBindValue(QString::fromStdString(ProductID));
+        if (q.exec() && q.next())
         {
-            if (P.ProductID() == ProductID) return P;
+            return clsProduct(enMode::UpdateMode,
+                q.value(0).toString().toStdString(),
+                q.value(1).toString().toStdString(),
+                (enCategory)q.value(2).toInt(),
+                q.value(3).toDouble(),
+                q.value(4).toInt(),
+                q.value(5).toInt(),
+                q.value(6).toString().toStdString(),
+                q.value(7).toString().toStdString());
         }
         return GetEmptyProductObject();
     }
 
     static bool IsProductExist(string ProductID)
     {
-        return !Find(ProductID).IsEmpty();
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT COUNT(*) FROM Products WHERE ProductID=?");
+        q.addBindValue(QString::fromStdString(ProductID));
+        if (q.exec() && q.next())
+            return q.value(0).toInt() > 0;
+        return false;
     }
 
     static clsProduct GetAddNewProductObject(string ProductID)
@@ -168,16 +130,13 @@ public:
 
     bool Delete()
     {
-        vector<clsProduct> vProducts = _LoadProductsDataFromFile();
-        for (auto it = vProducts.begin(); it != vProducts.end(); ++it)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("DELETE FROM Products WHERE ProductID=?");
+        q.addBindValue(QString::fromStdString(_ProductID));
+        if (q.exec() && q.numRowsAffected() > 0)
         {
-            if (it->ProductID() == _ProductID)
-            {
-                vProducts.erase(it);
-                _SaveProductsDataToFile(vProducts);
-                *this = GetEmptyProductObject();
-                return true;
-            }
+            *this = GetEmptyProductObject();
+            return true;
         }
         return false;
     }
@@ -200,6 +159,23 @@ public:
 
     static vector<clsProduct> GetProductsList()
     {
-        return _LoadProductsDataFromFile();
+        vector<clsProduct> vProducts;
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        if (q.exec("SELECT * FROM Products"))
+        {
+            while (q.next())
+            {
+                vProducts.push_back(clsProduct(enMode::UpdateMode,
+                    q.value(0).toString().toStdString(),
+                    q.value(1).toString().toStdString(),
+                    (enCategory)q.value(2).toInt(),
+                    q.value(3).toDouble(),
+                    q.value(4).toInt(),
+                    q.value(5).toInt(),
+                    q.value(6).toString().toStdString(),
+                    q.value(7).toString().toStdString()));
+            }
+        }
+        return vProducts;
     }
 };

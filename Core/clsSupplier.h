@@ -1,9 +1,11 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <fstream>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QVariant>
 #include "clsPerson.h"
-#include "../Lib/clsString.h"
+#include "clsDatabase.h"
 
 using namespace std;
 
@@ -22,95 +24,40 @@ private:
     double _WeeklyQuantity;
     int _Points;
 
-    static clsSupplier _ConvertLineToSupplierObject(string Line, string Separator = "#//#")
-    {
-        vector<string> vData = clsString::Split(Line, Separator);
-        if (vData.size() == 8)
-        {
-            return clsSupplier(enMode::UpdateMode, vData[0], vData[1], vData[2], vData[3], (enSupplierType)stoi(vData[4]), vData[5], stod(vData[6]), stoi(vData[7]));
-        }
-        return GetEmptySupplierObject();
-    }
-
-    static string _ConvertSupplierObjectToLine(const clsSupplier& Supplier, string Separator = "#//#")
-    {
-        string Record = "";
-        Record += Supplier.SupplierID() + Separator;
-        Record += Supplier.FirstName() + Separator;
-        Record += Supplier.PhoneNumber() + Separator;
-        Record += Supplier.Address() + Separator;
-        Record += to_string(Supplier.SupplierType()) + Separator;
-        Record += Supplier.BoneType() + Separator;
-        Record += to_string(Supplier.WeeklyQuantity()) + Separator;
-        Record += to_string(Supplier.Points());
-        return Record;
-    }
-
-    static vector<clsSupplier> _LoadSuppliersDataFromFile(string FileName = "../Data/Suppliers.txt")
-    {
-        vector<clsSupplier> vSuppliers;
-        fstream MyFile;
-        MyFile.open(FileName, ios::in);
-        if (MyFile.is_open())
-        {
-            string Line;
-            while (getline(MyFile, Line))
-            {
-                clsSupplier S = _ConvertLineToSupplierObject(Line);
-                vSuppliers.push_back(S);
-            }
-            MyFile.close();
-        }
-        return vSuppliers;
-    }
-
-    static void _SaveSuppliersDataToFile(const vector<clsSupplier>& vSuppliers, string FileName = "../Data/Suppliers.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out);
-        if (MyFile.is_open())
-        {
-            for (const clsSupplier& S : vSuppliers)
-            {
-                MyFile << _ConvertSupplierObjectToLine(S) << endl;
-            }
-            MyFile.close();
-        }
-    }
-
-    void _AddDataLineToFile(string Line, string FileName = "../Data/Suppliers.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out | ios::app);
-        if (MyFile.is_open())
-        {
-            MyFile << Line << endl;
-            MyFile.close();
-        }
-    }
-
     void _Update()
     {
-        vector<clsSupplier> vSuppliers = _LoadSuppliersDataFromFile();
-        for (clsSupplier& S : vSuppliers)
-        {
-            if (S.SupplierID() == SupplierID())
-            {
-                S = *this;
-                break;
-            }
-        }
-        _SaveSuppliersDataToFile(vSuppliers);
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("UPDATE Suppliers SET Name=?,Phone=?,Address=?,SupplierType=?,"
+            "BoneType=?,WeeklyQuantity=?,Points=? WHERE SupplierID=?");
+        q.addBindValue(QString::fromStdString(FirstName()));
+        q.addBindValue(QString::fromStdString(PhoneNumber()));
+        q.addBindValue(QString::fromStdString(_Address));
+        q.addBindValue((int)_SupplierType);
+        q.addBindValue(QString::fromStdString(_BoneType));
+        q.addBindValue(_WeeklyQuantity);
+        q.addBindValue(_Points);
+        q.addBindValue(QString::fromStdString(_SupplierID));
+        q.exec();
     }
 
     void _AddNew()
     {
-        _AddDataLineToFile(_ConvertSupplierObjectToLine(*this));
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("INSERT INTO Suppliers VALUES (?,?,?,?,?,?,?,?)");
+        q.addBindValue(QString::fromStdString(_SupplierID));
+        q.addBindValue(QString::fromStdString(FirstName()));
+        q.addBindValue(QString::fromStdString(PhoneNumber()));
+        q.addBindValue(QString::fromStdString(_Address));
+        q.addBindValue((int)_SupplierType);
+        q.addBindValue(QString::fromStdString(_BoneType));
+        q.addBindValue(_WeeklyQuantity);
+        q.addBindValue(_Points);
+        q.exec();
     }
 
 public:
     clsSupplier(enMode Mode, string SupplierID, string Name, string Phone, string Address, enSupplierType SupplierType, string BoneType, double WeeklyQuantity, int Points)
-        : clsPerson(Name, "", "", Phone) // Passing Name to FirstName, empty LastName and Email
+        : clsPerson(Name, "", "", Phone)
     {
         _Mode = Mode;
         _SupplierID = SupplierID;
@@ -142,17 +89,32 @@ public:
 
     static clsSupplier Find(string SupplierID)
     {
-        vector<clsSupplier> vSuppliers = _LoadSuppliersDataFromFile();
-        for (clsSupplier& S : vSuppliers)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT * FROM Suppliers WHERE SupplierID=?");
+        q.addBindValue(QString::fromStdString(SupplierID));
+        if (q.exec() && q.next())
         {
-            if (S.SupplierID() == SupplierID) return S;
+            return clsSupplier(enMode::UpdateMode,
+                q.value(0).toString().toStdString(),
+                q.value(1).toString().toStdString(),
+                q.value(2).toString().toStdString(),
+                q.value(3).toString().toStdString(),
+                (enSupplierType)q.value(4).toInt(),
+                q.value(5).toString().toStdString(),
+                q.value(6).toDouble(),
+                q.value(7).toInt());
         }
         return GetEmptySupplierObject();
     }
 
     static bool IsSupplierExist(string SupplierID)
     {
-        return !Find(SupplierID).IsEmpty();
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT COUNT(*) FROM Suppliers WHERE SupplierID=?");
+        q.addBindValue(QString::fromStdString(SupplierID));
+        if (q.exec() && q.next())
+            return q.value(0).toInt() > 0;
+        return false;
     }
 
     static clsSupplier GetAddNewSupplierObject(string SupplierID)
@@ -169,16 +131,13 @@ public:
 
     bool Delete()
     {
-        vector<clsSupplier> vSuppliers = _LoadSuppliersDataFromFile();
-        for (auto it = vSuppliers.begin(); it != vSuppliers.end(); ++it)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("DELETE FROM Suppliers WHERE SupplierID=?");
+        q.addBindValue(QString::fromStdString(_SupplierID));
+        if (q.exec() && q.numRowsAffected() > 0)
         {
-            if (it->SupplierID() == _SupplierID)
-            {
-                vSuppliers.erase(it);
-                _SaveSuppliersDataToFile(vSuppliers);
-                *this = GetEmptySupplierObject();
-                return true;
-            }
+            *this = GetEmptySupplierObject();
+            return true;
         }
         return false;
     }
@@ -202,12 +161,29 @@ public:
     void RecordDelivery(double Quantity)
     {
         _WeeklyQuantity += Quantity;
-        _Points += (int)(Quantity * 10); // Simple logic: 10 points per kg delivered
+        _Points += (int)(Quantity * 10);
         Save();
     }
 
     static vector<clsSupplier> GetSuppliersList()
     {
-        return _LoadSuppliersDataFromFile();
+        vector<clsSupplier> vSuppliers;
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        if (q.exec("SELECT * FROM Suppliers"))
+        {
+            while (q.next())
+            {
+                vSuppliers.push_back(clsSupplier(enMode::UpdateMode,
+                    q.value(0).toString().toStdString(),
+                    q.value(1).toString().toStdString(),
+                    q.value(2).toString().toStdString(),
+                    q.value(3).toString().toStdString(),
+                    (enSupplierType)q.value(4).toInt(),
+                    q.value(5).toString().toStdString(),
+                    q.value(6).toDouble(),
+                    q.value(7).toInt()));
+            }
+        }
+        return vSuppliers;
     }
 };

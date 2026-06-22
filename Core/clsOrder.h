@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <fstream>
-#include "../Lib/clsString.h"
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QVariant>
+#include "clsDatabase.h"
 
 using namespace std;
 
@@ -23,94 +25,35 @@ private:
     enStatus _Status;
     bool _PointsAwarded;
 
-    static clsOrder _ConvertLineToOrderObject(string Line, string Separator = "#//#")
-    {
-        vector<string> vData = clsString::Split(Line, Separator);
-        if (vData.size() == 8)
-        {
-            return clsOrder(enMode::UpdateMode, vData[0], vData[1], vData[2], stoi(vData[3]), stod(vData[4]), vData[5], (enStatus)stoi(vData[6]), stoi(vData[7]) == 1);
-        }
-        if (vData.size() == 7)
-        {
-            return clsOrder(enMode::UpdateMode, vData[0], vData[1], vData[2], stoi(vData[3]), stod(vData[4]), vData[5], (enStatus)stoi(vData[6]), false);
-        }
-        return GetEmptyOrderObject();
-    }
-
-    static string _ConvertOrderObjectToLine(const clsOrder& Order, string Separator = "#//#")
-    {
-        string Record = "";
-        Record += Order.OrderID() + Separator;
-        Record += Order.CustomerID() + Separator;
-        Record += Order.ProductID() + Separator;
-        Record += to_string(Order.Quantity()) + Separator;
-        Record += to_string(Order.TotalPrice()) + Separator;
-        Record += Order.OrderDate() + Separator;
-        Record += to_string(Order.Status()) + Separator;
-        Record += to_string(Order.PointsAwarded() ? 1 : 0);
-        return Record;
-    }
-
-    static vector<clsOrder> _LoadOrdersDataFromFile(string FileName = "../Data/Orders.txt")
-    {
-        vector<clsOrder> vOrders;
-        fstream MyFile;
-        MyFile.open(FileName, ios::in);
-        if (MyFile.is_open())
-        {
-            string Line;
-            while (getline(MyFile, Line))
-            {
-                clsOrder O = _ConvertLineToOrderObject(Line);
-                vOrders.push_back(O);
-            }
-            MyFile.close();
-        }
-        return vOrders;
-    }
-
-    static void _SaveOrdersDataToFile(const vector<clsOrder>& vOrders, string FileName = "../Data/Orders.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out);
-        if (MyFile.is_open())
-        {
-            for (const clsOrder& O : vOrders)
-            {
-                MyFile << _ConvertOrderObjectToLine(O) << endl;
-            }
-            MyFile.close();
-        }
-    }
-
-    void _AddDataLineToFile(string Line, string FileName = "../Data/Orders.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out | ios::app);
-        if (MyFile.is_open())
-        {
-            MyFile << Line << endl;
-            MyFile.close();
-        }
-    }
-
     void _Update()
     {
-        vector<clsOrder> vOrders = _LoadOrdersDataFromFile();
-        for (clsOrder& O : vOrders)
-        {
-            if (O.OrderID() == OrderID())
-            {
-                O = *this;
-                break;
-            }
-        }
-        _SaveOrdersDataToFile(vOrders);
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("UPDATE Orders SET CustomerID=?,ProductID=?,Quantity=?,TotalPrice=?,"
+            "OrderDate=?,Status=?,PointsAwarded=? WHERE OrderID=?");
+        q.addBindValue(QString::fromStdString(_CustomerID));
+        q.addBindValue(QString::fromStdString(_ProductID));
+        q.addBindValue(_Quantity);
+        q.addBindValue(_TotalPrice);
+        q.addBindValue(QString::fromStdString(_OrderDate));
+        q.addBindValue((int)_Status);
+        q.addBindValue(_PointsAwarded ? 1 : 0);
+        q.addBindValue(QString::fromStdString(_OrderID));
+        q.exec();
     }
 
     void _AddNew()
     {
-        _AddDataLineToFile(_ConvertOrderObjectToLine(*this));
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("INSERT INTO Orders VALUES (?,?,?,?,?,?,?,?)");
+        q.addBindValue(QString::fromStdString(_OrderID));
+        q.addBindValue(QString::fromStdString(_CustomerID));
+        q.addBindValue(QString::fromStdString(_ProductID));
+        q.addBindValue(_Quantity);
+        q.addBindValue(_TotalPrice);
+        q.addBindValue(QString::fromStdString(_OrderDate));
+        q.addBindValue((int)_Status);
+        q.addBindValue(_PointsAwarded ? 1 : 0);
+        q.exec();
     }
 
 public:
@@ -152,17 +95,32 @@ public:
 
     static clsOrder Find(string OrderID)
     {
-        vector<clsOrder> vOrders = _LoadOrdersDataFromFile();
-        for (const clsOrder& O : vOrders)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT * FROM Orders WHERE OrderID=?");
+        q.addBindValue(QString::fromStdString(OrderID));
+        if (q.exec() && q.next())
         {
-            if (O.OrderID() == OrderID) return O;
+            return clsOrder(enMode::UpdateMode,
+                q.value(0).toString().toStdString(),
+                q.value(1).toString().toStdString(),
+                q.value(2).toString().toStdString(),
+                q.value(3).toInt(),
+                q.value(4).toDouble(),
+                q.value(5).toString().toStdString(),
+                (enStatus)q.value(6).toInt(),
+                q.value(7).toInt() != 0);
         }
         return GetEmptyOrderObject();
     }
 
     static bool IsOrderExist(string OrderID)
     {
-        return !Find(OrderID).IsEmpty();
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT COUNT(*) FROM Orders WHERE OrderID=?");
+        q.addBindValue(QString::fromStdString(OrderID));
+        if (q.exec() && q.next())
+            return q.value(0).toInt() > 0;
+        return false;
     }
 
     static clsOrder GetAddNewOrderObject(string OrderID)
@@ -199,6 +157,23 @@ public:
 
     static vector<clsOrder> GetOrdersList()
     {
-        return _LoadOrdersDataFromFile();
+        vector<clsOrder> vOrders;
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        if (q.exec("SELECT * FROM Orders"))
+        {
+            while (q.next())
+            {
+                vOrders.push_back(clsOrder(enMode::UpdateMode,
+                    q.value(0).toString().toStdString(),
+                    q.value(1).toString().toStdString(),
+                    q.value(2).toString().toStdString(),
+                    q.value(3).toInt(),
+                    q.value(4).toDouble(),
+                    q.value(5).toString().toStdString(),
+                    (enStatus)q.value(6).toInt(),
+                    q.value(7).toInt() != 0));
+            }
+        }
+        return vOrders;
     }
 };

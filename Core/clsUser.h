@@ -1,9 +1,11 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <fstream>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QVariant>
 #include "clsPerson.h"
-#include "../Lib/clsString.h"
+#include "clsDatabase.h"
 
 using namespace std;
 
@@ -20,101 +22,42 @@ private:
     string _SupplierID;
     string _CustomerID;
 
-    static clsUser _ConvertLineToUserObject(string Line, string Separator = "#//#")
-    {
-        vector<string> vUserData = clsString::Split(Line, Separator);
-        if (vUserData.size() == 11)
-        {
-            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]), vUserData[9], vUserData[10]);
-        }
-        if (vUserData.size() == 10)
-        {
-            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]), vUserData[9], "");
-        }
-        if (vUserData.size() == 9)
-        {
-            return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], vUserData[6], stoi(vUserData[7]), stoi(vUserData[8]), "", "");
-        }
-        return GetEmptyUserObject();
-    }
-
-    static string _ConvertUserObjectToLine(const clsUser& User, string Separator = "#//#")
-    {
-        string UserRecord = "";
-        UserRecord += User.UserID() + Separator;
-        UserRecord += User.FirstName() + Separator;
-        UserRecord += User.LastName() + Separator;
-        UserRecord += User.Email() + Separator;
-        UserRecord += User.PhoneNumber() + Separator;
-        UserRecord += User.Username() + Separator;
-        UserRecord += User.Password() + Separator;
-        UserRecord += to_string(User.Role()) + Separator;
-        UserRecord += to_string(User.IsActive()) + Separator;
-        UserRecord += User.SupplierID() + Separator;
-        UserRecord += User.CustomerID();
-        return UserRecord;
-    }
-
-    static vector<clsUser> _LoadUsersDataFromFile(string FileName = "../Data/Users.txt")
-    {
-        vector<clsUser> vUsers;
-        fstream MyFile;
-        MyFile.open(FileName, ios::in);
-        if (MyFile.is_open())
-        {
-            string Line;
-            while (getline(MyFile, Line))
-            {
-                clsUser User = _ConvertLineToUserObject(Line);
-                vUsers.push_back(User);
-            }
-            MyFile.close();
-        }
-        return vUsers;
-    }
-
-    static void _SaveUsersDataToFile(const vector<clsUser>& vUsers, string FileName = "../Data/Users.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out);
-        if (MyFile.is_open())
-        {
-            for (const clsUser& U : vUsers)
-            {
-                MyFile << _ConvertUserObjectToLine(U) << endl;
-            }
-            MyFile.close();
-        }
-    }
-
-    void _AddDataLineToFile(string Line, string FileName = "../Data/Users.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out | ios::app);
-        if (MyFile.is_open())
-        {
-            MyFile << Line << endl;
-            MyFile.close();
-        }
-    }
-
     void _Update()
     {
-        vector<clsUser> vUsers = _LoadUsersDataFromFile();
-        for (clsUser& U : vUsers)
-        {
-            if (U.UserID() == UserID())
-            {
-                U = *this;
-                break;
-            }
-        }
-        _SaveUsersDataToFile(vUsers);
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("UPDATE Users SET FirstName=?,LastName=?,Email=?,Phone=?,"
+            "Username=?,Password=?,Role=?,IsActive=?,SupplierID=?,CustomerID=?"
+            " WHERE UserID=?");
+        q.addBindValue(QString::fromStdString(FirstName()));
+        q.addBindValue(QString::fromStdString(LastName()));
+        q.addBindValue(QString::fromStdString(Email()));
+        q.addBindValue(QString::fromStdString(PhoneNumber()));
+        q.addBindValue(QString::fromStdString(_Username));
+        q.addBindValue(QString::fromStdString(_Password));
+        q.addBindValue(_Role);
+        q.addBindValue(_IsActive ? 1 : 0);
+        q.addBindValue(QString::fromStdString(_SupplierID));
+        q.addBindValue(QString::fromStdString(_CustomerID));
+        q.addBindValue(QString::fromStdString(_UserID));
+        q.exec();
     }
 
     void _AddNew()
     {
-        _AddDataLineToFile(_ConvertUserObjectToLine(*this));
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("INSERT INTO Users VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+        q.addBindValue(QString::fromStdString(_UserID));
+        q.addBindValue(QString::fromStdString(FirstName()));
+        q.addBindValue(QString::fromStdString(LastName()));
+        q.addBindValue(QString::fromStdString(Email()));
+        q.addBindValue(QString::fromStdString(PhoneNumber()));
+        q.addBindValue(QString::fromStdString(_Username));
+        q.addBindValue(QString::fromStdString(_Password));
+        q.addBindValue(_Role);
+        q.addBindValue(_IsActive ? 1 : 0);
+        q.addBindValue(QString::fromStdString(_SupplierID));
+        q.addBindValue(QString::fromStdString(_CustomerID));
+        q.exec();
     }
 
 public:
@@ -156,27 +99,59 @@ public:
 
     static clsUser Find(string UserID)
     {
-        vector<clsUser> vUsers = _LoadUsersDataFromFile();
-        for (const clsUser& U : vUsers)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT * FROM Users WHERE UserID=?");
+        q.addBindValue(QString::fromStdString(UserID));
+        if (q.exec() && q.next())
         {
-            if (U.UserID() == UserID) return U;
+            return clsUser(enMode::UpdateMode,
+                q.value(0).toString().toStdString(),
+                q.value(1).toString().toStdString(),
+                q.value(2).toString().toStdString(),
+                q.value(3).toString().toStdString(),
+                q.value(4).toString().toStdString(),
+                q.value(5).toString().toStdString(),
+                q.value(6).toString().toStdString(),
+                q.value(7).toInt(),
+                q.value(8).toInt() != 0,
+                q.value(9).toString().toStdString(),
+                q.value(10).toString().toStdString());
         }
         return GetEmptyUserObject();
     }
 
     static clsUser FindByUsernameAndPassword(string Username, string Password)
     {
-        vector<clsUser> vUsers = _LoadUsersDataFromFile();
-        for (const clsUser& U : vUsers)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT * FROM Users WHERE Username=? AND Password=?");
+        q.addBindValue(QString::fromStdString(Username));
+        q.addBindValue(QString::fromStdString(Password));
+        if (q.exec() && q.next())
         {
-            if (U.Username() == Username && U.Password() == Password) return U;
+            return clsUser(enMode::UpdateMode,
+                q.value(0).toString().toStdString(),
+                q.value(1).toString().toStdString(),
+                q.value(2).toString().toStdString(),
+                q.value(3).toString().toStdString(),
+                q.value(4).toString().toStdString(),
+                q.value(5).toString().toStdString(),
+                q.value(6).toString().toStdString(),
+                q.value(7).toInt(),
+                q.value(8).toInt() != 0,
+                q.value(9).toString().toStdString(),
+                q.value(10).toString().toStdString());
         }
         return GetEmptyUserObject();
     }
 
     static bool IsUserExist(string UserID)
     {
-        return !Find(UserID).IsEmpty();
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT COUNT(*) FROM Users WHERE UserID=?");
+        q.addBindValue(QString::fromStdString(UserID));
+        if (q.exec() && q.next())
+            return q.value(0).toInt() > 0;
+        return false;
     }
 
     static clsUser GetAddNewUserObject(string UserID)
@@ -186,16 +161,13 @@ public:
 
     bool Delete()
     {
-        vector<clsUser> vUsers = _LoadUsersDataFromFile();
-        for (auto it = vUsers.begin(); it != vUsers.end(); ++it)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("DELETE FROM Users WHERE UserID=?");
+        q.addBindValue(QString::fromStdString(_UserID));
+        if (q.exec() && q.numRowsAffected() > 0)
         {
-            if (it->UserID() == _UserID)
-            {
-                vUsers.erase(it);
-                _SaveUsersDataToFile(vUsers);
-                *this = GetEmptyUserObject();
-                return true;
-            }
+            *this = GetEmptyUserObject();
+            return true;
         }
         return false;
     }
@@ -218,6 +190,26 @@ public:
 
     static vector<clsUser> GetUsersList()
     {
-        return _LoadUsersDataFromFile();
+        vector<clsUser> vUsers;
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        if (q.exec("SELECT * FROM Users"))
+        {
+            while (q.next())
+            {
+                vUsers.push_back(clsUser(enMode::UpdateMode,
+                    q.value(0).toString().toStdString(),
+                    q.value(1).toString().toStdString(),
+                    q.value(2).toString().toStdString(),
+                    q.value(3).toString().toStdString(),
+                    q.value(4).toString().toStdString(),
+                    q.value(5).toString().toStdString(),
+                    q.value(6).toString().toStdString(),
+                    q.value(7).toInt(),
+                    q.value(8).toInt() != 0,
+                    q.value(9).toString().toStdString(),
+                    q.value(10).toString().toStdString()));
+            }
+        }
+        return vUsers;
     }
 };

@@ -426,12 +426,47 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: \
  /usr/include/c++/13/bits/locale_facets.tcc \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/fstream \
- /usr/include/c++/13/bits/codecvt.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
- /usr/include/c++/13/bits/fstream.tcc \
+ /usr/include/c++/13/bits/istream.tcc \
+ /usr/include/x86_64-linux-gnu/qt6/QtSql/QSqlQuery \
+ /usr/include/x86_64-linux-gnu/qt6/QtSql/qsqlquery.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSql/qtsqlglobal.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSql/qtsql-config.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSql/qtsqlexports.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSql/qsqldatabase.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSql/QSqlError \
+ /usr/include/x86_64-linux-gnu/qt6/QtSql/qsqlerror.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QVariant \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsPerson.h \
+ /home/abdellah/Desktop/BoneChain/GUI/../Core/clsDatabase.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtSql/QSqlDatabase \
+ /usr/include/x86_64-linux-gnu/qt6/QtSql/qsqldatabase.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QFile \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
+ /usr/include/c++/13/filesystem /usr/include/c++/13/bits/fs_fwd.h \
+ /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/locale \
+ /usr/include/c++/13/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/iomanip \
+ /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/sstream \
+ /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
+ /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QTextStream \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qtextstream.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QStringList \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/../Lib/clsString.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsSupplier.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsCustomer.h \
@@ -440,10 +475,6 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: \
  /home/abdellah/Desktop/BoneChain/GUI/ThemeManager.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QStringList \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
  /home/abdellah/Desktop/BoneChain/GUI/userdialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
@@ -474,7 +505,6 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlineedit.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QDateTime \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGroupBox \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgroupbox.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
@@ -483,23 +513,5 @@ CMakeFiles/BoneFertilizerApp.dir/GUI/mainwindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qsettings.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QProcess \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocess.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QFile \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
- /usr/include/c++/13/filesystem /usr/include/c++/13/bits/fs_fwd.h \
- /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/locale \
- /usr/include/c++/13/bits/locale_facets_nonio.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/13/bits/locale_facets_nonio.tcc \
- /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/iomanip \
- /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/sstream \
- /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
- /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsInventory.h \
  /home/abdellah/Desktop/BoneChain/GUI/../Core/clsReport.h

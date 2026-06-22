@@ -63,6 +63,7 @@ CMAKE_BINARY_DIR = /home/abdellah/Desktop/BoneChain/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/BoneFertilizerApp_test.dir/all
 all: CMakeFiles/BoneFertilizerApp.dir/all
 .PHONY : all
 
@@ -71,10 +72,40 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/BoneFertilizerApp_test.dir/clean
 clean: CMakeFiles/BoneFertilizerApp.dir/clean
+clean: CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/clean
+clean: CMakeFiles/BoneFertilizerApp_test_autogen.dir/clean
 clean: CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/clean
 clean: CMakeFiles/BoneFertilizerApp_autogen.dir/clean
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/BoneFertilizerApp_test.dir
+
+# All Build rule for target.
+CMakeFiles/BoneFertilizerApp_test.dir/all: CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/all
+CMakeFiles/BoneFertilizerApp_test.dir/all: CMakeFiles/BoneFertilizerApp_test_autogen.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test.dir/build.make CMakeFiles/BoneFertilizerApp_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test.dir/build.make CMakeFiles/BoneFertilizerApp_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=16,17,18,19 "Built target BoneFertilizerApp_test"
+.PHONY : CMakeFiles/BoneFertilizerApp_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/BoneFertilizerApp_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abdellah/Desktop/BoneChain/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/BoneFertilizerApp_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abdellah/Desktop/BoneChain/build/CMakeFiles 0
+.PHONY : CMakeFiles/BoneFertilizerApp_test.dir/rule
+
+# Convenience name for target.
+BoneFertilizerApp_test: CMakeFiles/BoneFertilizerApp_test.dir/rule
+.PHONY : BoneFertilizerApp_test
+
+# clean rule for target.
+CMakeFiles/BoneFertilizerApp_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test.dir/build.make CMakeFiles/BoneFertilizerApp_test.dir/clean
+.PHONY : CMakeFiles/BoneFertilizerApp_test.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/BoneFertilizerApp.dir
@@ -102,6 +133,58 @@ BoneFertilizerApp: CMakeFiles/BoneFertilizerApp.dir/rule
 CMakeFiles/BoneFertilizerApp.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp.dir/build.make CMakeFiles/BoneFertilizerApp.dir/clean
 .PHONY : CMakeFiles/BoneFertilizerApp.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir
+
+# All Build rule for target.
+CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/build.make CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/build.make CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num= "Built target BoneFertilizerApp_test_autogen_timestamp_deps"
+.PHONY : CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abdellah/Desktop/BoneChain/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abdellah/Desktop/BoneChain/build/CMakeFiles 0
+.PHONY : CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/rule
+
+# Convenience name for target.
+BoneFertilizerApp_test_autogen_timestamp_deps: CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/rule
+.PHONY : BoneFertilizerApp_test_autogen_timestamp_deps
+
+# clean rule for target.
+CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/build.make CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/clean
+.PHONY : CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/BoneFertilizerApp_test_autogen.dir
+
+# All Build rule for target.
+CMakeFiles/BoneFertilizerApp_test_autogen.dir/all: CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test_autogen.dir/build.make CMakeFiles/BoneFertilizerApp_test_autogen.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test_autogen.dir/build.make CMakeFiles/BoneFertilizerApp_test_autogen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abdellah/Desktop/BoneChain/build/CMakeFiles --progress-num=20 "Built target BoneFertilizerApp_test_autogen"
+.PHONY : CMakeFiles/BoneFertilizerApp_test_autogen.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/BoneFertilizerApp_test_autogen.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abdellah/Desktop/BoneChain/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/BoneFertilizerApp_test_autogen.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abdellah/Desktop/BoneChain/build/CMakeFiles 0
+.PHONY : CMakeFiles/BoneFertilizerApp_test_autogen.dir/rule
+
+# Convenience name for target.
+BoneFertilizerApp_test_autogen: CMakeFiles/BoneFertilizerApp_test_autogen.dir/rule
+.PHONY : BoneFertilizerApp_test_autogen
+
+# clean rule for target.
+CMakeFiles/BoneFertilizerApp_test_autogen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test_autogen.dir/build.make CMakeFiles/BoneFertilizerApp_test_autogen.dir/clean
+.PHONY : CMakeFiles/BoneFertilizerApp_test_autogen.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir

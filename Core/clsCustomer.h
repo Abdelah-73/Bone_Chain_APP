@@ -1,9 +1,11 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <fstream>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QVariant>
 #include "clsPerson.h"
-#include "../Lib/clsString.h"
+#include "clsDatabase.h"
 
 using namespace std;
 
@@ -20,92 +22,30 @@ private:
     enCustomerType _CustomerType;
     int _Points;
 
-    static clsCustomer _ConvertLineToCustomerObject(string Line, string Separator = "#//#")
-    {
-        vector<string> vData = clsString::Split(Line, Separator);
-        if (vData.size() == 6)
-        {
-            return clsCustomer(enMode::UpdateMode, vData[0], vData[1], vData[2], vData[3], (enCustomerType)stoi(vData[4]), stoi(vData[5]));
-        }
-        if (vData.size() == 5)
-        {
-            return clsCustomer(enMode::UpdateMode, vData[0], vData[1], vData[2], vData[3], (enCustomerType)stoi(vData[4]), 0);
-        }
-        return GetEmptyCustomerObject();
-    }
-
-    static string _ConvertCustomerObjectToLine(const clsCustomer& Customer, string Separator = "#//#")
-    {
-        string Record = "";
-        Record += Customer.CustomerID() + Separator;
-        Record += Customer.FirstName() + Separator;
-        Record += Customer.PhoneNumber() + Separator;
-        Record += Customer.Address() + Separator;
-        Record += to_string(Customer.CustomerType()) + Separator;
-        Record += to_string(Customer.Points());
-        return Record;
-    }
-
-    static vector<clsCustomer> _LoadCustomersDataFromFile(string FileName = "../Data/Customers.txt")
-    {
-        vector<clsCustomer> vCustomers;
-        fstream MyFile;
-        MyFile.open(FileName, ios::in);
-        if (MyFile.is_open())
-        {
-            string Line;
-            while (getline(MyFile, Line))
-            {
-                clsCustomer C = _ConvertLineToCustomerObject(Line);
-                vCustomers.push_back(C);
-            }
-            MyFile.close();
-        }
-        return vCustomers;
-    }
-
-    static void _SaveCustomersDataToFile(const vector<clsCustomer>& vCustomers, string FileName = "../Data/Customers.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out);
-        if (MyFile.is_open())
-        {
-            for (const clsCustomer& C : vCustomers)
-            {
-                MyFile << _ConvertCustomerObjectToLine(C) << endl;
-            }
-            MyFile.close();
-        }
-    }
-
-    void _AddDataLineToFile(string Line, string FileName = "../Data/Customers.txt")
-    {
-        fstream MyFile;
-        MyFile.open(FileName, ios::out | ios::app);
-        if (MyFile.is_open())
-        {
-            MyFile << Line << endl;
-            MyFile.close();
-        }
-    }
-
     void _Update()
     {
-        vector<clsCustomer> vCustomers = _LoadCustomersDataFromFile();
-        for (clsCustomer& C : vCustomers)
-        {
-            if (C.CustomerID() == CustomerID())
-            {
-                C = *this;
-                break;
-            }
-        }
-        _SaveCustomersDataToFile(vCustomers);
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("UPDATE Customers SET Name=?,Phone=?,Address=?,CustomerType=?,Points=? WHERE CustomerID=?");
+        q.addBindValue(QString::fromStdString(FirstName()));
+        q.addBindValue(QString::fromStdString(PhoneNumber()));
+        q.addBindValue(QString::fromStdString(_Address));
+        q.addBindValue((int)_CustomerType);
+        q.addBindValue(_Points);
+        q.addBindValue(QString::fromStdString(_CustomerID));
+        q.exec();
     }
 
     void _AddNew()
     {
-        _AddDataLineToFile(_ConvertCustomerObjectToLine(*this));
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("INSERT INTO Customers VALUES (?,?,?,?,?,?)");
+        q.addBindValue(QString::fromStdString(_CustomerID));
+        q.addBindValue(QString::fromStdString(FirstName()));
+        q.addBindValue(QString::fromStdString(PhoneNumber()));
+        q.addBindValue(QString::fromStdString(_Address));
+        q.addBindValue((int)_CustomerType);
+        q.addBindValue(_Points);
+        q.exec();
     }
 
 public:
@@ -136,17 +76,30 @@ public:
 
     static clsCustomer Find(string CustomerID)
     {
-        vector<clsCustomer> vCustomers = _LoadCustomersDataFromFile();
-        for (clsCustomer& C : vCustomers)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT * FROM Customers WHERE CustomerID=?");
+        q.addBindValue(QString::fromStdString(CustomerID));
+        if (q.exec() && q.next())
         {
-            if (C.CustomerID() == CustomerID) return C;
+            return clsCustomer(enMode::UpdateMode,
+                q.value(0).toString().toStdString(),
+                q.value(1).toString().toStdString(),
+                q.value(2).toString().toStdString(),
+                q.value(3).toString().toStdString(),
+                (enCustomerType)q.value(4).toInt(),
+                q.value(5).toInt());
         }
         return GetEmptyCustomerObject();
     }
 
     static bool IsCustomerExist(string CustomerID)
     {
-        return !Find(CustomerID).IsEmpty();
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("SELECT COUNT(*) FROM Customers WHERE CustomerID=?");
+        q.addBindValue(QString::fromStdString(CustomerID));
+        if (q.exec() && q.next())
+            return q.value(0).toInt() > 0;
+        return false;
     }
 
     static clsCustomer GetAddNewCustomerObject(string CustomerID)
@@ -163,16 +116,13 @@ public:
 
     bool Delete()
     {
-        vector<clsCustomer> vCustomers = _LoadCustomersDataFromFile();
-        for (auto it = vCustomers.begin(); it != vCustomers.end(); ++it)
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        q.prepare("DELETE FROM Customers WHERE CustomerID=?");
+        q.addBindValue(QString::fromStdString(_CustomerID));
+        if (q.exec() && q.numRowsAffected() > 0)
         {
-            if (it->CustomerID() == _CustomerID)
-            {
-                vCustomers.erase(it);
-                _SaveCustomersDataToFile(vCustomers);
-                *this = GetEmptyCustomerObject();
-                return true;
-            }
+            *this = GetEmptyCustomerObject();
+            return true;
         }
         return false;
     }
@@ -195,6 +145,21 @@ public:
 
     static vector<clsCustomer> GetCustomersList()
     {
-        return _LoadCustomersDataFromFile();
+        vector<clsCustomer> vCustomers;
+        QSqlQuery q(clsDatabase::GetInstance().GetDatabase());
+        if (q.exec("SELECT * FROM Customers"))
+        {
+            while (q.next())
+            {
+                vCustomers.push_back(clsCustomer(enMode::UpdateMode,
+                    q.value(0).toString().toStdString(),
+                    q.value(1).toString().toStdString(),
+                    q.value(2).toString().toStdString(),
+                    q.value(3).toString().toStdString(),
+                    (enCustomerType)q.value(4).toInt(),
+                    q.value(5).toInt()));
+            }
+        }
+        return vCustomers;
     }
 };

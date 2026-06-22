@@ -1,6 +1,7 @@
 #include <QApplication>
 #include "mainwindow.h"
 #include "ThemeManager.h"
+#include "../Core/clsDatabase.h"
 #include <QString>
 #include <QDateTime>
 #include <QTranslator>
@@ -8,11 +9,18 @@
 #include <QDir>
 #include <QStringList>
 #include <cstdlib>
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
     srand(QDateTime::currentDateTime().toSecsSinceEpoch());
     QApplication app(argc, argv);
+
+    if (!clsDatabase::GetInstance().Initialize())
+    {
+        std::cerr << "Failed to initialize database. Exiting.\n";
+        return 1;
+    }
 
     app.setOrganizationName("BoneChain");
     app.setApplicationName("BoneFertilizerApp");
