@@ -169,7 +169,6 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/BoneFertilizerApp_test_autogen.dir/AutogenInfo.json"
   "CMakeFiles/BoneFertilizerApp_autogen.dir/AutogenInfo.json"
   ".qt/QtDeploySupport.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
@@ -177,10 +176,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/BoneFertilizerApp_test.dir/DependInfo.cmake"
   "CMakeFiles/BoneFertilizerApp.dir/DependInfo.cmake"
-  "CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/DependInfo.cmake"
-  "CMakeFiles/BoneFertilizerApp_test_autogen.dir/DependInfo.cmake"
   "CMakeFiles/BoneFertilizerApp_autogen_timestamp_deps.dir/DependInfo.cmake"
   "CMakeFiles/BoneFertilizerApp_autogen.dir/DependInfo.cmake"
   )

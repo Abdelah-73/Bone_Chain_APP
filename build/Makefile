@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named BoneFertilizerApp_test
-
-# Build rule for target.
-BoneFertilizerApp_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BoneFertilizerApp_test
-.PHONY : BoneFertilizerApp_test
-
-# fast build rule for target.
-BoneFertilizerApp_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test.dir/build.make CMakeFiles/BoneFertilizerApp_test.dir/build
-.PHONY : BoneFertilizerApp_test/fast
-
-#=============================================================================
 # Target rules for targets named BoneFertilizerApp
 
 # Build rule for target.
@@ -141,32 +128,6 @@ BoneFertilizerApp: cmake_check_build_system
 BoneFertilizerApp/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp.dir/build.make CMakeFiles/BoneFertilizerApp.dir/build
 .PHONY : BoneFertilizerApp/fast
-
-#=============================================================================
-# Target rules for targets named BoneFertilizerApp_test_autogen_timestamp_deps
-
-# Build rule for target.
-BoneFertilizerApp_test_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BoneFertilizerApp_test_autogen_timestamp_deps
-.PHONY : BoneFertilizerApp_test_autogen_timestamp_deps
-
-# fast build rule for target.
-BoneFertilizerApp_test_autogen_timestamp_deps/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/build.make CMakeFiles/BoneFertilizerApp_test_autogen_timestamp_deps.dir/build
-.PHONY : BoneFertilizerApp_test_autogen_timestamp_deps/fast
-
-#=============================================================================
-# Target rules for targets named BoneFertilizerApp_test_autogen
-
-# Build rule for target.
-BoneFertilizerApp_test_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BoneFertilizerApp_test_autogen
-.PHONY : BoneFertilizerApp_test_autogen
-
-# fast build rule for target.
-BoneFertilizerApp_test_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test_autogen.dir/build.make CMakeFiles/BoneFertilizerApp_test_autogen.dir/build
-.PHONY : BoneFertilizerApp_test_autogen/fast
 
 #=============================================================================
 # Target rules for targets named BoneFertilizerApp_autogen_timestamp_deps
@@ -217,30 +178,6 @@ BoneFertilizerApp_autogen/mocs_compilation.s: BoneFertilizerApp_autogen/mocs_com
 BoneFertilizerApp_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp.dir/build.make CMakeFiles/BoneFertilizerApp.dir/BoneFertilizerApp_autogen/mocs_compilation.cpp.s
 .PHONY : BoneFertilizerApp_autogen/mocs_compilation.cpp.s
-
-BoneFertilizerApp_test_autogen/mocs_compilation.o: BoneFertilizerApp_test_autogen/mocs_compilation.cpp.o
-.PHONY : BoneFertilizerApp_test_autogen/mocs_compilation.o
-
-# target to build an object file
-BoneFertilizerApp_test_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test.dir/build.make CMakeFiles/BoneFertilizerApp_test.dir/BoneFertilizerApp_test_autogen/mocs_compilation.cpp.o
-.PHONY : BoneFertilizerApp_test_autogen/mocs_compilation.cpp.o
-
-BoneFertilizerApp_test_autogen/mocs_compilation.i: BoneFertilizerApp_test_autogen/mocs_compilation.cpp.i
-.PHONY : BoneFertilizerApp_test_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-BoneFertilizerApp_test_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test.dir/build.make CMakeFiles/BoneFertilizerApp_test.dir/BoneFertilizerApp_test_autogen/mocs_compilation.cpp.i
-.PHONY : BoneFertilizerApp_test_autogen/mocs_compilation.cpp.i
-
-BoneFertilizerApp_test_autogen/mocs_compilation.s: BoneFertilizerApp_test_autogen/mocs_compilation.cpp.s
-.PHONY : BoneFertilizerApp_test_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-BoneFertilizerApp_test_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test.dir/build.make CMakeFiles/BoneFertilizerApp_test.dir/BoneFertilizerApp_test_autogen/mocs_compilation.cpp.s
-.PHONY : BoneFertilizerApp_test_autogen/mocs_compilation.cpp.s
 
 GUI/ThemeManager.o: GUI/ThemeManager.cpp.o
 .PHONY : GUI/ThemeManager.o
@@ -506,30 +443,6 @@ GUI/userdialog.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp.dir/build.make CMakeFiles/BoneFertilizerApp.dir/GUI/userdialog.cpp.s
 .PHONY : GUI/userdialog.cpp.s
 
-test_full.o: test_full.cpp.o
-.PHONY : test_full.o
-
-# target to build an object file
-test_full.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test.dir/build.make CMakeFiles/BoneFertilizerApp_test.dir/test_full.cpp.o
-.PHONY : test_full.cpp.o
-
-test_full.i: test_full.cpp.i
-.PHONY : test_full.i
-
-# target to preprocess a source file
-test_full.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test.dir/build.make CMakeFiles/BoneFertilizerApp_test.dir/test_full.cpp.i
-.PHONY : test_full.cpp.i
-
-test_full.s: test_full.cpp.s
-.PHONY : test_full.s
-
-# target to generate assembly for a file
-test_full.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BoneFertilizerApp_test.dir/build.make CMakeFiles/BoneFertilizerApp_test.dir/test_full.cpp.s
-.PHONY : test_full.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -540,16 +453,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... BoneFertilizerApp_autogen"
 	@echo "... BoneFertilizerApp_autogen_timestamp_deps"
-	@echo "... BoneFertilizerApp_test_autogen"
-	@echo "... BoneFertilizerApp_test_autogen_timestamp_deps"
 	@echo "... BoneFertilizerApp"
-	@echo "... BoneFertilizerApp_test"
 	@echo "... BoneFertilizerApp_autogen/mocs_compilation.o"
 	@echo "... BoneFertilizerApp_autogen/mocs_compilation.i"
 	@echo "... BoneFertilizerApp_autogen/mocs_compilation.s"
-	@echo "... BoneFertilizerApp_test_autogen/mocs_compilation.o"
-	@echo "... BoneFertilizerApp_test_autogen/mocs_compilation.i"
-	@echo "... BoneFertilizerApp_test_autogen/mocs_compilation.s"
 	@echo "... GUI/ThemeManager.o"
 	@echo "... GUI/ThemeManager.i"
 	@echo "... GUI/ThemeManager.s"
@@ -583,9 +490,6 @@ help:
 	@echo "... GUI/userdialog.o"
 	@echo "... GUI/userdialog.i"
 	@echo "... GUI/userdialog.s"
-	@echo "... test_full.o"
-	@echo "... test_full.i"
-	@echo "... test_full.s"
 .PHONY : help
 
 

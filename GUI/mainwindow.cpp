@@ -509,7 +509,6 @@ void MainWindow::applyRolePermissions(int role)
         msgBox.setWindowTitle(tr("Welcome"));
         msgBox.setText(tr("Welcome to the Bone Fertilizer System.\nYou can browse our articles and knowledge base."));
         msgBox.setIcon(QMessageBox::Information);
-        msgBox.setStyleSheet("QLabel { color: white; } QMessageBox { color: white; }");
         msgBox.exec();
     }
 }
@@ -805,24 +804,6 @@ void MainWindow::refreshAllStyles()
             .arg(cardBg, cardBdr)
         );
     }
-    // Refresh certificate sub-frames
-    for (int i = 0; i < 3; ++i) {
-        QFrame *f = certFrames[i];
-        if (!f) continue;
-        if (f->property("earned").toBool()) {
-            QString earnedColor = f->property("earnedColor").toString();
-            f->setStyleSheet(
-                QString("QFrame { background-color: %1; border: 2px solid %2; border-radius: 12px; }")
-                .arg(cardBg, earnedColor)
-            );
-        } else {
-            f->setStyleSheet(
-                QString("QFrame { background-color: %1; border: 2px dashed %2; border-radius: 12px; }")
-                .arg(frameBg, dark ? "#475569" : "#bdc3c7")
-            );
-        }
-    }
-
     // ========== MY PROFILE / CUSTOMER PROFILE ==========
     QFrame *profileCard = findChild<QFrame*>("profileCard");
     if (profileCard) {
@@ -837,6 +818,21 @@ void MainWindow::refreshAllStyles()
             QString("QFrame { background-color: %1; border-radius: 8px; border: 1px solid %2; }")
             .arg(cardBg, cardBdr)
         );
+    }
+
+    // ========== PROFILE LABELS ==========
+    if (lblProfileName) {
+        lblProfileName->setStyleSheet(QString("color: %1; font-weight: bold; border: none; font-size: 16px;").arg(valueClr));
+        lblProfileUsername->setStyleSheet(QString("color: %1; font-weight: bold; border: none; font-size: 16px;").arg(valueClr));
+        lblProfilePhone->setStyleSheet(QString("color: %1; font-weight: bold; border: none; font-size: 16px;").arg(valueClr));
+        lblProfileEmail->setStyleSheet(QString("color: %1; font-weight: bold; border: none; font-size: 16px;").arg(valueClr));
+    }
+    if (lblCustProfName) {
+        lblCustProfName->setStyleSheet(QString("color: %1; border: none;").arg(valueClr));
+        lblCustProfPhone->setStyleSheet(QString("color: %1; border: none;").arg(valueClr));
+        lblCustProfEmail->setStyleSheet(QString("color: %1; border: none;").arg(valueClr));
+        lblCustProfAddr->setStyleSheet(QString("color: %1; border: none;").arg(valueClr));
+        lblCustProfType->setStyleSheet(QString("color: %1; border: none;").arg(valueClr));
     }
 
     // ========== CUSTOMER POINTS ==========
@@ -2515,8 +2511,8 @@ void MainWindow::refreshMyRewardsScreen()
                 ico->setText(certs[i].iconUnlocked);
                 ico->setStyleSheet(QString(
                     "font-size: 40px; border: none; background: %1;"
-                    "  border-radius: 20px; padding: 4px;"
-                ).arg(certs[i].badgeClr));
+                    "  border-radius: 20px; padding: 4px; color: %2;"
+                ).arg(certs[i].badgeClr, certs[i].textClr));
             }
             if (lbl) {
                 lbl->setText(tr(certs[i].title));
@@ -2540,15 +2536,15 @@ void MainWindow::refreshMyRewardsScreen()
             );
             if (ico) {
                 ico->setText(certs[i].iconLocked);
-                ico->setStyleSheet("font-size: 34px; border: none; color: #b0b0b0;");
+                ico->setStyleSheet("font-size: 34px; border: none; color: #6b7280;");
             }
             if (lbl) {
                 lbl->setText(tr(certs[i].title));
-                lbl->setStyleSheet("color: #b0b0b0; font-size: 13px; font-weight: 600; border: none;");
+                lbl->setStyleSheet("color: #6b7280; font-size: 13px; font-weight: 600; border: none;");
             }
             if (reqLbl) {
                 reqLbl->setText(tr(certs[i].req));
-                reqLbl->setStyleSheet("color: #ccd1d9; font-size: 11px; border: none;");
+                reqLbl->setStyleSheet("color: #94a3b8; font-size: 11px; border: none;");
             }
         }
     }
@@ -2744,8 +2740,7 @@ void MainWindow::setupCustProductsScreen()
     cmbCustCategoryFilter->addItem(tr("Organic Fertilizer"), clsProduct::enCategory::OrganicFertilizer);
     cmbCustCategoryFilter->addItem(tr("Feed Supplement"), clsProduct::enCategory::FeedSupplement);
     cmbCustCategoryFilter->setStyleSheet(
-    "QComboBox { padding: 6px; border: 1px solid #bdc3c7; border-radius: 4px; color: white; }"
-    "QComboBox QAbstractItemView { color: white; }"
+    "QComboBox { padding: 6px; border: 1px solid #bdc3c7; border-radius: 4px; }"
 );
     QPushButton *btnSearch = new QPushButton(tr("Search"), this);
     btnSearch->setStyleSheet("background-color: #2980b9; color: white; padding: 6px 15px; border-radius: 4px; font-weight: bold;");
@@ -3148,7 +3143,12 @@ void MainWindow::openNewDeliveryForm()
     dialog.setMinimumWidth(300);
     dialog.setStyleSheet(
         "QLabel { color: #1c4a78; font-weight: bold; margin-top: 5px; }"
-        "QComboBox, QSpinBox { color: #eceff3; }"
+        "QComboBox { padding: 4px; border: 1px solid #bdc3c7; border-radius: 4px; }"
+        "QSpinBox { padding: 4px; border: 1px solid #bdc3c7; border-radius: 4px; }"
+        "QSpinBox::up-button, QSpinBox::down-button {"
+        "  width: 20px; border: 1px solid #bdc3c7;"
+        "  background-color: #f0f0f0; border-radius: 2px;"
+        "}"
     );
     // ----------------------------------------------------
     QVBoxLayout layout(&dialog);
