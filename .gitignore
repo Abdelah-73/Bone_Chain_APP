@@ -1,0 +1,44 @@
+# Build artifacts
+build/
+install/
+install_staging/
+
+# Compiled binaries & installers
+*.exe
+*.zip
+*.dll
+*.pdb
+*.obj
+*.o
+*.a
+*.lib
+*.so
+*.qmlc
+
+# Compiled translations (regenerable via CMake/Linguist)
+*.qm
+
+# IDE / editor settings
+.vscode/
+.idea/
+*.user
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+CMakeError.log
+CMakeOutput.log
+*.ninja
+.ninja_deps
+.ninja_log
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Local database copies / runtime data
+*.db-journal
+*.db-wal
+*.db-shm
